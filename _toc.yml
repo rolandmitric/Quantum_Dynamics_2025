@@ -1,0 +1,12 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: formalism_hilbert_spaces.ipynb
+- file: formalism_linear_operators.ipynb
+- file: formalism_unitary_time_evolution.ipynb
+- file: qubit_dynamics.ipynb
+- file: momentum_operator.ipynb
+
