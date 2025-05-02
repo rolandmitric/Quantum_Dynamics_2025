@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Quantum Dynamics — Summer Semester 2022
+                    Quantum Dynamics — Summer Semester 2025
                 </a>
             </li>
         </ul>
@@ -186,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="formalism_linear_operators.html">🔸 Linear maps, operators and functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formalism_unitary_time_evolution.html">🔸 Formalism of Quantum Mechanics: Unitary time evolution</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🔸 Quantum Dynamics of a Two-Level System with Constant Coupling</a></li>
+
 
 
 
@@ -399,20 +400,25 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🔸 Quantum Dynamics of a Two-Level System with Constant Coupling</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-states-and-time-dependent-wavefunction">🔹 Basis States and Time-Dependent Wavefunction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-with-constant-coupling">🔹 Hamiltonian with Constant Coupling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-physically-distinct-cases">🔹 Two Physically Distinct Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-with-constant-coupling">🔹 1. Hamiltonian with Constant Coupling</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-dynamics-via-analytic-and-symbolic-methods">🔸 Two-Level System: Dynamics via Analytic and Symbolic Methods</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-setup-two-level-hamiltonian">🔹 General Setup: Two-Level Hamiltonian</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-rabi-oscillations-resonant-coupling">🔹 Special Case: Rabi Oscillations (Resonant Coupling)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic-derivation-of-the-propagator">🔹 1. Analytic Derivation of the Propagator</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-derivation-using-sympy-for-those-who-like-symbolic-computations">🔹 2. Symbolic Derivation Using SymPy for those who like symbolic computations…</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#population-dynamics">🔹 Population Dynamics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pulse-and-the-quantum-not-gate">🔸 π/2 Pulse and the Quantum NOT Gate</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics-under-a-2-pulse">🔹 Dynamics under a π/2 Pulse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-quantum-not-gate">🔹 Connection to the Quantum NOT Gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-realizations">🔹 Physical Realizations</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-non-resonant-coupling-detuned-case">🔸 Two-Level System: Non-Resonant Coupling (Detuned Case)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-with-detuning">🔹 Hamiltonian with Detuning</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-derivation-of-the-time-evolution-operator">🔹 Algebraic Derivation of the Time Evolution Operator</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series-summation">🔹 Taylor Series Summation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#population-dynamics">🔹 Population Dynamics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🔹 Population Dynamics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simulation-leads-to-the-following-physical-insight-about-the-dynamics-in-the-non-resonant-case">🧠 The simulation leads to the following physical insight about the dynamics in the non-resonant case:</a></li>
 </ul>
 </li>
@@ -431,15 +437,8 @@ document.write(`
                   
   <section id="quantum-dynamics-of-a-two-level-system-with-constant-coupling">
 <h1>🔸 Quantum Dynamics of a Two-Level System with Constant Coupling<a class="headerlink" href="#quantum-dynamics-of-a-two-level-system-with-constant-coupling" title="Link to this heading">#</a></h1>
-<p>As a first physical application of the formalism we have developed — Hilbert spaces, linear operators, and time evolution — we now consider a <strong>two-level quantum system</strong> with constant electronic (or field-induced) coupling.</p>
-<p>This model is ubiquitous in chemical physics and quantum optics, and it describes:</p>
-<ul class="simple">
-<li><p><strong>Molecular systems</strong> in the regime where only two electronic states couple,</p></li>
-<li><p><strong>Two-level atoms</strong> or ions interacting with laser fields,</p></li>
-<li><p><strong>Spin-1/2 particles</strong> in external fields,</p></li>
-<li><p><strong>Qubits</strong> in a simplified environment.</p></li>
-</ul>
-<hr class="docutils" />
+<p>As a first physical application of the formalism we have developed — Hilbert spaces, linear operators, and time evolution — we now turn to a <strong>two-level quantum system</strong>.
+This model is often used to illustrate various features of quantum mechanics and it also has significant practical relevance. Spin-1/2 particles such as electrons and protons can be treated as two level systems in other degrees of freedom can be ignored as is the case in the nuclear or magnetic resonance spectroscopies. Also the basic unit of the quantum information processing - the qubit - is a two level quantum system that can be realized in various physical ways. Two-level systems are also used in the field of chemical physics as a model for molecular systems where only two electronic states couple or as model describing the interaction of trapped atomic ions with laser fields.</p>
 <section id="basis-states-and-time-dependent-wavefunction">
 <h2>🔹 Basis States and Time-Dependent Wavefunction<a class="headerlink" href="#basis-states-and-time-dependent-wavefunction" title="Link to this heading">#</a></h2>
 <p>We work in the orthonormal basis of diabatic (or bare) states:</p>
@@ -447,7 +446,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\( |g\rangle \)</span> : ground state</p></li>
 <li><p><span class="math notranslate nohighlight">\( |e\rangle \)</span> : excited state</p></li>
 </ul>
-<p>The general state of the system at time <span class="math notranslate nohighlight">\(t\)</span> is written as:</p>
+<p>The general state of the system at time <span class="math notranslate nohighlight">\(t\)</span> is written as a time-dependent linear combinations of the basis states:</p>
 <div class="math notranslate nohighlight">
 \[
 |\psi(t)\rangle = c_g(t) |g\rangle + c_e(t) |e\rangle
@@ -456,8 +455,8 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="hamiltonian-with-constant-coupling">
-<h2>🔹 Hamiltonian with Constant Coupling<a class="headerlink" href="#hamiltonian-with-constant-coupling" title="Link to this heading">#</a></h2>
-<p>We assume a time-independent Hamiltonian of the form:</p>
+<h2>🔹 1. Hamiltonian with Constant Coupling<a class="headerlink" href="#hamiltonian-with-constant-coupling" title="Link to this heading">#</a></h2>
+<p>The first system we treat is the one with a time-independent Hamiltonian of the form:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \hat{H} = 
@@ -471,55 +470,30 @@ V &amp; E_e
 <li><p><span class="math notranslate nohighlight">\( E_g \)</span> and <span class="math notranslate nohighlight">\( E_e \)</span> are the energies of the ground and excited states, respectively,</p></li>
 <li><p><span class="math notranslate nohighlight">\( V \in \mathbb{R} \)</span> is the <strong>constant coupling</strong> between the two states.</p></li>
 </ul>
-<p>The time-dependent Schrödinger equation is:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-i\hbar \frac{d}{dt}
-\begin{pmatrix}
-c_g(t) \\
-c_e(t)
-\end{pmatrix}
-=
-\begin{pmatrix}
-E_g &amp; V \\
-V &amp; E_e
-\end{pmatrix}
-\begin{pmatrix}
-c_g(t) \\
-c_e(t)
-\end{pmatrix}
-\end{split}\]</div>
-</section>
-<hr class="docutils" />
-<section id="two-physically-distinct-cases">
-<h2>🔹 Two Physically Distinct Cases<a class="headerlink" href="#two-physically-distinct-cases" title="Link to this heading">#</a></h2>
 <p>We will analyze the dynamics in two regimes:</p>
 <ol class="arabic simple">
 <li><p><strong>Resonant Case</strong>: <span class="math notranslate nohighlight">\(E_g = E_e\)</span><br />
-The two levels are degenerate. The coupling leads to <strong>maximal population transfer</strong> and perfectly symmetric oscillations.</p></li>
+The two levels are degenerate. As we will demonstrate, the constant coupling leads in this situtation to <strong>maximal population transfer</strong> and perfectly symmetric oscillations.</p></li>
 <li><p><strong>Non-Resonant Case</strong>: <span class="math notranslate nohighlight">\(E_g \ne E_e\)</span><br />
-The levels are detuned. Population transfer still occurs, but the oscillations are asymmetric, and their amplitude depends on the energy difference.</p></li>
+The energy levels are detuned. While the population transfer still occurs, the oscillations are asymmetric, and their amplitude depends on the energy difference.</p></li>
 </ol>
-<p>In both cases, we will compute the <strong>time-evolution operator</strong> explicitly and examine the behavior of the time-dependent state populations:</p>
+<p>Our goal is in both cases to compute the <strong>time-evolution operator</strong> explicitly and investigate the behavior of the time-dependent state populations that are defined by:</p>
 <div class="math notranslate nohighlight">
 \[
-P_g(t) = |c_g(t)|^2, \quad P_e(t) = |c_e(t)|^2
+P_g(t) = |\langle g | \psi(t)\rangle|^2, \quad P_e(t) = |\langle e | \psi(t)\rangle|^2
 \]</div>
 </section>
 </section>
 <section id="two-level-system-dynamics-via-analytic-and-symbolic-methods">
 <h1>🔸 Two-Level System: Dynamics via Analytic and Symbolic Methods<a class="headerlink" href="#two-level-system-dynamics-via-analytic-and-symbolic-methods" title="Link to this heading">#</a></h1>
-<p>Continuing our study of a two-level system with constant coupling, we now explicitly compute the <strong>time-evolution operator</strong> and solve the dynamics.</p>
+<p>Continuing our study of a two-level system with constant coupling, we now explicitly evaluate the <strong>time-evolution operator</strong>.</p>
 <p>We proceed in two complementary ways:</p>
 <ol class="arabic simple">
 <li><p><strong>Analytic derivation</strong>: Using matrix exponentials.</p></li>
 <li><p><strong>Symbolic computation</strong>: Using the SymPy package.</p></li>
 </ol>
-<hr class="docutils" />
-</section>
-<section id="general-setup-two-level-hamiltonian">
-<h1>🔹 General Setup: Two-Level Hamiltonian<a class="headerlink" href="#general-setup-two-level-hamiltonian" title="Link to this heading">#</a></h1>
-<p>We describe the system in terms of the <strong>Pauli matrices</strong> and the <strong>identity matrix</strong>:</p>
+<p>The Hamiltonian of any two-level system can be represented by a 2x2 hermitian matrix in the basis <span class="math notranslate nohighlight">\(|g\rangle , |e\rangle\)</span>. Such matrices can be expanded in terms of the
+<strong>Pauli matrices</strong> and the <strong>identity matrix</strong>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \sigma_x =
@@ -543,16 +517,16 @@ I =
 0 &amp; 1
 \end{pmatrix}
 \end{split}\]</div>
-<p>The general two-level Hamiltonian can alway be written as:</p>
+<p>In this basis the Hamiltonian of any two level system can be written as:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{H} = H_0 I + V_{\text{re}} \sigma_x + V_{\text{im}} \sigma_y + \Delta \sigma_z
+\hat{H} = \overline{E} I + V_{x} \sigma_x + V_{y} \sigma_y + \frac{1}{2}\Delta \sigma_z
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(H_0 \in \mathbb{R}\)</span> is an overall energy shift,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\Delta \in \mathbb{R}\)</span> is the energy detuning between the ground and excited states,</p></li>
-<li><p><span class="math notranslate nohighlight">\(V_{\text{re}}\)</span>, <span class="math notranslate nohighlight">\(V_{\text{im}} \in \mathbb{R}\)</span> are real and imaginary parts of the coupling.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overline{E} \in \mathbb{R}\)</span> is the average energy of the two levels,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta \in \mathbb{R}\)</span> is the energy difference between the ground and excited states,</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{x}\)</span>, <span class="math notranslate nohighlight">\(V_{y} \in \mathbb{R}\)</span> are real and imaginary parts of the coupling.</p></li>
 </ul>
 <hr class="docutils" />
 </section>
@@ -560,26 +534,26 @@ I =
 <h1>🔹 Special Case: Rabi Oscillations (Resonant Coupling)<a class="headerlink" href="#special-case-rabi-oscillations-resonant-coupling" title="Link to this heading">#</a></h1>
 <p>We specialize to the situation:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(H_0 = 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overline{E} = 0\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\Delta = 0\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(V_{\text{im}} = 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{y} = 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{x} = V\)</span>,</p></li>
 </ul>
 <p>so that the Hamiltonian simplifies to:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{H} = V_{\text{re}} \sigma_x
+\hat{H} = V \sigma_x
 \]</div>
 <p>i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \hat{H} =
-V_{\text{re}}
+V
 \begin{pmatrix}
 0 &amp; 1 \\
 1 &amp; 0
 \end{pmatrix}
 \end{split}\]</div>
-<hr class="docutils" />
 </section>
 <section id="analytic-derivation-of-the-propagator">
 <h1>🔹 1. Analytic Derivation of the Propagator<a class="headerlink" href="#analytic-derivation-of-the-propagator" title="Link to this heading">#</a></h1>
@@ -587,12 +561,12 @@ V_{\text{re}}
 The Hamiltonian in our case is given by:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{H} = V_{\text{re}} \sigma_x
+\hat{H} = V \sigma_x
 \]</div>
 <p>which leads to the following time-evolution operator:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{U}(t) = \exp\left( -\frac{i}{\hbar} \hat{H} t \right) = \exp\left( -i \frac{V_{\text{re}}}{\hbar} t \sigma_x \right)
+\hat{U}(t) = \exp\left( -\frac{i}{\hbar} \hat{H} t \right) = \exp\left( -i \frac{V}{\hbar} t \sigma_x \right)
 \]</div>
 <p>In order to calculate the operator exponential we need to know what the powers of the <span class="math notranslate nohighlight">\(\sigma_x\)</span> are.
 Recalling properties of the Pauli matrices we have:</p>
@@ -622,13 +596,13 @@ Recalling properties of the Pauli matrices we have:</p>
 \[
 e^A = \sum_{n=0}^{\infty} \frac{A^n}{n!}
 \]</div>
-<p>Applying this to <span class="math notranslate nohighlight">\(A = -i \frac{V_{\text{re}} t}{\hbar} \sigma_x\)</span> we obtain:</p>
+<p>Applying this to <span class="math notranslate nohighlight">\(A = -i \frac{V t}{\hbar} \sigma_x\)</span> we obtain:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
 \hat{U}(t)
-&amp;= \sum_{n=0}^{\infty} \frac{1}{n!} \left( -i \frac{V_{\text{re}} t}{\hbar} \sigma_x \right)^n \\
-&amp;= \sum_{n=0}^{\infty} \frac{1}{n!} \left( -i \frac{V_{\text{re}} t}{\hbar} \right)^n \sigma_x^n
+&amp;= \sum_{n=0}^{\infty} \frac{1}{n!} \left( -i \frac{V t}{\hbar} \sigma_x \right)^n \\
+&amp;= \sum_{n=0}^{\infty} \frac{1}{n!} \left( -i \frac{V t}{\hbar} \right)^n \sigma_x^n
 \end{aligned}
 \end{split}\]</div>
 <p>We can now split the sum into <strong>even</strong> and <strong>odd</strong> terms:</p>
@@ -636,20 +610,20 @@ e^A = \sum_{n=0}^{\infty} \frac{A^n}{n!}
 \[\begin{split}
 \begin{aligned}
 \hat{U}(t)
-&amp;= \sum_{k=0}^{\infty} \frac{1}{(2k)!} \left( -i \frac{V_{\text{re}} t}{\hbar} \right)^{2k} \sigma_x^{2k}
-+ \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \left( -i \frac{V_{\text{re}} t}{\hbar} \right)^{2k+1} \sigma_x^{2k+1} \\
-&amp;= \left[ \sum_{k=0}^{\infty} \frac{1}{(2k)!} \left( -i \frac{V_{\text{re}} t}{\hbar} \right)^{2k} \right] I
-+ \left[ \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \left( -i \frac{V_{\text{re}} t}{\hbar} \right)^{2k+1} \right] \sigma_x
+&amp;= \sum_{k=0}^{\infty} \frac{1}{(2k)!} \left( -i \frac{V t}{\hbar} \right)^{2k} \sigma_x^{2k}
++ \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \left( -i \frac{V t}{\hbar} \right)^{2k+1} \sigma_x^{2k+1} \\
+&amp;= \left[ \sum_{k=0}^{\infty} \frac{1}{(2k)!} \left( -i \frac{V t}{\hbar} \right)^{2k} \right] I
++ \left[ \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \left( -i \frac{V t}{\hbar} \right)^{2k+1} \right] \sigma_x
 \end{aligned}
 \end{split}\]</div>
-<p>We obtain series that represent the sine and cosind functions:</p>
+<p>A well trained eye will recognize in these ugly expressions the series definining the sine and cosine functions:</p>
 <div class="math notranslate nohighlight">
 \[
-\cos\left( \frac{V_{\text{re}} t}{\hbar} \right) = \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!} \left( \frac{V_{\text{re}} t}{\hbar} \right)^{2k}
+\cos\left( \frac{V t}{\hbar} \right) = \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!} \left( \frac{V t}{\hbar} \right)^{2k}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\sin\left( \frac{V_{\text{re}} t}{\hbar} \right) = \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!} \left( \frac{V_{\text{re}} t}{\hbar} \right)^{2k+1}
+\sin\left( \frac{V t}{\hbar} \right) = \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!} \left( \frac{V t}{\hbar} \right)^{2k+1}
 \]</div>
 <p>Furthermore, we note that:</p>
 <p><span class="math notranslate nohighlight">\(
@@ -661,36 +635,36 @@ e^A = \sum_{n=0}^{\infty} \frac{A^n}{n!}
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\left( -i \right)^{2k} \left( \frac{V_{\text{re}} t}{\hbar} \right)^{2k} = (-1)^k \left( \frac{V_{\text{re}} t}{\hbar} \right)^{2k}
+\left( -i \right)^{2k} \left( \frac{V t}{\hbar} \right)^{2k} = (-1)^k \left( \frac{V t}{\hbar} \right)^{2k}
 \]</div>
 <ul class="simple">
 <li><p>For odd powers:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\left( -i \right)^{2k+1} \left( \frac{V_{\text{re}} t}{\hbar} \right)^{2k+1} = (-1)^k (-i) \left( \frac{V_{\text{re}} t}{\hbar} \right)^{2k+1}
+\left( -i \right)^{2k+1} \left( \frac{V t}{\hbar} \right)^{2k+1} = (-1)^k (-i) \left( \frac{V t}{\hbar} \right)^{2k+1}
 \]</div>
 <p>Collecting these results we get the time-evolution operator in a closed analytic form:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{U}(t) =
-\cos\left( \frac{V_{\text{re}} t}{\hbar} \right) I
-- i \sin\left( \frac{V_{\text{re}} t}{\hbar} \right) \sigma_x
+\cos\left( \frac{V t}{\hbar} \right) I
+- i \sin\left( \frac{V t}{\hbar} \right) \sigma_x
 \]</div>
 <p>that can be also written explicitly as a 2x2 matrix operator:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \hat{U}(t) =
 \begin{pmatrix}
-\cos\left( \frac{V_{\text{re}} t}{\hbar} \right) &amp; -i \sin\left( \frac{V_{\text{re}} t}{\hbar} \right) \\
--i \sin\left( \frac{V_{\text{re}} t}{\hbar} \right) &amp; \cos\left( \frac{V_{\text{re}} t}{\hbar} \right)
+\cos\left( \frac{V t}{\hbar} \right) &amp; -i \sin\left( \frac{V t}{\hbar} \right) \\
+-i \sin\left( \frac{V t}{\hbar} \right) &amp; \cos\left( \frac{V t}{\hbar} \right)
 \end{pmatrix}
 \end{split}\]</div>
 <hr class="docutils" />
 </section>
 <section id="symbolic-derivation-using-sympy-for-those-who-like-symbolic-computations">
 <h1>🔹 2. Symbolic Derivation Using SymPy for those who like symbolic computations…<a class="headerlink" href="#symbolic-derivation-using-sympy-for-those-who-like-symbolic-computations" title="Link to this heading">#</a></h1>
-<p>For those familiar with python I also provide a symbolic derivation of the above result using <strong>SymPy</strong>.</p>
+<p>For those familiar with python I also provide a short symbolic derivation of the above result using <strong>SymPy</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
@@ -723,6 +697,22 @@ e^A = \sum_{n=0}^{\infty} \frac{A^n}{n!}
 \[\begin{split}\displaystyle \left[\begin{matrix}\cos{\left(\frac{V_{re} t}{\hbar} \right)} &amp; - i \sin{\left(\frac{V_{re} t}{\hbar} \right)}\\- i \sin{\left(\frac{V_{re} t}{\hbar} \right)} &amp; \cos{\left(\frac{V_{re} t}{\hbar} \right)}\end{matrix}\right]\end{split}\]</div>
 </div>
 </div>
+</section>
+<section id="population-dynamics">
+<h1>🔹 Population Dynamics<a class="headerlink" href="#population-dynamics" title="Link to this heading">#</a></h1>
+<p>We now study the dynamics assuming that the system starts in the  ground state <span class="math notranslate nohighlight">\(|\psi(0)\rangle = |g\rangle\)</span> at the initial time <span class="math notranslate nohighlight">\(t=0\)</span>:
+The ground state population as the system evolves can be calculated by applying the time-evolution operator and calculating the absolute square of the population which leads to:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e(t) =  \sin^2\left( \frac{V t}{\hbar} \right)
+\]</div>
+<p>For the ground state we get:</p>
+<div class="math notranslate nohighlight">
+\[
+P_g(t) = \cos^2\left( \frac{V t}{\hbar} \right)
+\]</div>
+<p>As it should be the total population is normalized <span class="math notranslate nohighlight">\(P_g(t) + P_e(t) = 1\)</span>. The plot of the population dynamics is provided in the Figure below.</p>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -751,6 +741,83 @@ e^A = \sum_{n=0}^{\infty} \frac{A^n}{n!}
 <img alt="_images/190d0bf325f915bd97bcf2e4da05e9bff9ea9d0398a94869b20e707e8a1a68b7.png" src="_images/190d0bf325f915bd97bcf2e4da05e9bff9ea9d0398a94869b20e707e8a1a68b7.png" />
 </div>
 </div>
+</section>
+<section id="pulse-and-the-quantum-not-gate">
+<h1>🔸 π/2 Pulse and the Quantum NOT Gate<a class="headerlink" href="#pulse-and-the-quantum-not-gate" title="Link to this heading">#</a></h1>
+<p>We now consider a central concept in both quantum dynamics and quantum information theory: the <strong>π/2 pulse</strong>.</p>
+<p>A π/2 pulse refers to a resonant driving of a two-level system such that the system undergoes a <strong>coherent population transfer</strong> from the ground state <span class="math notranslate nohighlight">\(|g\rangle\)</span> to the excited state <span class="math notranslate nohighlight">\(|e\rangle\)</span>. This is a key example of <strong>Rabi oscillations</strong>.</p>
+<section id="dynamics-under-a-2-pulse">
+<h2>🔹 Dynamics under a π/2 Pulse<a class="headerlink" href="#dynamics-under-a-2-pulse" title="Link to this heading">#</a></h2>
+<p>Let us return to the resonant Hamiltonian:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{H} = V \sigma_x = V
+\begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}
+\end{split}\]</div>
+<p>The time-evolution operator is:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{U}(t) = \exp\left(-\frac{i}{\hbar} \hat{H} t \right) = \cos\left(\frac{Vt}{\hbar}\right) I - i \sin\left(\frac{Vt}{\hbar}\right) \sigma_x
+\]</div>
+<p>Acting on an initial ground state <span class="math notranslate nohighlight">\(|\psi(0)\rangle = |g\rangle = \begin{pmatrix}1 \\ 0\end{pmatrix}\)</span>, we find the time-evolved state:</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi(t)\rangle = \cos\left(\frac{Vt}{\hbar}\right)|g\rangle - i \sin\left(\frac{Vt}{\hbar}\right)|e\rangle
+\]</div>
+<p>For a <strong>π/2 pulse</strong>, we choose the interaction time <span class="math notranslate nohighlight">\(t\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{Vt}{\hbar} = \frac{\pi}{2}
+\quad \Rightarrow \quad
+t = \frac{\pi \hbar}{2V}
+\]</div>
+<p>At this moment, the system is found in:</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi(t)\rangle = -i |e\rangle
+\]</div>
+<p>up to a global phase. Hence, the system has <strong>fully transferred</strong> from <span class="math notranslate nohighlight">\(|g\rangle\)</span> to <span class="math notranslate nohighlight">\(|e\rangle\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="connection-to-the-quantum-not-gate">
+<h2>🔹 Connection to the Quantum NOT Gate<a class="headerlink" href="#connection-to-the-quantum-not-gate" title="Link to this heading">#</a></h2>
+<p>The <strong>quantum NOT gate</strong> (also called the Pauli-X gate) is defined by its action:</p>
+<div class="math notranslate nohighlight">
+\[
+X |0\rangle = |1\rangle, \quad X |1\rangle = |0\rangle
+\]</div>
+<p>This gate is represented by the same matrix as <span class="math notranslate nohighlight">\(\sigma_x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+X =
+\begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}
+\end{split}\]</div>
+<p>In the context of Rabi dynamics, a π pulse (not π/2) maps <span class="math notranslate nohighlight">\(|g\rangle \rightarrow |e\rangle\)</span> and <span class="math notranslate nohighlight">\(|e\rangle \rightarrow |g\rangle\)</span>, just as the NOT gate does. Therefore, the π pulse <strong>implements a quantum NOT gate</strong> in the two-level system. The π/2 pulse, on the other hand, is associated with a <strong>Hadamard-like</strong> transformation (placing the system into a coherent superposition), but a π pulse is the true NOT operation.</p>
+</section>
+<hr class="docutils" />
+<section id="physical-realizations">
+<h2>🔹 Physical Realizations<a class="headerlink" href="#physical-realizations" title="Link to this heading">#</a></h2>
+<p>Quantum NOT gate described above is a simple example of a quantum gate that have been by now realized in a variety of platforms used to implement the qubits:</p>
+<ul>
+<li><p><strong>Trapped Ions</strong>: Quantum operations are  implemented by resonant laser pulses that drive transitions between internal electronic levels of ions trapped in electromagnetic fields.</p>
+<p>→ <em>Cirac, J. I., &amp; Zoller, P. (1995). Quantum computations with cold trapped ions. Physical Review Letters, 74(20), 4091.</em></p>
+</li>
+<li><p><strong>Superconducting Qubits</strong>: Microwave pulses play the role of driving fields for Josephson junction-based qubits, performing quantum gates by engineering the duration and phase of the pulse.</p>
+<p>→ <em>Barends, R., et al. (2014). Superconducting quantum circuits at the surface code threshold for fault tolerance. Nature, 508(7497), 500–503.</em></p>
+</li>
+<li><p><strong>NMR Qubits</strong>: Nuclear magnetic resonance experiments naturally implement single-qubit gates as rotations driven by radiofrequency fields.</p>
+<p>→ <em>Cory, D. G., Fahmy, A. F., &amp; Havel, T. F. (1997). Ensemble quantum computing by NMR spectroscopy. PNAS, 94(5), 1634–1639.</em></p>
+</li>
+</ul>
+<hr class="docutils" />
+<p>This illustrates how <strong>control over interaction time</strong> (via the pulse area) allows direct implementation of logical operations on qubits in physical systems.</p>
+</section>
 </section>
 <section id="two-level-system-non-resonant-coupling-detuned-case">
 <h1>🔸 Two-Level System: Non-Resonant Coupling (Detuned Case)<a class="headerlink" href="#two-level-system-non-resonant-coupling-detuned-case" title="Link to this heading">#</a></h1>
@@ -882,8 +949,8 @@ V_{\text{re}} &amp; -\Delta
 \end{pmatrix}
 \end{split}\]</div>
 </section>
-<section id="population-dynamics">
-<h1>🔹 Population Dynamics<a class="headerlink" href="#population-dynamics" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h1>🔹 Population Dynamics<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>We again study the dynamics assuming that the system starts in the  ground state <span class="math notranslate nohighlight">\(|\psi(0)\rangle = |g\rangle\)</span> at the initial time <span class="math notranslate nohighlight">\(t=0\)</span>:
 The ground state population as the system evolves can be calculated by applying the time-evolution operator and calculating the absolute square of the population which leads to:</p>
 <div class="math notranslate nohighlight">
@@ -1063,20 +1130,25 @@ P_{e, \mathrm{max}}(\Delta) = \frac{V_{\mathrm{re}}^2}{V_{\mathrm{re}}^2 + \Delt
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🔸 Quantum Dynamics of a Two-Level System with Constant Coupling</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-states-and-time-dependent-wavefunction">🔹 Basis States and Time-Dependent Wavefunction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-with-constant-coupling">🔹 Hamiltonian with Constant Coupling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-physically-distinct-cases">🔹 Two Physically Distinct Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-with-constant-coupling">🔹 1. Hamiltonian with Constant Coupling</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-dynamics-via-analytic-and-symbolic-methods">🔸 Two-Level System: Dynamics via Analytic and Symbolic Methods</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-setup-two-level-hamiltonian">🔹 General Setup: Two-Level Hamiltonian</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-rabi-oscillations-resonant-coupling">🔹 Special Case: Rabi Oscillations (Resonant Coupling)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic-derivation-of-the-propagator">🔹 1. Analytic Derivation of the Propagator</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-derivation-using-sympy-for-those-who-like-symbolic-computations">🔹 2. Symbolic Derivation Using SymPy for those who like symbolic computations…</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#population-dynamics">🔹 Population Dynamics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pulse-and-the-quantum-not-gate">🔸 π/2 Pulse and the Quantum NOT Gate</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics-under-a-2-pulse">🔹 Dynamics under a π/2 Pulse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-quantum-not-gate">🔹 Connection to the Quantum NOT Gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-realizations">🔹 Physical Realizations</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-non-resonant-coupling-detuned-case">🔸 Two-Level System: Non-Resonant Coupling (Detuned Case)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-with-detuning">🔹 Hamiltonian with Detuning</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-derivation-of-the-time-evolution-operator">🔹 Algebraic Derivation of the Time Evolution Operator</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series-summation">🔹 Taylor Series Summation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#population-dynamics">🔹 Population Dynamics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🔹 Population Dynamics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simulation-leads-to-the-following-physical-insight-about-the-dynamics-in-the-non-resonant-case">🧠 The simulation leads to the following physical insight about the dynamics in the non-resonant case:</a></li>
 </ul>
 </li>

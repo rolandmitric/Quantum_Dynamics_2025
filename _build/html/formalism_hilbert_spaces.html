@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="🔸 Linear maps, operators and functionals" href="formalism_linear_operators.html" />
-    <link rel="prev" title="Quantum Dynamics — Summer Semester 2022" href="intro.html" />
+    <link rel="prev" title="Quantum Dynamics — Summer Semester 2025" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Quantum Dynamics — Summer Semester 2022
+                    Quantum Dynamics — Summer Semester 2025
                 </a>
             </li>
         </ul>
@@ -186,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="formalism_linear_operators.html">🔸 Linear maps, operators and functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formalism_unitary_time_evolution.html">🔸 Formalism of Quantum Mechanics: Unitary time evolution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qubit_dynamics.html">🔸 Quantum Dynamics of a Two-Level System with Constant Coupling</a></li>
+
 
 
 
@@ -448,7 +449,7 @@ document.write(`
 <p>The term “set” in this context refers to the collection of all possible such states. For those familiar with classical mechanics, the classical phase space is a manifold equipped with a natural symplectic structure in Hamiltonian mechanics, which allows the formulation of equations of motion in terms of so-called Poisson brackets.</p>
 <section id="illustration-classical-phase-space-for-one-particle-in-1d">
 <h3>🖼️ Illustration: Classical Phase Space for One Particle in 1D<a class="headerlink" href="#illustration-classical-phase-space-for-one-particle-in-1d" title="Link to this heading">#</a></h3>
-<p>A simplified example: for a single particle moving in one dimension, the state is given by its position <span class="math notranslate nohighlight">\(q\)</span> and momentum <span class="math notranslate nohighlight">\(p\)</span>). The phase space is <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, and a point in this plane represents the complete classical state of the system.</p>
+<p>For a single particle moving in one dimension, the state is given by its position <span class="math notranslate nohighlight">\(q\)</span> and momentum <span class="math notranslate nohighlight">\(p\)</span>). The phase space is <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, and a point in this plane represents the complete classical state of the system.</p>
 <p><img alt="Classical Phase Space" src="_images/classical_phase_space.svg" /></p>
 </section>
 </section>
@@ -462,7 +463,7 @@ document.write(`
 \]</div>
 <blockquote>
 <div><p>This principle of <strong>superposition</strong> has no classical counterpart.<br />
-In classical mechanics, adding two points in phase space yields a new point—mathematically—but it does <strong>not</strong> represent a physically meaningful state.</p>
+In classical mechanics, adding two points in phase space yields a new point mathematically but it does <strong>not</strong> represent a physically meaningful state.</p>
 </div></blockquote>
 <hr class="docutils" />
 <section id="linearity-of-quantum-dynamics">
@@ -470,7 +471,7 @@ In classical mechanics, adding two points in phase space yields a new point—ma
 <p>The <strong>time-dependent Schrödinger equation</strong>, which governs the evolution of quantum states, is <strong>linear</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-i\hbar \frac{\partial}{\partial t} \psi(t) = \hat{H} \psi(t)
+i\hbar \frac{\partial}{\partial t} \psi(\mathbf{r},t) = \hat{H} \psi(\mathbf{r},t)
 \]</div>
 <p>This means:</p>
 <ul class="simple">
@@ -483,12 +484,12 @@ i\hbar \frac{\partial}{\partial t} \psi(t) = \hat{H} \psi(t)
 <ul class="simple">
 <li><p>This property is a cornerstone of quantum theory and leads to many <strong>counterintuitive</strong> phenomena, such as interference, tunneling, and entanglement.</p></li>
 </ul>
-<p>In the following, we introduce a precise mathematical framework of quantum mechanics that formalizes the above observations. The formalism is based on a mathematical structure named <strong>vector space</strong>. Vector spaces are quantum-mechanical counterpart of the classical phase space. Intuitively, since we ourselves are creatures living in 3D space we have much better picture of a classical phase space in our minds. In this context, the vector spaces are for us more abstract and less intuitive. Nevertheless, we need to learn how to deal with such abstract structures in order to make predictions about real quantum systems.</p>
-<p>We now formally state an axiom defining what a state space for quantum systems:</p>
-<div style="border: 2px solid #4A90E2; border-radius: 10px; padding: 15px; background-color: #EAF3FC;">
-  <strong>Axiom I (Quantum State Space):</strong><br><br>
-  The state of a quantum system is represented by a unit vector in a complex Hilbert space $ \mathcal{H} $. Each physical (pure) state corresponds to a <em>ray</em> in $ \mathcal{H} $, i.e., a one-dimensional subspace spanned by a unit vector $|\psi\rangle \in \mathcal{H} $.
-</div>
+<p>In the following, we introduce a precise mathematical framework of quantum mechanics that formalizes the above observations. The formalism is based on a mathematical structure named <strong>vector space</strong>. Vector spaces are quantum-mechanical counterpart of the classical phase space. Intuitively, since we ourselves are creatures living in 3D space we have much better picture of a classical phase space in our minds (even if for a single particle it is a six-dimensional space!). In this context, the vector spaces are for us much more abstract and less intuitive. After all we do not around ourselves cat’s that are simultaneously dead and alive.
+Nevertheless, we need to learn how to deal with such abstract structures in order to make predictions about real quantum systems.</p>
+<p>We now formally state an axiom defining what a state space for quantum systems.</p>
+<p><strong>Axiom I (Quantum State Space):</strong><br><br>
+The state of a quantum system is represented by a unit vector in a complex Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>.<br />
+Each physical (pure) state corresponds to a <em>ray</em> in <span class="math notranslate nohighlight">\( \mathcal{H}\)</span>, i.e., a one-dimensional subspace spanned by a unit vector <span class="math notranslate nohighlight">\( |\psi\rangle \in \mathcal{H} \)</span>.</p>
 <p>This implies that two state vectors differing only by a global phase factor represent the same physical state. That is, <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and <span class="math notranslate nohighlight">\(e^{i\theta}|\psi\rangle\)</span>, with <span class="math notranslate nohighlight">\(\theta \in \mathbb{R}\)</span>, correspond to the same state.</p>
 </section>
 </section>
@@ -499,7 +500,7 @@ i\hbar \frac{\partial}{\partial t} \psi(t) = \hat{H} \psi(t)
 <hr class="docutils" />
 <section id="definition-vector-space">
 <h2>🔹  Definition: Vector Space<a class="headerlink" href="#definition-vector-space" title="Link to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> be a field (in quantum mechanics, typically <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>). A <strong>vector space</strong> over <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> is a set <span class="math notranslate nohighlight">\(V\)</span> together with:</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> be a field (in quantum mechanics, typically <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>). A <strong>vector space</strong> over <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> is a <strong>set</strong> <span class="math notranslate nohighlight">\(V\)</span> together with:</p>
 <ul class="simple">
 <li><p>A <strong>binary operation</strong> called <strong>vector addition</strong>:</p></li>
 </ul>
@@ -574,15 +575,16 @@ i\hbar \frac{\partial}{\partial t} \psi(t) = \hat{H} \psi(t)
 </section>
 <section id="motivation-for-the-inner-product">
 <h2>🔹 Motivation for the Inner Product<a class="headerlink" href="#motivation-for-the-inner-product" title="Link to this heading">#</a></h2>
-<p>In elementary quantum mechanics, we learned that the product of a wavefunction with its complex conjugate, <span class="math notranslate nohighlight">\(\psi^*(x)\psi(x)\)</span>, corresponds physically to a <strong>probability density</strong> for the position of a particle.</p>
-<p>Now, the definition of a vector space (as given above) allows us to <strong>add vectors</strong> (states) and to <strong>scale them</strong> by complex numbers. However, this structure does <strong>not yet</strong> permit us to compute any kind of <strong>products of vectors</strong>, such as those needed to evaluate:</p>
+<p>By associating vector spaces to quantum states we still do not have any access to something that is measurable. Yes, we can combine states to get new states but how do we actually charaterize the state. In experiments, we characterize states by associating the numbers that represent the outcome of a measurement. So we need a mathematical structure to associate some numbers to the states of quantum systems!</p>
+<p>In elementary quantum mechanics, we learned that the product of a wavefunction with its complex conjugate, <span class="math notranslate nohighlight">\(\psi^*(x)\psi(x)\)</span>, corresponds physically to a <strong>probability density</strong> for the position of a particle. This is the contect of the so called Born rule for calculating quantum probabilities.</p>
+<p>Now, the definition of a vector space (as given above) allows us to <strong>add vectors</strong> (states) and to <strong>scale them</strong> by complex numbers. However, this structure does <strong>not yet</strong> permit us to compute any kind of <strong>products of vectors</strong> and associate numbers to them. Thus we need to define some kind of product for quantum states in order to evaluate the quantities of interest, such as:</p>
 <ul class="simple">
 <li><p><strong>Probability amplitudes</strong>: <span class="math notranslate nohighlight">\(\langle \phi | \psi \rangle\)</span></p></li>
 <li><p><strong>Expectation values of observables</strong></p></li>
 <li><p><strong>Transition probabilities between quantum states</strong></p></li>
 </ul>
-<p>These operations require an additional structure: a way to <strong>pair vectors</strong> and obtain a <strong>scalar</strong> (a complex number) out of such a pair.</p>
-<p>This motivates the introduction of the <strong>inner product</strong> sometimes also called <strong>scalar product</strong>.</p>
+<p>These operations require an additional structure: a way to <strong>pair vectors</strong> and obtain a <strong>scalar</strong> (a complex number) out of such a pair.
+This motivates the introduction of the <strong>inner product</strong> sometimes also called <strong>scalar product</strong>.</p>
 </section>
 <section id="definition-inner-product">
 <h2>🔹 Definition: Inner Product<a class="headerlink" href="#definition-inner-product" title="Link to this heading">#</a></h2>
@@ -623,6 +625,7 @@ i\hbar \frac{\partial}{\partial t} \psi(t) = \hat{H} \psi(t)
 <blockquote>
 <div><p>📝 <em>Note:</em> In mathematics, linearity is often taken in the <strong>first</strong> argument. In physics, however, it is conventional to define linearity in the <strong>second</strong> argument, as above.</p>
 </div></blockquote>
+<p>A vector space equiped with a scalar produc ist in mathematics called <strong>unitary space</strong>. If we refer back to our first axiom we see that states correspond to unit vectors (vector of length 1!). So we need to define what a lenght (or <strong>norm</strong>) of a vector is. The following section provides a formal definition of the norm on vector spaces.</p>
 </section>
 <section id="definition-norm">
 <h2>🔹 Definition: Norm<a class="headerlink" href="#definition-norm" title="Link to this heading">#</a></h2>
@@ -656,7 +659,7 @@ $<span class="math notranslate nohighlight">\(
 \| |\psi\rangle \| := \sqrt{\langle \psi | \psi \rangle}
 \]</div>
 <p>The vector space equipped with an inner product is usually called <strong>unitary space</strong> and a vector space equipped with a norm is called <strong>normed space</strong>. We will now prove that any unitary space is automatically a normed space.</p>
-<p>In order to prove that the scalar product induces the norm we now present our first theorem that we will use on several ocasions later. The theorem introduces a famous inequality called Cauchy-Schwarz-Bunyakowsky inequality:</p>
+<p>In order to prove that the scalar product induces the norm we now present our first theorem. The theorem introduces a famous inequality called Cauchy-Schwarz-Bunyakowsky inequality that plays a fundamental role both in mathematics as well as in many phyical applications.</p>
 </section>
 <section id="theorem-cauchyschwarzbunyakowsky-inequality">
 <h2>🔸 Theorem: Cauchy–Schwarz–Bunyakowsky Inequality<a class="headerlink" href="#theorem-cauchyschwarzbunyakowsky-inequality" title="Link to this heading">#</a></h2>
@@ -685,12 +688,13 @@ f(\lambda) = \langle \psi + \lambda \phi | \psi + \lambda \phi \rangle
 f(\lambda)  \geq 0 \quad \text{for all } \lambda \in \mathbb{C}
 \]</div>
 <p>We now expand <span class="math notranslate nohighlight">\(f(\lambda)\)</span> using the properties of the inner product:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-f(\lambda) &amp;= \langle \psi | \psi \rangle + \lambda \langle \phi | \psi \rangle +{\lambda}^* \langle \psi | \phi \rangle + |\lambda|^2 \langle \phi | \phi \rangle \
+f(\lambda) &amp;= \langle \psi | \psi \rangle + \lambda \langle \phi | \psi \rangle +{\lambda}^* \langle \psi | \phi \rangle + |\lambda|^2 \langle \phi | \phi \rangle \\
 &amp;= \langle \psi | \psi \rangle + 2 \operatorname{Re} \left( \lambda \langle \phi | \psi \rangle \right) + |\lambda|^2 \langle \phi | \phi \rangle
 \end{aligned}
-]</p>
+\end{split}\]</div>
 <p>To <strong>minimize</strong> this non-negative function, we choose for <span class="math notranslate nohighlight">\(\lambda\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -828,40 +832,46 @@ $<span class="math notranslate nohighlight">\(
 <section id="corollary-inner-product-spaces-are-normed-spaces">
 <h2>🔸 Corollary: Inner Product Spaces Are Normed Spaces<a class="headerlink" href="#corollary-inner-product-spaces-are-normed-spaces" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(V\)</span> be a complex inner product space with inner product <span class="math notranslate nohighlight">\(\langle \cdot | \cdot \rangle\)</span>.</p>
-<p>Then the function
-$<span class="math notranslate nohighlight">\(
+<p>Then the function</p>
+<div class="math notranslate nohighlight">
+\[
 \| |\psi\rangle \| := \sqrt{ \langle \psi | \psi \rangle }
-\)</span><span class="math notranslate nohighlight">\(
-defines a **norm** on \)</span>V$. Hence, every inner product space is also a <strong>normed vector space</strong>.</p>
+\]</div>
+<p>defines a <strong>norm</strong> on <span class="math notranslate nohighlight">\(V\)</span>. Hence, every inner product space is also a <strong>normed vector space</strong>.</p>
 <hr class="docutils" />
 <p>This means we can use all geometric notions associated with normed spaces — such as:</p>
 <ul class="simple">
 <li><p>Lengths of vectors</p></li>
-<li><p>Distance between vectors:
-$<span class="math notranslate nohighlight">\(
-d(|\psi\rangle, |\phi\rangle) := \| |\psi\rangle - |\phi\rangle \|
-\)</span>$</p></li>
-<li><p>Limits and Cauchy sequences:
-$<span class="math notranslate nohighlight">\(
-\text{A sequence } |\psi_n\rangle \text{ is Cauchy if } \forall \varepsilon &gt; 0, \exists N \text{ s.t. } \| |\psi_n\rangle - |\psi_m\rangle \| &lt; \varepsilon \text{ for all } n,m &gt; N
-\)</span>$</p></li>
+<li><p>Distance between vectors:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+  d(|\psi\rangle, |\phi\rangle) := \| |\psi\rangle - |\phi\rangle \|
+\]</div>
+<ul class="simple">
+<li><p>Limits and Cauchy sequences:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+  \text{A sequence } |\psi_n\rangle \text{ is Cauchy if } \forall \varepsilon &gt; 0, \exists N \text{ s.t. } \| |\psi_n\rangle - |\psi_m\rangle \| &lt; \varepsilon \text{ for all } n,m &gt; N
+\]</div>
 </section>
 <hr class="docutils" />
 <section id="definition-hilbert-space">
 <h2>🔸 Definition: Hilbert Space<a class="headerlink" href="#definition-hilbert-space" title="Link to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a complex inner product space with inner product <span class="math notranslate nohighlight">\(\langle \cdot | \cdot \rangle\)</span> and induced norm <span class="math notranslate nohighlight">\(\| \cdot \|\)</span>.</p>
-<p>We say that <span class="math notranslate nohighlight">\(V\)</span> is a <strong>Hilbert space</strong> if it is <strong>complete</strong> with respect to this norm i. e.  every <strong>Cauchy sequence</strong> in <span class="math notranslate nohighlight">\(V\)</span> converges to a vector in <span class="math notranslate nohighlight">\(V\)</span>:
-$<span class="math notranslate nohighlight">\(
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a complex inner product space with inner product <span class="math notranslate nohighlight">\(\langle \cdot | \cdot \rangle\)</span> and the norm <span class="math notranslate nohighlight">\(\| \cdot \| induced by the scalar product\)</span>.</p>
+<p>We say that <span class="math notranslate nohighlight">\(V\)</span> is a <strong>Hilbert space</strong> if it is <strong>complete</strong> with respect to this norm i. e.  every <strong>Cauchy sequence</strong> in <span class="math notranslate nohighlight">\(V\)</span> converges to a vector in <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
   \text{If } \| |\psi_n\rangle - |\psi_m\rangle \| \to 0 \text{ as } n,m \to \infty, \quad \text{then } \exists |\psi\rangle \in V \text{ such that } \| |\psi_n\rangle - |\psi\rangle \| \to 0
-  \)</span>$</p>
+\]</div>
 <hr class="docutils" />
 <section id="physical-significance">
 <h3>🧠 Physical Significance<a class="headerlink" href="#physical-significance" title="Link to this heading">#</a></h3>
 <p>In quantum mechanics:</p>
 <ul class="simple">
 <li><p>The space of physical (pure) states is modeled by a <strong>Hilbert space</strong>.</p></li>
-<li><p>Completeness ensures that infinite linear combinations (e.g. Fourier series, wave packets) <strong>converge to physical states</strong>.</p></li>
+<li><p>Completeness ensures that infinite linear combinations (e.g. Fourier series or general wave packets that we create by infinite superpositions of states) <strong>converge to physical states</strong>.</p></li>
 </ul>
 <p>Think of a quantum wavefunction built as an infinite sum of basis states (e.g., discrete energy eigenstates of some system such sa harmonic oscillator etc.):</p>
 <div class="math notranslate nohighlight">
@@ -942,7 +952,7 @@ $<span class="math notranslate nohighlight">\(
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Quantum Dynamics — Summer Semester 2022</p>
+        <p class="prev-next-title">Quantum Dynamics — Summer Semester 2025</p>
       </div>
     </a>
     <a class="right-next"
