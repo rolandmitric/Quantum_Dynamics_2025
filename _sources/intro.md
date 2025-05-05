@@ -1,7 +1,9 @@
-# Quantum Dynamics — Summer Semester 2022
+# Quantum Dynamics — Summer Semester 2025
 ### Prof. Dr. Roland Mitric
 **Lehrstuhl für Theoretische Chemie**
+
 **University of Würzburg**
+
 📧 roland.mitric@uni-wuerzburg.de
 
 ---

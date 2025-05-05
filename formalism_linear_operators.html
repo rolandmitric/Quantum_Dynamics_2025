@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Quantum Dynamics — Summer Semester 2022
+                    Quantum Dynamics — Summer Semester 2025
                 </a>
             </li>
         </ul>
@@ -195,6 +195,10 @@
 
 
 
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="rotating_wave.html">🔸 Two level system driven by a harmonic field</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="momentum_operator.html">Momentum operator</a></li>
@@ -412,8 +416,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-dual-vectors-to-adjoint-operators">🔸 From Dual Vectors to Adjoint Operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-adjoint-operator">🔹 Definition: Adjoint Operator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🔸 From Dual Vectors to Adjoint Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-adjoint-operator">🔹 Definition: Adjoint Operator</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-existence-and-uniqueness-of-the-adjoint-operator">🔸 Theorem (Existence and Uniqueness of the Adjoint Operator)</a></li>
 </ul>
 </li>
@@ -446,15 +449,19 @@ This idea is in the core of mathematics and also physics: we gain insight into a
 <p>Let <span class="math notranslate nohighlight">\( V \)</span> and <span class="math notranslate nohighlight">\( W \)</span> be vector spaces over the same field <span class="math notranslate nohighlight">\(\mathbb{F} \)</span> (typically <span class="math notranslate nohighlight">\( \mathbb{C} \)</span>).</p>
 <p>A function<span class="math notranslate nohighlight">\(T: V \to W\)</span> is called a <strong>linear map</strong> if it satisfies the following two conditions for all <span class="math notranslate nohighlight">\( |\psi\rangle, |\phi\rangle \in V\)</span> and all scalars <span class="math notranslate nohighlight">\(a \in \mathbb{F} \)</span>:</p>
 <ol class="arabic simple">
-<li><p><strong>Additivity</strong>:
-$<span class="math notranslate nohighlight">\(
-T(|\psi\rangle + |\phi\rangle) = T|\psi\rangle + T|\phi\rangle
-\)</span>$</p></li>
-<li><p><strong>Homogeneity</strong>:
-$<span class="math notranslate nohighlight">\(
-T(a |\psi\rangle) = a \cdot T|\psi\rangle
-\)</span>$</p></li>
+<li><p><strong>Additivity</strong>:</p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[
+ T(|\psi\rangle + |\phi\rangle) = T|\psi\rangle + T|\phi\rangle
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Homogeneity</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+T(a |\psi\rangle) = a \cdot T|\psi\rangle
+\]</div>
 <hr class="docutils" />
 </section>
 <section id="definition-linear-operator">
@@ -462,40 +469,49 @@ T(a |\psi\rangle) = a \cdot T|\psi\rangle
 <p>A <strong>linear operator</strong> is a linear map from a vector space to itself.</p>
 <p>Let <span class="math notranslate nohighlight">\( V \)</span> be a vector space over <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>. A function <span class="math notranslate nohighlight">\( A: V \to V \)</span> is a <strong>linear operator</strong> if:</p>
 <ol class="arabic simple">
-<li><p><strong>Additivity</strong>:
-$<span class="math notranslate nohighlight">\(
-A(|\psi\rangle + |\phi\rangle) = A|\psi\rangle + A|\phi\rangle
-\)</span>$</p></li>
-<li><p><strong>Homogeneity</strong>:
-$<span class="math notranslate nohighlight">\(
-A(a |\psi\rangle) = a \cdot A|\psi\rangle
-\)</span>$</p></li>
+<li><p><strong>Additivity</strong>:</p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[
+A(|\psi\rangle + |\phi\rangle) = A|\psi\rangle + A|\phi\rangle
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Homogeneity</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+A(a |\psi\rangle) = a \cdot A|\psi\rangle
+\]</div>
 <hr class="docutils" />
 </section>
 <section id="definition-linear-functional">
 <h2>🔹 Definition: Linear Functional<a class="headerlink" href="#definition-linear-functional" title="Link to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a vector space over <span class="math notranslate nohighlight">\( \mathbb{F}\)</span>. A <strong>linear functional</strong> is a linear map from <span class="math notranslate nohighlight">\( V\)</span> to the field<span class="math notranslate nohighlight">\( \mathbb{F} \)</span>:</p>
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a vector space over <span class="math notranslate nohighlight">\( \mathbb{F}\)</span>. A <strong>linear functional</strong> is a linear map from <span class="math notranslate nohighlight">\( V\)</span> to the field <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 f: V \to \mathbb{F}
 \]</div>
 <p>It satisfies the same linearity conditions:</p>
 <ol class="arabic simple">
-<li><p><strong>Additivity</strong>:
-$<span class="math notranslate nohighlight">\(
-f(|\psi\rangle + |\phi\rangle) = f(|\psi\rangle) + f(|\phi\rangle)
-\)</span>$</p></li>
-<li><p><strong>Homogeneity</strong>:
-$<span class="math notranslate nohighlight">\(
-f(a |\psi\rangle) = a \cdot f(|\psi\rangle)
-\)</span>$</p></li>
+<li><p><strong>Additivity</strong>:</p></li>
 </ol>
-<p>Linear functionals are the elements of the <strong>dual space</strong> ( V^* ), which we will define next.</p>
-<p>In Dirac notation, linear functionals appear as <strong>bras</strong> as we will see later:
-$<span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[
+f(|\psi\rangle + |\phi\rangle) = f(|\psi\rangle) + f(|\phi\rangle)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Homogeneity</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+f(a |\psi\rangle) = a \cdot f(|\psi\rangle)
+\]</div>
+<p>Linear functionals are the elements of the <strong>dual space</strong> <span class="math notranslate nohighlight">\(V^*\)</span>, which we will define next.</p>
+<p>In Dirac notation, linear functionals appear as <strong>bras</strong> as we will see later:</p>
+<div class="math notranslate nohighlight">
+\[
 \langle \psi | : V \to \mathbb{C}, \quad |\phi\rangle \mapsto \langle \psi | \phi \rangle
-\)</span>$</p>
+\]</div>
 </section>
 <section id="the-riesz-representation-theorem-finite-dimensional-case">
 <h2>🔸 The Riesz Representation Theorem (Finite-Dimensional Case)<a class="headerlink" href="#the-riesz-representation-theorem-finite-dimensional-case" title="Link to this heading">#</a></h2>
@@ -529,20 +545,20 @@ f(|\psi\rangle) = \sum_{i=1}^n \psi_i f(|e_i\rangle)
 <p>Now define:</p>
 <div class="math notranslate nohighlight">
 \[
-|\phi\rangle := \sum_{i=1}^n \overline{f(|e_i\rangle)} |e_i\rangle
+|\phi\rangle := \sum_{i=1}^n f(|e_i\rangle)^* |e_i\rangle
 \]</div>
 <p>Then compute:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\langle \phi | \psi \rangle
-&amp;= \left\langle \sum_{i=1}^n \overline{f(|e_i\rangle)} |e_i\rangle ,\middle|, \sum_{j=1}^n \psi_j |e_j\rangle \right\rangle \
-&amp;= \sum_{i,j=1}^n f(|e_i\rangle)^* \psi_j \langle e_i | e_j \rangle \
-&amp;= \sum_{i=1}^n f(|e_i\rangle)^* \psi_i \
+\langle \phi | \psi \rangle 
+&amp;= \left\langle \sum_{i=1}^n {f(|e_i\rangle)^* |e_i\rangle} \Big| \sum_{j=1}^n \psi_j |e_j\rangle \right\rangle \\
+&amp;= \sum_{i,j=1}^n f(|e_i\rangle)^* \psi_j \langle e_i | e_j \rangle \\
+&amp;= \sum_{i=1}^n f(|e_i\rangle)^* \psi_i \\
 &amp;= \sum_{i=1}^n \psi_i f(|e_i\rangle) = f(|\psi\rangle)
 \end{aligned}
-]</p>
-<p>Thus <span class="math notranslate nohighlight">\(f(|\psi\rangle) = \langle \phi | \psi \rangle\)</span> for all <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, and the vector <span class="math notranslate nohighlight">\(|\phi\rangle\)</span> is unique due to the non-degeneracy of the inner product.</p>
-<p>✓ This completes the proof.</p>
+\end{split}\]</div>
+<p>Thus <span class="math notranslate nohighlight">\(f(|\psi\rangle) = \langle \phi | \psi \rangle\)</span> for all <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, and the vector <span class="math notranslate nohighlight">\(|\phi\rangle\)</span> is unique due to the non-degeneracy of the inner product, completing the proof.</p>
 </section>
 <hr class="docutils" />
 <section id="defining-bras-using-riesz">
@@ -553,21 +569,23 @@ f(|\psi\rangle) = \sum_{i=1}^n \psi_i f(|e_i\rangle)
 \langle \psi | : V \to \mathbb{C}, \quad |\phi\rangle \mapsto \langle \psi | \phi \rangle
 \]</div>
 <p>By the Riesz theorem, this bra <span class="math notranslate nohighlight">\(\langle \psi |\)</span> is an element of the <strong>dual space</strong> <span class="math notranslate nohighlight">\(V^*\)</span>.</p>
-<p>This defines a <strong>bijection</strong>:
-$<span class="math notranslate nohighlight">\(
+<p>This defines a <strong>bijection</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
 V \xrightarrow{\text{Riesz}} V^*, \quad |\psi\rangle \mapsto \langle \psi |
-\)</span>$</p>
+\]</div>
 <hr class="docutils" />
 <section id="interpretation">
 <h3>🧠 Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The inner product <span class="math notranslate nohighlight">\(\langle \psi | \phi \rangle\)</span> is interpreted as <strong>applying the bra</strong> <span class="math notranslate nohighlight">\(\langle \psi |\)</span> to the ket <span class="math notranslate nohighlight">\(|\phi\rangle\)</span>.</p></li>
 <li><p>The Riesz theorem tells us that every linear functional on <span class="math notranslate nohighlight">\(V\)</span> arises in this way.</p></li>
-<li><p>This justifies Dirac’s notation:
-$<span class="math notranslate nohighlight">\(
-\langle \psi | \phi \rangle = \text{“apply the functional } \langle \psi | \text{ to the vector } |\phi\rangle”}
-\)</span>$</p></li>
+<li><p>This justifies Dirac’s notation commonly used in physics:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+  \langle \psi | \phi \rangle = \text{“apply the functional } \langle \psi | \text{ to the vector } |\phi\rangle \text{&quot;}
+\]</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -642,11 +660,6 @@ f(|\psi\rangle) = \langle \phi | \psi \rangle \quad \text{for all } |\psi\rangle
 <div><p>In words: the <strong>action of <span class="math notranslate nohighlight">\(A\)</span> on the ket <span class="math notranslate nohighlight">\(|\psi\rangle\)</span></strong>, tested by the bra <span class="math notranslate nohighlight">\(\langle \phi |\)</span>, is <strong>equivalent</strong> to the <strong>action of <span class="math notranslate nohighlight">\(A^\dagger\)</span> on the bra</strong>.</p>
 </div></blockquote>
 <p>This relation defines <span class="math notranslate nohighlight">\(A^\dagger\)</span> completely, due to the non-degeneracy of the inner product.</p>
-</section>
-<section id="id1">
-<h2>🔸 From Dual Vectors to Adjoint Operators<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Now that we understand bras as elements of the dual space <span class="math notranslate nohighlight">\(V^*\)</span>, and the inner product as a bridge between kets and bras via the Riesz theorem, we can move on to defining the important notion of an <strong>adjoint of a linear operator</strong>.</p>
-<hr class="docutils" />
 <section id="theorem-existence-and-uniqueness-of-the-adjoint-operator">
 <h3>🔸 Theorem (Existence and Uniqueness of the Adjoint Operator)<a class="headerlink" href="#theorem-existence-and-uniqueness-of-the-adjoint-operator" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(A: \mathcal{H} \to \mathcal{H}\)</span> be a linear operator on a finite-dimensional Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>.</p>
@@ -723,7 +736,7 @@ U^\dagger U = U U^\dagger = I.
 \[
 \langle U\phi | U\psi \rangle = \langle \phi | \psi \rangle \quad \text{for all } |\phi\rangle, |\psi\rangle \in \mathcal{H}.
 \]</div>
-<p>Thus, unitary operators generalize the idea of <strong>rotations</strong> to the Hilbert space setting: they move vectors around <strong>without changing their norms or inner products</strong>.</p>
+<p>Uunitary operators generalize the idea of <strong>rotations</strong> to the Hilbert spaces: they shuffle vectors into other vectors <strong>without changing their norms or inner products</strong>.</p>
 <hr class="docutils" />
 <section id="key-insights">
 <h3>🧠 Key Insights<a class="headerlink" href="#key-insights" title="Link to this heading">#</a></h3>
@@ -816,8 +829,7 @@ U^\dagger U = U U^\dagger = I.
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-dual-vectors-to-adjoint-operators">🔸 From Dual Vectors to Adjoint Operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-adjoint-operator">🔹 Definition: Adjoint Operator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🔸 From Dual Vectors to Adjoint Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-adjoint-operator">🔹 Definition: Adjoint Operator</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-existence-and-uniqueness-of-the-adjoint-operator">🔸 Theorem (Existence and Uniqueness of the Adjoint Operator)</a></li>
 </ul>
 </li>
