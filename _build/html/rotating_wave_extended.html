@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Two level system driven by a harmonic field &#8212; Quantum Dynamics</title>
+    <title>Theoretical Background &#8212; Quantum Dynamics</title>
   
   
   
@@ -196,6 +196,9 @@
 
 
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="rotating_wave.html">🔸 Two level system driven by a harmonic field</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="momentum_operator.html">Momentum operator</a></li>
@@ -388,7 +391,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Two level system driven by a harmonic field</h1>
+    <h1>Theoretical Background</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,16 +401,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Two level system driven by a harmonic field</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-of-pauli-matrices">Rotation of Pauli matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-to-the-time-dependent-rotation">Apply to the time-dependent rotation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-simplified-equation">Final simplified equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-time-evolution-operator">Solution Using Time-Evolution Operator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Theoretical Background</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multilevel-class-implementation">The <code class="docutils literal notranslate"><span class="pre">MultiLevel</span></code> Class Implementation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-with-harmonic-coupling">Two-Level System with harmonic coupling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-wave-approximation-rwa">🔸 Rotating Wave Approximation (RWA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-hamiltonian">🔹 Time-Dependent Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-goal">🔹 Comparison Goal</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multilevel-class-implementation">The <code class="docutils literal notranslate"><span class="pre">MultiLevel</span></code> Class Implementation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-with-harmonic-coupling-numerical-propagation">Two-Level System with harmonic coupling: Numerical propagation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-the-rwa-and-numerical-propagation-for-a-resonant-coupling">Comparison between the RWA and numerical propagation for a resonant coupling</a></li>
 </ul>
 </li>
 </ul>
@@ -422,213 +423,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="two-level-system-driven-by-a-harmonic-field">
-<h1>Two level system driven by a harmonic field<a class="headerlink" href="#two-level-system-driven-by-a-harmonic-field" title="Link to this heading">#</a></h1>
-<p>We now study the dynamics of a two-level system under a periodic driving potential of the form</p>
+  <p>We the numerical application of the time-evolution operator in quantum mechanics using a simple Python implementation.
+We will consider first a  two-level system driven by a harmonic coupling.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="theoretical-background">
+<h1>Theoretical Background<a class="headerlink" href="#theoretical-background" title="Link to this heading">#</a></h1>
+<p>In quantum mechanics, the time evolution of a state vector |\psi(t)\rangle is governed by the time-dependent Schrödinger equation:</p>
 <div class="math notranslate nohighlight">
 \[
-V(t) = V_0 \cdot \cos(\omega t),
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\omega\)</span> is the driving frequency.</p>
-<p>The Hamiltonian reads:</p>
+ i \hbar \frac{d}{dt} |\psi(t)\rangle = H(t) |\psi(t)\rangle
+ \]</div>
+<p>For a small time step <span class="math notranslate nohighlight">\( dt \)</span>, the solution can be approximated by applying the unitary time evolution operator:</p>
 <div class="math notranslate nohighlight">
 \[
-H = \frac{1}{2} \Delta \sigma_z + V_0 \cos(\omega t) \, \sigma_x.
-\]</div>
-<p>In order to make the problem analytically tractable, we introduce an approximation that is commonly known in the literature as the <strong>rotating wave approximation (RWA)</strong>.</p>
-<p>The idea is as follows:<br />
-By expanding the cosine term,</p>
-<div class="math notranslate nohighlight">
-\[
-\cos(\omega t) = \frac{1}{2} \left(e^{i \omega t} + e^{-i \omega t} \right) = \frac{1}{2} e^{i \omega t} \left(1 + e^{-2 i \omega t} \right),
-\]</div>
-<p>the Hamiltonian can be written (in matrix form) as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-V(t) = \begin{bmatrix}
-0 &amp; \frac{1}{2} V_0 e^{i \omega t} \left(1 + e^{-2 i \omega t} \right) \\
-\frac{1}{2} V_0 e^{-i \omega t} \left(1 + e^{2 i \omega t} \right) &amp; 0
-\end{bmatrix}.
-\end{split}\]</div>
-<p>Notice that in the second row we have extracted the term <span class="math notranslate nohighlight">\(e^{-i \omega t}\)</span> such that the leading terms are Hermitian conjugates of each other.<br />
-We see that the additional terms (<span class="math notranslate nohighlight">\(e^{-2 i \omega t}\)</span> and <span class="math notranslate nohighlight">\(e^{2 i \omega t}\)</span>) rotate with double the frequency and in the opposite direction compared to the <span class="math notranslate nohighlight">\(e^{\pm i \omega t}\)</span> terms.</p>
-<p>We will show below that these rapidly oscillating terms can be neglected if the driving frequency is close to resonance and the coupling term is not too large. This will be justified by comparison with the numerically exact solution later.</p>
-<p>This is the essence of the <strong>rotating wave approximation</strong>, often used in the literature:</p>
-<div class="math notranslate nohighlight">
-\[
-H = \frac{1}{2} \Delta \sigma_z + V_0 \cos(\omega t) \, \sigma_x
-\quad \Rightarrow \quad
-H_{\text{RWA}} = \frac{1}{2} \Delta \sigma_z + \frac{1}{2} V_0 e^{i \omega t} \sigma_+ + \frac{1}{2} V_0 e^{-i \omega t} \sigma_-.
-\]</div>
-<p>Using the relations:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\sigma_+ &amp;= \sigma_x + i \sigma_y, \\
-\sigma_- &amp;= \sigma_x - i \sigma_y,
-\end{aligned}
-\end{split}\]</div>
-<p>we express the Hamiltonian in terms of the raising and lowering operators.</p>
-<p>We may write:
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-H_{\text{RWA}} 
-&amp;= \frac{1}{2} \Delta \sigma_z + \frac{1}{2} V_0 e^{i \omega t} (\sigma_x + i \sigma_y) + \frac{1}{2} V_0 e^{-i \omega t} (\sigma_x - i \sigma_y) \\
-&amp;= \frac{1}{2} \Delta \sigma_z + V_0 \cos(\omega t) \, \sigma_x - V_0 \sin(\omega t) \, \sigma_y
-\end{aligned}
-\)</span>$</p>
-<p>We now proceed to calculate the time-evolution operator in the RWA approximation:
-$<span class="math notranslate nohighlight">\(
-\frac{dU}{dt} = H_{\text{RWA}} U 
-= \left[ \frac{1}{2} \Delta \sigma_z + V_0 \left( \cos(\omega t) \, \sigma_x - \sin(\omega t) \, \sigma_y \right) \right] U
-\)</span>$</p>
-<p>To simplify the solution, we move to a <strong>rotating frame of reference</strong>.<br />
-The intuition behind this is that in the rotating frame the coupling term appears static, reducing the problem to a previously solved case of a constant perturbation.<br />
-Thus, we define:
-$<span class="math notranslate nohighlight">\(
-U(t) = e^{-\frac{i}{2} \omega t \sigma_z} \, \tilde{U}(t)
-\)</span>$</p>
-<p>The time derivative of <span class="math notranslate nohighlight">\(U\)</span> becomes:
-$<span class="math notranslate nohighlight">\(
-\frac{dU}{dt} = -\frac{i}{2} \omega \sigma_z U + e^{-\frac{i}{2} \omega t \sigma_z} \frac{d\tilde{U}}{dt}
-\)</span>$</p>
-<p>Inserting into the time-dependent Schrödinger equation for <span class="math notranslate nohighlight">\(U(t)\)</span> gives:
-$$
-\frac{\hbar \omega}{2} \sigma_z e^{-\frac{i}{2} \omega t \sigma_z} \tilde{U}</p>
-<ul class="simple">
-<li><p>i \hbar e^{-\frac{i}{2} \omega t \sigma_z} \frac{d\tilde{U}}{dt}
-= \frac{1}{2} \Delta \sigma_z e^{-\frac{i}{2} \omega t \sigma_z} \tilde{U}</p></li>
-<li><p>\left( V_0 \cos(\omega t) , \sigma_x - V_0 \sin(\omega t) , \sigma_y \right) e^{-\frac{i}{2} \omega t \sigma_z} \tilde{U}
-$$</p></li>
-</ul>
-<p>By defining <span class="math notranslate nohighlight">\(\Delta = \hbar \omega_0\)</span>, we can write:
-$$
-i \hbar e^{-\frac{i}{2} \omega t \sigma_z} \frac{d\tilde{U}}{dt}
-= \frac{1}{2} \hbar (\omega_0 - \omega) \sigma_z e^{-\frac{i}{2} \omega t \sigma_z} \tilde{U}</p>
-<ul class="simple">
-<li><p>\left( V_0 \cos(\omega t) , \sigma_x - V_0 \sin(\omega t) , \sigma_y \right) e^{-\frac{i}{2} \omega t \sigma_z} \tilde{U}
-$$</p></li>
-</ul>
-<p>We can now multiply both sides by <span class="math notranslate nohighlight">\(e^{\frac{i}{2} \omega t \sigma_z}\)</span> from the left, getting:</p>
-<p>We now have:
-$<span class="math notranslate nohighlight">\(
-\frac{d\tilde{U}}{dt} = \left[ \frac{1}{2} \hbar(\omega_0 - \omega) \sigma_z + V_0 \, e^{\frac{i}{2} \omega t \sigma_z} \left( \cos(\omega t) \, \sigma_x - \sin(\omega t) \, \sigma_y \right) e^{-\frac{i}{2} \omega t \sigma_z} \right] \tilde{U}
-\)</span>$</p>
-<p>To simplify this, we need to compute the similarity transformations of the Pauli matrices under rotations generated by <span class="math notranslate nohighlight">\(\sigma_z\)</span>. Specifically:</p>
-<section id="rotation-of-pauli-matrices">
-<h2>Rotation of Pauli matrices<a class="headerlink" href="#rotation-of-pauli-matrices" title="Link to this heading">#</a></h2>
-<p>We use the identity
-$<span class="math notranslate nohighlight">\(
-e^{i \theta \sigma_z} \, \sigma_x \, e^{-i \theta \sigma_z} = \cos(2\theta) \, \sigma_x + \sin(2\theta) \, \sigma_y,
-\)</span><span class="math notranslate nohighlight">\(
-and similarly,
-\)</span><span class="math notranslate nohighlight">\(
-e^{i \theta \sigma_z} \, \sigma_y \, e^{-i \theta \sigma_z} = \cos(2\theta) \, \sigma_y - \sin(2\theta) \, \sigma_x.
-\)</span>$</p>
-<p>These follow from the <strong>Baker-Campbell-Hausdorff</strong> formula or by applying the <strong>Euler operator identity</strong>:
-$<span class="math notranslate nohighlight">\(
-e^{i A x} = \cos(x) \cdot I + i A \sin(x),
-\)</span><span class="math notranslate nohighlight">\(
-which is valid when \)</span>A^2 = I<span class="math notranslate nohighlight">\(. For Pauli matrices, \)</span>\sigma_z^2 = I$.</p>
-</section>
-<section id="apply-to-the-time-dependent-rotation">
-<h2>Apply to the time-dependent rotation<a class="headerlink" href="#apply-to-the-time-dependent-rotation" title="Link to this heading">#</a></h2>
-<p>Set <span class="math notranslate nohighlight">\(\theta = \frac{\omega t}{2}\)</span>. Then:
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-e^{i \frac{\omega t}{2} \sigma_z} \sigma_x e^{-i \frac{\omega t}{2} \sigma_z} &amp;= \cos(\omega t) \, \sigma_x + \sin(\omega t) \, \sigma_y, \\
-e^{i \frac{\omega t}{2} \sigma_z} \sigma_y e^{-i \frac{\omega t}{2} \sigma_z} &amp;= \cos(\omega t) \, \sigma_y - \sin(\omega t) \, \sigma_x.
-\end{aligned}
-\)</span>$</p>
-<p>Therefore, the rotated expression becomes:
-$$
-\begin{aligned}
-&amp; e^{i \frac{\omega t}{2} \sigma_z} \left( \cos(\omega t) , \sigma_x - \sin(\omega t) , \sigma_y \right) e^{-i \frac{\omega t}{2} \sigma_z} \
-&amp;= \cos(\omega t) \left[ \cos(\omega t) , \sigma_x + \sin(\omega t) , \sigma_y \right]</p>
-<ul class="simple">
-<li><p>\sin(\omega t) \left[ \cos(\omega t) , \sigma_y - \sin(\omega t) , \sigma_x \right] \
-&amp;= \left( \cos^2(\omega t) + \sin^2(\omega t) \right) \sigma_x + 2 \cos(\omega t) \sin(\omega t) \sigma_y - 2 \cos(\omega t) \sin(\omega t) \sigma_y \
-&amp;= \sigma_x.
-\end{aligned}
-$$</p></li>
-</ul>
-<p>Hence, the entire rotated term simplifies beautifully to:
-$<span class="math notranslate nohighlight">\(
-e^{i \frac{\omega t}{2} \sigma_z} \left( \cos(\omega t) \, \sigma_x - \sin(\omega t) \, \sigma_y \right) e^{-i \frac{\omega t}{2} \sigma_z} = \sigma_x.
-\)</span>$</p>
-</section>
-<section id="final-simplified-equation">
-<h2>Final simplified equation<a class="headerlink" href="#final-simplified-equation" title="Link to this heading">#</a></h2>
-<p>The time-evolution equation in the rotating frame now reads:
-$<span class="math notranslate nohighlight">\(
-\frac{d\tilde{U}}{dt} = \left[ \frac{1}{2} \hbar(\omega_0 - \omega) \sigma_z + V_0 \sigma_x \right] \tilde{U}.
-\)</span>$</p>
-<p>This is a <strong>time-independent</strong> Schrödinger equation in the rotating frame.<br />
-It describes a two-level system under a static effective Hamiltonian:
-$<span class="math notranslate nohighlight">\(
-H_{\text{eff}} = \frac{1}{2} \hbar(\omega_0 - \omega) \sigma_z + V_0 \sigma_x.
-\)</span>$</p>
-</section>
-<section id="solution-using-time-evolution-operator">
-<h2>Solution Using Time-Evolution Operator<a class="headerlink" href="#solution-using-time-evolution-operator" title="Link to this heading">#</a></h2>
-<p>In order to propagate the system in the rotating frame we can now use the time-evolution operator that we constructed for a non-resonant coupling case. We get for <span class="math notranslate nohighlight">\(U(t)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-U(t) = \cos\left(\frac{\Omega_R t}{2}\right) \, \mathbb{I}
-- i \sin\left(\frac{\Omega_R t}{2}\right)
-\left( \frac{2V_0}{\hbar \Omega_R} \sigma_x + \frac{\delta}{\Omega_R} \sigma_z \right).
-\]</div>
-<hr class="docutils" />
-<p>Assume the initial state is the ground state:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-|\psi(0)\rangle = |0\rangle = \begin{pmatrix}1 \\ 0\end{pmatrix}.
-\end{split}\]</div>
-<p>Then the evolved state is:
-$<span class="math notranslate nohighlight">\(
-|\psi(t)\rangle = U(t) |\psi(0)\rangle.
-\)</span>$</p>
-<p>Carrying out the multiplication:
-$$
-|\psi(t)\rangle =
-\left[
-\cos\left( \frac{\Omega_R t}{2} \right)</p>
-<ul class="simple">
-<li><p>i \frac{\delta}{\Omega_R} \sin\left( \frac{\Omega_R t}{2} \right)
-\right] \begin{pmatrix}1 \ 0\end{pmatrix}</p></li>
-<li><p>i \frac{2V_0}{\hbar \Omega_R} \sin\left( \frac{\Omega_R t}{2} \right) \begin{pmatrix}0 \ 1\end{pmatrix}.
-$$</p></li>
-</ul>
-<p>So the wavefunction becomes:
-$$
-|\psi(t)\rangle =
-\begin{pmatrix}
-\cos\left( \frac{\Omega_R t}{2} \right)</p>
-<ul class="simple">
-<li><p>i \frac{\delta}{\Omega_R} \sin\left( \frac{\Omega_R t}{2} \right) \</p></li>
-<li><p>i \frac{2V_0}{\hbar \Omega_R} \sin\left( \frac{\Omega_R t}{2} \right)
-\end{pmatrix}.
-$$</p></li>
-</ul>
-<hr class="docutils" />
-<p>From this, the population in the <strong>excited state</strong> is:</p>
-<div class="math notranslate nohighlight">
-\[
-P_{\text{excited}}(t) =
-\left| - i \frac{2V_0}{\hbar \Omega_R} \sin\left( \frac{\Omega_R t}{2} \right) \right|^2
-= \frac{4V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left( \frac{\Omega_R t}{2} \right).
-\]</div>
-<p>And since <span class="math notranslate nohighlight">\(\Omega_R^2 = \delta^2 + \left( \frac{2V_0}{\hbar} \right)^2\)</span>, we recover the familiar expression:</p>
-<div class="math notranslate nohighlight">
-\[
-P_{\text{excited}}(t) =
-\frac{\left(\frac{2V_0}{\hbar}\right)^2}
-{\delta^2 + \left(\frac{2V_0}{\hbar}\right)^2}
-\cdot \sin^2\left( \frac{\Omega_R t}{2} \right).
-\]</div>
-<hr class="docutils" />
-<p>This completes the derivation using the general time-evolution operator for a two-level system with constant coupling.</p>
-</section>
+ |\psi(t + \Delta t)\rangle \approx e^{-i H(t) dt / \hbar} |\psi(t)\rangle
+ \]</div>
+<p>In the following, we set <span class="math notranslate nohighlight">\( \hbar = 1 \)</span>.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="the-multilevel-class-implementation">
 <h1>The <code class="docutils literal notranslate"><span class="pre">MultiLevel</span></code> Class Implementation<a class="headerlink" href="#the-multilevel-class-implementation" title="Link to this heading">#</a></h1>
@@ -679,8 +488,8 @@ P_{\text{excited}}(t) =
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="two-level-system-with-harmonic-coupling-numerical-propagation">
-<h1>Two-Level System with harmonic coupling: Numerical propagation<a class="headerlink" href="#two-level-system-with-harmonic-coupling-numerical-propagation" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="two-level-system-with-harmonic-coupling">
+<h1>Two-Level System with harmonic coupling<a class="headerlink" href="#two-level-system-with-harmonic-coupling" title="Link to this heading">#</a></h1>
 <p>Consider a two-level system with energies <span class="math notranslate nohighlight">\( E_0 = 0 \)</span>, <span class="math notranslate nohighlight">\( E_1 = \Delta \)</span>, and a Gaussian coupling:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -739,17 +548,38 @@ P_{\text{excited}}(t) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/rolandmitric/anaconda3/lib/python3.11/site-packages/matplotlib/cbook.py:1699: ComplexWarning: Casting complex values to real discards the imaginary part
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/rolandmitric/anaconda3/lib/python3.10/site-packages/matplotlib/cbook.py:1762: ComplexWarning: Casting complex values to real discards the imaginary part
   return math.isfinite(val)
-/Users/rolandmitric/anaconda3/lib/python3.11/site-packages/matplotlib/cbook.py:1345: ComplexWarning: Casting complex values to real discards the imaginary part
+/Users/rolandmitric/anaconda3/lib/python3.10/site-packages/matplotlib/cbook.py:1398: ComplexWarning: Casting complex values to real discards the imaginary part
   return np.asarray(x, float)
 </pre></div>
 </div>
-<img alt="_images/eba78ad261fa98c9abe2a90604ee45e5228a7b58200bdff6adaa2fa80887ba72.png" src="_images/eba78ad261fa98c9abe2a90604ee45e5228a7b58200bdff6adaa2fa80887ba72.png" />
+<img alt="_images/a15cbbf86bf3227dc773db98292a0a55e1e52a6a0a33b05e4d71c46fcb4c6d72.png" src="_images/a15cbbf86bf3227dc773db98292a0a55e1e52a6a0a33b05e4d71c46fcb4c6d72.png" />
 </div>
 </div>
-<section id="comparison-between-the-rwa-and-numerical-propagation-for-a-resonant-coupling">
-<h2>Comparison between the RWA and numerical propagation for a resonant coupling<a class="headerlink" href="#comparison-between-the-rwa-and-numerical-propagation-for-a-resonant-coupling" title="Link to this heading">#</a></h2>
+<section id="rotating-wave-approximation-rwa">
+<h2>🔸 Rotating Wave Approximation (RWA)<a class="headerlink" href="#rotating-wave-approximation-rwa" title="Link to this heading">#</a></h2>
+<p>The Rotating Wave Approximation (RWA) is a common simplification used in the study of driven two-level quantum systems.
+It is valid when the driving frequency is close to resonance and the amplitude of the driving is small compared to the frequency.</p>
+<section id="time-dependent-hamiltonian">
+<h3>🔹 Time-Dependent Hamiltonian<a class="headerlink" href="#time-dependent-hamiltonian" title="Link to this heading">#</a></h3>
+<p>Consider a Hamiltonian of the form:
+$<span class="math notranslate nohighlight">\(
+\hat{H}(t) = \frac{\Delta}{2} \sigma_z + V \cos(\omega t) \sigma_x
+\)</span>$
+We move to an interaction picture with respect to the energy splitting (rotating frame), and under the RWA, we neglect rapidly oscillating terms.</p>
+<p>The effective Hamiltonian becomes:
+$<span class="math notranslate nohighlight">\(
+\hat{H}_{\text{RWA}} = \frac{\Delta}{2} \sigma_z + \frac{V}{2} \sigma_x
+\)</span><span class="math notranslate nohighlight">\(
+This can be solved analytically to yield population dynamics that oscillate sinusoidally at the Rabi frequency:
+\)</span><span class="math notranslate nohighlight">\(
+\Omega = \sqrt{\left(\frac{\Delta}{2}\right)^2 + \left(\frac{V}{2}\right)^2}
+\)</span>$</p>
+</section>
+<section id="comparison-goal">
+<h3>🔹 Comparison Goal<a class="headerlink" href="#comparison-goal" title="Link to this heading">#</a></h3>
+<p>We compare the full numerical evolution with this RWA result to validate the approximation regime.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
@@ -794,9 +624,10 @@ P_{\text{excited}}(t) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b14e09172ac49ebddf70c5764341e72feaaa4c9ac084c98d1ab3112f3d97bcad.png" src="_images/b14e09172ac49ebddf70c5764341e72feaaa4c9ac084c98d1ab3112f3d97bcad.png" />
+<img alt="_images/714a90b84defef1cff6be146687068ec76cfd0cc1eaff9c28c256fc8d11dd3ce.png" src="_images/714a90b84defef1cff6be146687068ec76cfd0cc1eaff9c28c256fc8d11dd3ce.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -846,16 +677,14 @@ P_{\text{excited}}(t) =
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Two level system driven by a harmonic field</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-of-pauli-matrices">Rotation of Pauli matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-to-the-time-dependent-rotation">Apply to the time-dependent rotation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-simplified-equation">Final simplified equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-time-evolution-operator">Solution Using Time-Evolution Operator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Theoretical Background</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multilevel-class-implementation">The <code class="docutils literal notranslate"><span class="pre">MultiLevel</span></code> Class Implementation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-with-harmonic-coupling">Two-Level System with harmonic coupling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-wave-approximation-rwa">🔸 Rotating Wave Approximation (RWA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-hamiltonian">🔹 Time-Dependent Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-goal">🔹 Comparison Goal</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multilevel-class-implementation">The <code class="docutils literal notranslate"><span class="pre">MultiLevel</span></code> Class Implementation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-system-with-harmonic-coupling-numerical-propagation">Two-Level System with harmonic coupling: Numerical propagation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-the-rwa-and-numerical-propagation-for-a-resonant-coupling">Comparison between the RWA and numerical propagation for a resonant coupling</a></li>
 </ul>
 </li>
 </ul>
