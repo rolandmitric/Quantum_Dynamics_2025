@@ -1,0 +1,1427 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Position and momentum representation &#8212; Quantum Dynamics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'position_momentum';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Quantum Dynamics - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Quantum Dynamics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Quantum Dynamics — Summer Semester 2025
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="formalism_hilbert_spaces.html">🔸 Formalism of Quantum Mechanics: Hilbert Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formalism_linear_operators.html">🔸 Linear maps, operators and functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formalism_unitary_time_evolution.html">🔸 Formalism of Quantum Mechanics: Unitary time evolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qubit_dynamics.html">🔸 Quantum Dynamics of a Two-Level System with Constant Coupling</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="rotating_wave.html">🔸 Two level system driven by a harmonic field</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="momentum_operator.html">Momentum operator</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fposition_momentum.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/position_momentum.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Position and momentum representation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>VORLESUNG: Position &amp; momentum representation. 21.4 .15
+Let us consider the motion of a quantum particle on a one-dimensonal lune ( <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> )</p>
+<p>Wi) label the position coordinate <span class="math notranslate nohighlight">\(x\)</span> and associate with <span class="math notranslate nohighlight">\(x\)</span> a quantum-mechomical operator <span class="math notranslate nohighlight">\(\hat{x}\)</span> which is hermitian <span class="math notranslate nohighlight">\(\left(x^{\dagger}=x\right)\)</span>. A quantum particle with a precisely known position <span class="math notranslate nohighlight">\(x\)</span> is dexnibed by a quantunn state <span class="math notranslate nohighlight">\(|x\rangle\)</span>. If the position is precisely known then <span class="math notranslate nohighlight">\(|x\rangle\)</span>, by axioms of <span class="math notranslate nohighlight">\(Q M\)</span> is an eigenstate of <span class="math notranslate nohighlight">\(\hat{x}\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{\substack{\text { state value of }}}^{\hat{x}|x\rangle}=\underset{\text { state }}{v}|x\rangle \text { en }
+\]</div>
+<p>We imagine <span class="math notranslate nohighlight">\(|x\rangle\)</span> to be a state which is localized (mm some nag) at the position <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>Let us now consider two different states <span class="math notranslate nohighlight">\(|x\rangle\)</span> and <span class="math notranslate nohighlight">\(\left|x^{\prime}\right\rangle\)</span>, We cut the question: What is the prolalielity to measure <span class="math notranslate nohighlight">\(x\)</span> In the state <span class="math notranslate nohighlight">\(\left|x^{\prime}\right\rangle\)</span>. In quantum mechanics, such prabalitity is determined by the square of the quantum amplitude <span class="math notranslate nohighlight">\(\left\langle x \mid x^{\prime}\right\rangle \Rightarrow\)</span> quantum amplitude
+Such that the probability is</p>
+<div class="math notranslate nohighlight">
+\[
+p(x)=\left|\left\langle x \mid x^{\prime}\right\rangle\right|^2
+\]</div>
+<p>We know that for <span class="math notranslate nohighlight">\(|x\rangle\)</span> and <span class="math notranslate nohighlight">\(|x\rangle\)</span> the fallowing hall
+We now calculate <span class="math notranslate nohighlight">\(\langle x \mid \alpha\rangle\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \hat{x}|x\rangle=\langle\mid x\rangle \\
+&amp; \hat{x}\left|x^{\prime}\right\rangle=x^{\prime}|x\rangle \quad \Leftarrow \\
+&amp; \left\langle x^{\prime}\right| x^{+}=\left\langle x^{\prime}\right| x^{\prime} \\
+&amp; \downarrow \\
+&amp; \left(x^{+}=x\right) \\
+&amp; \left\langle x^{\prime}\right| \hat{x}=x^{\prime}\left\langle x^{\prime}\right|
+\end{aligned}
+\end{split}\]</div>
+<p>If we mow take the imper product we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \left\langle x^{\prime}\right| \hat{x}|x\rangle=x^{\prime}\left\langle x^{\prime} \mid x\right\rangle \\
+&amp; x\left\langle x^{\prime} \mid x\right\rangle=x^{\prime}\left\langle x^{\prime} \mid x\right\rangle \\
+&amp; \left(x-x^{\prime}\right)\left\langle x^{\prime} \mid x\right\rangle=0
+\end{aligned}
+\end{split}\]</div>
+<p>From this expression wee conclude that:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left\langle x^{\prime} \mid x\right\rangle= \begin{cases}0 &amp; \text { if } x \neq x^{\prime} \\ ? &amp; \text { if } x=x^{\prime}\end{cases}
+\end{split}\]</div>
+<p>That meows that <span class="math notranslate nohighlight">\(|x\rangle\)</span> and <span class="math notranslate nohighlight">\(\left|x^{\prime}\right\rangle\)</span> are mutually orthogonal for those cases when <span class="math notranslate nohighlight">\(x \neq x^{\prime}\)</span>. This is a general property of a hermition operator.
+What happens in the case <span class="math notranslate nohighlight">\(x^{\prime}=x\)</span>. In that case <span class="math notranslate nohighlight">\(\langle x \mid x\rangle\)</span> does not have to home the value 0 but is un fact infinite We require from the position eigenstates to be complete</p>
+<div class="math notranslate nohighlight">
+\[
+\int d x|x\rangle\langle x|=\hat{I}
+\]</div>
+<p>For any state vector <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> wire can wirtio</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; |\psi\rangle=\hat{I}|\psi\rangle=\int_{\text {to }} d x^{\prime}\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \\
+&amp; \text { this leads }
+\end{aligned}
+\end{split}\]</div>
+<p>(a) de define</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\langle x \mid \psi\rangle &amp; =\int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \\
+\langle x \mid \psi\rangle &amp; =\psi(x) \\
+\left\langle x^{\prime} \mid \psi\right\rangle &amp; =\psi\left(x^{\prime}\right)
+\end{aligned}
+\end{split}\]</div>
+<p>so that the relation reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \psi(x)=\int d x^{\prime} \underbrace{v^{\prime}|x\rangle} \psi(i) \\
+&amp; \delta\left(x, x^{\prime}\right)=\left\langle x^{\prime} \mid x\right\rangle \\
+&amp; \psi^{\prime}(x)=\int d x^{\prime} \delta \delta\left(x^{\prime}, x\right) \psi\left(x^{\prime}\right)
+\end{aligned}
+\end{split}\]</div>
+<p>This should he valid for any <span class="math notranslate nohighlight">\(\psi\)</span>. In particular it should he valid for <span class="math notranslate nohighlight">\(\psi(x)=1\)</span>. This allows us to deduce another property of <span class="math notranslate nohighlight">\(\langle v \mid x\rangle\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+1=\int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle \cdot 1 \rightarrow \int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle=1
+\]</div>
+<p>So we deduce the fallowing:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \left\langle x^{\prime}(x\rangle\right\rangle=\left\{\begin{array}{lll}
+0 &amp; \text { for } &amp; x^{\prime} \neq x \\
+\infty &amp; \text { for } &amp; x^{\prime}=x
+\end{array}\right. \\
+&amp; \int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle=1
+\end{aligned}
+\end{split}\]</div>
+<p>The “function” with that properly is called Dirac’s <span class="math notranslate nohighlight">\(\delta\)</span>-funtr. Stridy spooling such function does nat crest in a mathematical ane, but function seguemen can he defined Artich in some limiting cases behave in such hay. One possibility is to define step functions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{\varepsilon}(x)= \begin{cases}0 &amp; |x-x|&gt;\varepsilon \\ \frac{1}{2 \varepsilon} &amp; \left|x-y^{\prime}\right| \leq \varepsilon\end{cases}
+\end{split}\]</div>
+<p>So we have beamed that the eigenstates af a position operators are normalitiel to the Dirac’s <span class="math notranslate nohighlight">\(\delta\)</span> function</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle x^{\prime} \mid x\right\rangle=\delta\left(x-x^{\prime}\right)=\delta\left(x^{\prime}-x\right)
+\]</div>
+<p>This is a general properify of eigenfunction corresponding to the continues part of the spectrum.
+So we have beamed something ahand the position. In order to do physics with the system we med other dynamical variables. The mod important ane us the momentum.
+The momentum can be introduced in two ways. The first way exploits the analogy with dassical mechomies. This was historically the way harl the obsenables were introduced into quantum mechanics. The second way has mo recourse to dassical mechanics and exploits the fundamental principles of symmetry.
+A symmetry principle is a statement that, when we change a point of view in a certain way, the cans of nature do not change.
+In particular, this means in quantum mechanics that symmetry transformations must not change quantum mechanical probabilitio If a system is in a state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> than the measurement of an observable <span class="math notranslate nohighlight">\(\hat{A}\)</span> will give the result <span class="math notranslate nohighlight">\(a_i\)</span> with the probability
+where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; P_i=\left|\left\langle\phi_i \mid \psi\right\rangle\right|^2 \\
+&amp; \text { eigenstate of } \hat{A} \Rightarrow \hat{A}\left|\phi_i\right\rangle=a_i\left|\phi_i\right\rangle
+\end{aligned}
+\end{split}\]</div>
+<p>Thus, the symmetry transformation must leave <span class="math notranslate nohighlight">\(\left|\left\langle\phi_i \mid \psi\right\rangle\right|^2\)</span> inveranant for all choices of <span class="math notranslate nohighlight">\(\phi^{\prime} s\)</span> and <span class="math notranslate nohighlight">\(\psi^{\prime} s\)</span>.
+Now any transformation changes the quantum state. So we associate with a transformation some operator <span class="math notranslate nohighlight">\(\hat{U}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; |\psi\rangle \xrightarrow{\text { tranefal }} \\
+&amp; \left|\phi_i\right\rangle \xrightarrow[U]{ }|\psi\rangle \\
+&amp; \left\langle\phi_i\right| \xrightarrow{\downarrow}\left|\phi_i\right\rangle
+\end{aligned}
+\end{split}\]</div>
+<p>So if a transformation is to be a symmetry we require that</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle\phi_i \mid \psi\right\rangle \Rightarrow\left\langle\phi_i\right| \cup^{+} u|\psi\rangle=\left\langle\phi_i \mid \psi\right\rangle
+\]</div>
+<p>From this it fallows that <span class="math notranslate nohighlight">\(U^{+} U=I\)</span> for symmetry transformations. Transformations that have this property are called unitary transformations!
+In the following ne consider special class of symmetries represented by linear unitary operators which are arbitrary dose to <span class="math notranslate nohighlight">\(\hat{I}\)</span>. Any such operator can le written un the form</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{U}_{\varepsilon}=I+i \varepsilon \hat{T}+\theta\left(\varepsilon^2\right)
+\]</div>
+<p>From the unitarity it fallers</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; U^{+} U=I \Rightarrow\left(\hat{I}-i \varepsilon \hat{T}^{+}\right)(I+i \varepsilon \hat{T}+\cdots)=I \\
+&amp; I+i \varepsilon\left(T-T^{+}\right)+\cdots=\underline{I}
+\end{aligned}
+\end{split}\]</div>
+<p>From this it follows that:</p>
+<div class="math notranslate nohighlight">
+\[
+T=T^{+}
+\]</div>
+<p>We see that the presence of infinitesimal symmetry naturally gives wise to Hermitian operators (generators of symmetries!.).
+Since hermitian operators are associated with observables we see that Symmetries are a natural source of physical abservdbls!</p>
+<p>In fact, most if not all of the operators representing observables in quantum mechanise are the generators of symmetries !
+translational symmetry
+Wi first consider the translational symmetry. The laws of nature should not change if we shift the engin of our coordinates. Ne define the fallowing operator.</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{T}(\Delta x)|x\rangle=|x+\Delta x\rangle
+\]</div>
+<p>continuous parameter</p>
+<p>How does the translational operator affect am arbitrary state?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\hat{T}(\Delta x)|\psi\rangle &amp; =\hat{T}(\Delta x) \hat{I}|\psi\rangle \\
+&amp; =\int d x^{\prime} \hat{T}(\Delta x)\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \\
+&amp; =\int d x^{\prime}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle
+\end{aligned}
+\end{split}\]</div>
+<p>By projecting onto <span class="math notranslate nohighlight">\(\langle x|\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \langle x| \hat{T}(\Delta x)|\psi\rangle=\int_{x^{\prime}+\Delta x=x}^{\int d x^{\prime}}\langle\underbrace{\left\langle x \mid x^{\prime}+\Delta x\right\rangle}\left\langle x^{\prime} \mid \psi\right\rangle \\
+&amp; \begin{array}{c}
+x^{\prime}=x-\Delta x
+\end{array} \\
+&amp; \langle x| \hat{T}(\Delta x)|\psi\rangle=\begin{array}{l}
+\langle\mu-\Delta x \mid \psi\rangle
+\end{array}
+\end{aligned}
+\end{split}\]</div>
+<p>Wee see that the application of the <span class="math notranslate nohighlight">\(\hat{T}(\Delta x)\)</span> to</p>
+<p>He replacement of <span class="math notranslate nohighlight">\(x\)</span> m <span class="math notranslate nohighlight">\(\langle x \mid y\rangle\)</span> by <span class="math notranslate nohighlight">\(x-\Delta x\)</span>, leading to <span class="math notranslate nohighlight">\(\langle x-\Delta x \mid \psi\rangle\)</span> sauce <span class="math notranslate nohighlight">\(\hat{T}(\Delta x)\)</span> is a unitan operator we cam write it as</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{T}(\Delta x)=\hat{I}-2 \Delta x \hat{K} \quad \text { where } \hat{K} \text { a hermitian }
+\]</div>
+<p>1.) Thou loss of generality we cam waste</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \hat{T}(\Delta x)=\hat{I}-\frac{i}{\hbar} \Delta x(\hat{K} \hbar) \\
+&amp; \hat{T}(\Delta x)=\hat{I}-\frac{i}{\hbar} \Delta x \hat{P}
+\end{aligned}
+\end{split}\]</div>
+<p>The operator <span class="math notranslate nohighlight">\(\hat{p}\)</span> is called MOMENTUM! The above operation thus defines the momentum en operator. It remains to be proven that this momentum reduces to the dassical momentum in the dossal limit..</p>
+<p>In the following we which to answer the question how does the momentum operator acts on an arbitrary state
+| 4<span class="math notranslate nohighlight">\()^{\prime}\)</span> ?
+Specifically, are ask question: What is <span class="math notranslate nohighlight">\(\langle x| \hat{p}|\psi\rangle\)</span> ?
+The quomitity <span class="math notranslate nohighlight">\(\langle x| \hat{P}|\psi\rangle\)</span> is a position space representation of <span class="math notranslate nohighlight">\(\hat{P}|\psi\rangle\)</span>.</p>
+<p>We start with.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \langle x| \hat{f}(\Delta x)|\psi\rangle=\langle x-\Delta x \mid \psi\rangle \\
+&amp; \langle x| \hat{I}-\frac{i}{\hbar} \Delta x \hat{P}|\psi\rangle=\langle x-\Delta x \mid \psi\rangle \\
+&amp; \langle x \mid \psi\rangle-\frac{i}{\hbar} \Delta\langle\langle x| \hat{P} \mid \psi\rangle=\langle x-\Delta x \mid \psi\rangle \\
+&amp; \frac{\hbar}{i} \quad \frac{\langle x \mid \psi\rangle-\langle x-\Delta x \mid \psi\rangle}{\Delta x}+\theta(\Delta x)=\langle x| \hat{p}|\psi\rangle
+\end{aligned}
+\end{split}\]</div>
+<p>By toking the limit <span class="math notranslate nohighlight">\(\Delta x \rightarrow 0\)</span> we see that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}
+\langle x| \hat{p}|\psi\rangle=\lim _{\Delta x \rightarrow 0} \frac{\psi(x)-\psi(x-a x)}{\Delta x}=\frac{\hbar}{\Delta x} \frac{\partial}{\partial x}\langle x \mid \psi\rangle \\
+\psi \psi|\hat{p}| \psi\rangle=\frac{\hbar}{i} \frac{\partial}{\partial x}\langle x \mid \psi\rangle \\
+\text { or } \\
+\langle x| \hat{p}|\psi\rangle \Rightarrow \frac{\hbar}{i} \frac{\partial}{\partial x} \psi(x)
+\end{gathered}
+\end{split}\]</div>
+<p>Thus, we cam say that applying the mamentiun operator in the position representation corresponds to</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hbar}{i} \frac{\partial}{\partial x}
+\]</div>
+<p>which should be familiar from a basic quantum mechomies cause.
+In the following are wish to answer the question if <span class="math notranslate nohighlight">\(\hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{p}\)</span> can le simultaneously preciely fanon. For this purpose we need to calculate the commutator <span class="math notranslate nohighlight">\([\hat{x}, \hat{P}]\)</span>.
+We start by calculating <span class="math notranslate nohighlight">\([\hat{x}, \hat{T}(\Delta x)]\)</span>.
+Take any state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and apply the commutator:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; {[\hat{x}, \hat{T}(\Delta x)]|\psi\rangle=\hat{x} \hat{T}(\Delta x)|\psi\rangle-\hat{T}(\Delta x) \hat{x}|\psi\rangle } \\
+{\left[\hat{x_1} \hat{T}(\Delta x)\right]|\psi\rangle=} &amp; \left.\int d x^{\prime}\left|x^{\prime}\right\rangle\left\langle x^{\prime}\right| \hat{x} \hat{x}(\Delta x)\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle-\hat{T}(\Delta x) \hat{x}\left|x^{\prime}\right\rangle\left\langle x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle\right) \\
+= &amp; \int d x^{\prime} \hat{x}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle-x^{\prime} \hat{T}(\Delta x)\left|x^{\prime}\right\rangle\left(x^{\prime}|\psi\rangle\right) \\
+= &amp; \int d x^{\prime}\left(x^{\prime}+\Delta x\right)\left|x^{\prime}+\Delta x\right\rangle\langle x \mid \psi\rangle-x^{\prime}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \\
+= &amp; \Delta x \int d x^{\prime}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \\
+= &amp; \Delta x \hat{T}(\Delta x) \int d x^{\prime}\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \\
+&amp; =\Delta x \hat{T}(\Delta x)|\psi\rangle
+\end{aligned}
+\end{split}\]</div>
+<p>Since this expression will be valid for all <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> we infer.
+By dividing with <span class="math notranslate nohighlight">\(\quad[\hat{x}, \hat{T}(\Delta x)]=\hat{T}(\Delta x) \cdot \Delta x\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\Delta x}[\hat{x}, \hat{T}(\Delta x)]=T(\Delta x)
+\]</div>
+<p>Now we remember the relation: <span class="math notranslate nohighlight">\(\hat{T}(\Delta x)=\hat{I}-\hat{i} \Delta x \hat{P}\)</span> and insert in the abele expression</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \frac{1}{\Delta x}[\hat{x}, \hat{T}(\Delta x)]=\frac{1}{\Delta x}\left[\hat{x}, I-\frac{i}{\hbar} \Delta x \hat{P}\right]=I-\frac{i}{\hbar} \Delta x \hat{P} \\
+&amp; \underbrace{\frac{1}{\Delta x}[\hat{x}, \hat{I}]-\frac{i}{\hbar}[\hat{x}, \hat{P}]=I-\frac{1}{\hbar} \Delta x \hat{P}+\cdots}_0 \\
+&amp; \underbrace{\hbar \hat{x}}_0, \hat{P}]=-\frac{\hbar}{i}+\Delta x \hat{P}+\theta\left(\Delta x^2\right)+\cdots
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\lim\)</span> leads to
+<span class="math notranslate nohighlight">\(\Delta x \rightarrow 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+[\hat{x}, \hat{p}]=i \hbar
+\]</div>
+<p>We have shown that <span class="math notranslate nohighlight">\(\hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{p}\)</span> are incompatible observalles! Historically, this relation has been found by Max Born right after Weer Heisenberg has introduced the matrix mechanics.
+The moncommutability of <span class="math notranslate nohighlight">\(\hat{X}\)</span> and <span class="math notranslate nohighlight">\(\hat{P}\)</span> means that there are no simultaneous eigenfunctions of <span class="math notranslate nohighlight">\(\hat{X}\)</span> and <span class="math notranslate nohighlight">\(\hat{P}\)</span>. There is no such thing as <span class="math notranslate nohighlight">\(|x, p\rangle\)</span> so that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \hat{x}|x, p\rangle=x|x, p\rangle \\
+&amp; \hat{p}|x, p\rangle=p|x, p\rangle
+\end{aligned}
+\end{split}\]</div>
+<p>But if <span class="math notranslate nohighlight">\(\hat{P}\)</span> is an observable, what ane the eigenstates of <span class="math notranslate nohighlight">\(\hat{p}\)</span> ?</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{p}|p\rangle=p|p\rangle
+\]</div>
+<p>Such eigenstate represents a physical state with a precisely determined momentum.</p>
+<p>How does the momentum eigenstate representation?</p>
+<div class="math notranslate nohighlight">
+\[
+\langle\hat{x}| \hat{p}|p\rangle=\frac{\hbar}{i} \frac{\partial}{\partial x}\langle x \mid p\rangle=p\langle x \mid p\rangle
+\]</div>
+<p>This is a first order differential equation which can le easily solved</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x \mid p\rangle=\sqrt[N]{ } e^{\mid p x / \hbar}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\mathcal{N}\)</span> is a normalization constant. The problem is that the momentum eigenstates comsat be moralized in a usual sense such that <span class="math notranslate nohighlight">\(\quad\langle p \mid p\rangle=1\)</span>.
+Instead in the analogy with position eigenstates we require the momention eigenstat’s to be normalised such the</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \left\langle p^{\prime} \mid p\right\rangle=\delta\left(p^{\prime}-p\right) \\
+&amp; \left.|x|^2 \int d x e^{i\left(p-p^{\prime}\right) x / \hbar}=\delta\left(p^{\prime}-p\right) \int d p{ }^{\prime}\right) \\
+&amp; |J|^2 \int d p^{\prime} d x c^{\prime}\left(p-p^{\prime}\right) x / \hbar=1
+\end{aligned}
+\end{split}\]</div>
+<p>In order to calculate the abe integral we first quantize the momentum, This can be achived by imposing periodic boundary conditions. This is equirdent to replacing an infinite lime by a circle with some ciroungence.</p>
+<p>Imposing periodic boundary condition means that
+spirally <span class="math notranslate nohighlight">\(\quad \psi(x+L)=\psi(x)\)</span>
+for a momentum w eigenstate this means that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \langle x \mid p\rangle=\langle x+L / p\rangle \\
+&amp; e^{i p x / h}=e^{i p(x+L) / \hbar} \Rightarrow e^{i p L / \hbar}=1
+\end{aligned}
+\end{split}\]</div>
+<p>From this it follows</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{p L}{\hbar}=2 \pi n \Rightarrow p_n=\frac{2 \pi n}{L} \hbar
+\]</div>
+<p>Thus for a partide on a circle, the momentum n is quantized , and the momentum aigenstates read</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle x \mid p_n\right\rangle=N e^{i \frac{2 \pi n}{t} \hbar x}
+\]</div>
+<p>Such states are normalizable in a usual sense!</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^L d x\left\langle p_a \mid x\right\rangle\left\langle x \mid p_n\right\rangle=1 \Rightarrow N^2 L=1 \Rightarrow N=\frac{1}{\sqrt{L}}
+\]</div>
+<p>Thus the states:</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle x \mid p_n\right\rangle=\frac{1}{\sqrt{L}} e^{i \frac{2 \pi n \hbar}{L} x}
+\]</div>
+<p>are orthonormal</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle p_m \mid p_n\right\rangle=\int_{-\frac{L}{2}}^{\frac{L}{L}} d x\left\langle p_m \mid x\right\rangle\left\langle x \mid p_n\right\rangle=\delta_{m \omega}
+\]</div>
+<p>From
+<span class="math notranslate nohighlight">\(\left\langle p_m \mid p_n\right\rangle=\delta_{m n}\)</span> it fallows</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \sum_m\left\langle p_m \mid p_n\right\rangle=\sum_m \delta_{m n}=1 \\
+&amp; \sum_m \int_{-\frac{L}{2}}^{\frac{L}{2}} d x\left\langle p_m \mid x\right\rangle\left\langle x \mid p_n\right\rangle=1
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \sum_m \int_{-L}^{L / L} d x \frac{1}{L} e^{-\frac{i 2 \pi(m-n) \hbar x}{L}}=1 \\
+&amp; \frac{1}{2 \pi \hbar} \sum_m^2 \frac{2 \pi \hbar}{L} \int_{-\frac{L}{2}}^{\frac{L}{2}} e^{-i} \frac{2 \pi \hbar}{L}(m-n) \times=1 \\
+&amp; \text { Fur } \quad L \rightarrow \infty \quad \Delta p=\frac{2 \pi t}{L} \Rightarrow 0 \\
+&amp; \frac{1}{2 \pi \hbar} \iint d p^{\prime} d x e^{i\left(p^{\prime}-p\right) x / \hbar}=1 \\
+&amp; \int_{-\infty}^{+\infty} d p^{\prime}\left[\frac{1}{2 \pi \hbar} \int_{-\infty}^{+\infty} e^{i^{\prime}\left(p^{\prime}-p\right) / \hbar} d x\right]=1 \\
+&amp; \delta\left(p^{\prime}-p\right)=\frac{1}{2 \pi \hbar} \int d x e^i(p-p) x / \hbar \\
+&amp; \delta\left(p^{\prime}-p\right)=\int d x \frac{e^{i p^{\prime} x / \hbar}}{\sqrt{2 \pi \hbar}} \frac{e^{-i p x / \hbar}}{\sqrt{2 \pi \hbar}} \\
+&amp; \left\langle x \mid p^{\prime}\right\rangle \quad\langle p \mid x\rangle
+\end{aligned}
+\end{split}\]</div>
+<p>So we can identify:</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle\langle x \mid p\rangle=\frac{1}{\sqrt{2 \pi \hbar}} e^{i p x / \hbar}\right.
+\]</div>
+<p>This is a fundamental relation allowing us to switch between the position and the momentum representation for amy quantum state!</p>
+<p>Position and Momentum Representation
+We have now two operators <span class="math notranslate nohighlight">\(\hat{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{p}\)</span> whose corresponding eigenfunction build a complete sets</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \hat{I}=\int d x|x\rangle\langle x| \\
+&amp; \hat{I}=\int d p|p\rangle\langle p|
+\end{aligned}
+\end{split}\]</div>
+<p>We can now represent any quantum state either in the position or on the momentum basis</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; |\psi\rangle=\int d x|x\rangle\langle x \mid \psi\rangle \\
+&amp; |\psi\rangle=\int d p|p\rangle\langle p \mid \psi\rangle
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\langle x \mid \psi\rangle\)</span> is defined as a position representation of the quanturn state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and it is usually denoted by <span class="math notranslate nohighlight">\(\psi(x)\)</span>.
+<span class="math notranslate nohighlight">\(\langle p \mid \psi\rangle\)</span> is defined as a momentum representation of the quantum/ state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and is denoted by <span class="math notranslate nohighlight">\(\phi(p)\)</span>.
+We mow answer the following question. Given <span class="math notranslate nohighlight">\(\psi(x)\)</span>, how can we get <span class="math notranslate nohighlight">\(\phi(p)\)</span> and vice vera?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\phi(p)=\langle p \mid \psi\rangle &amp; =\langle p| \hat{I}|\psi\rangle=\int d x\langle p \mid x\rangle\langle x \mid \psi\rangle \\
+&amp; =\frac{1}{\sqrt{2 \pi h}} \int d x e^{-i p x / \hbar} \psi(x)
+\end{aligned}
+\end{split}\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+\phi(p)=\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} \psi(x) e^{-i p x / \hbar}
+\]</div>
+<p>The transformation works also in the oposite direction!</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\psi(x)=\langle x \mid \psi\rangle &amp; =\langle x| \hat{I}|\psi\rangle=\int d p\langle x \mid p\rangle\langle p \mid \psi\rangle \\
+&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} d p \phi(p) e^{i p^x / \hbar}
+\end{aligned}
+\end{split}\]</div>
+<p>So we obtain the</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \phi(p)=\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} \psi(x) e^{-i p x / \hbar} d x \\
+&amp; \psi(x)=\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} \phi(p) e^{i p^x / \hbar} d p
+\end{aligned}
+\end{split}\]</div>
+<p>Example:
+We consider a step function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\psi(x)= \begin{cases}0 &amp; |x|&gt;\frac{1}{2} a \\ c &amp; |x| \leqslant \frac{1}{2} a\end{cases}
+\end{split}\]</div>
+<p>We first normalise the function such that.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \int_{-\infty}^{+\infty}|\psi(x)|^2 d x=1 \\
+&amp; \int_{-\frac{1}{2} a}^{+\frac{1}{2} a}|c|^2 d x=1 \Rightarrow|a|^2 \cdot a=1 \Rightarrow|c|=\frac{1}{\sqrt{a}}
+\end{aligned}
+\end{split}\]</div>
+<p>Thus, moralized function reads</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\psi(x)= \begin{cases}0 &amp; |x|&gt;\frac{1}{2} a \\ \frac{1}{\sqrt{a}} &amp; |x| \leqslant \frac{1}{2} a\end{cases}
+\end{split}\]</div>
+<p>In the joucowing we calculate the momentum space representation of such quantum state</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \langle p \mid \psi\rangle=\int d x\langle p \mid x\rangle\langle x \mid \psi\rangle \\
+&amp; \frac{1}{\sqrt{2 \pi \hbar}} e^{-i p x / \hbar} \\
+&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} d x \psi(x) e^{-i p x / \hbar} \\
+&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} d x \psi(x) e^{-i p x / \hbar} \\
+&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\frac{a}{2}}^{\frac{a}{2}} d x \frac{1}{\sqrt{a}}-e^{i p x / t} \\
+&amp; =\frac{1}{\sqrt{2 a \pi \hbar}}\left[\left.\frac{-\hbar}{i p} e^{-i p x / \hbar}\right|_{-a / 2} ^{a / 2}\right] \\
+&amp; =\frac{2 \hbar}{\sqrt{2 a \pi \hbar}}\left[\frac{e^{i p a / 2 \hbar}-e^{-i p a / 2 \hbar}}{2 i p}\right] \\
+&amp; =\frac{2 \hbar}{\sqrt{2 a \pi t}} \cdot \frac{1}{p} \cdot \sin \left(\frac{p a}{2 \hbar}\right) \\
+&amp; =\sqrt{\frac{2 \hbar}{a \pi}} \cdot \frac{1}{p} \sin \left(\frac{p a}{2 \hbar}\right)
+\end{aligned}
+\end{split}\]</div>
+<p>Ne see that the state
+between <span class="math notranslate nohighlight">\(-\frac{a}{2}\)</span> and <span class="math notranslate nohighlight">\(\frac{a}{2}\)</span>. In the momentum space, the same state is mat perfectly localized. However, we can roughly define the width of the state on the momentum spare as a separation between the first two zero pants</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \sin \left(\frac{p a}{2 \hbar}\right)=0 \\
+&amp; \frac{p a}{2 \hbar}= \pm \frac{\pi}{2} \\
+&amp; p= \pm \frac{\pi \hbar}{a}
+\end{aligned}
+\end{split}\]</div>
+<p>So we see that <span class="math notranslate nohighlight">\(\Delta p \sim \frac{2 \pi \hbar}{a}\)</span>
+From this we can derive a special form of the Heisenberg’s uncertainty relation:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta x \cdot \Delta p=\alpha \cdot \frac{2 \pi \hbar}{a}=2 \pi \hbar
+\]</div>
+<p>Which tells us that the product of uncerntannties in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(p\)</span> is of the order of <span class="math notranslate nohighlight">\(\hbar\)</span> !</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta x \Delta p \sim t
+\]</div>
+<p>Example 2
+How does the ground state of a harmonic oscillator look like?</p>
+<section id="position-and-momentum-representation">
+<h1>Position and momentum representation<a class="headerlink" href="#position-and-momentum-representation" title="Link to this heading">#</a></h1>
+<p>Let us consider the motion of a quantum particle constrained to a one-dimensional line, where the position coordinate is continuous and labeled by real numbers (<span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>).</p>
+<p>According to the principles of quantum mechanics, we associate each position <span class="math notranslate nohighlight">\(x\)</span> with a quantum-mechanical operator <span class="math notranslate nohighlight">\(\hat{x}\)</span> that is Hermitian, satisfying <span class="math notranslate nohighlight">\(\hat{x}^\dagger = \hat{x}\)</span>. Since we are working in one spatial dimension, the operator <span class="math notranslate nohighlight">\(\hat{x}\)</span> acts on a domain that is a subset of a Hilbert space—typically the space of square-integrable functions.</p>
+<p>A quantum particle whose position is known exactly to be <span class="math notranslate nohighlight">\(x\)</span> is described by a quantum state <span class="math notranslate nohighlight">\(|x\rangle\)</span>. By the postulates of quantum mechanics, this state must be an eigenstate of the position operator <span class="math notranslate nohighlight">\(\hat{x}\)</span>, with eigenvalue <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{x} |x\rangle = x |x\rangle
+\]</div>
+<p>We imagine the <span class="math notranslate nohighlight">\(|x\rangle\)</span> to be a state which is sharpely localized at the position <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>Let us now consider two different states <span class="math notranslate nohighlight">\(|x\rangle\)</span>and<span class="math notranslate nohighlight">\(\left|x^{\prime}\right\rangle\)</span>.
+We can now ask the following question: What is the probability to measure <span class="math notranslate nohighlight">\(x\)</span>In the state<span class="math notranslate nohighlight">\(\left|x^{\prime}\right\rangle\)</span>?</p>
+<p>In quantum mechanics, such probability is determined by the square of the quantum amplitude <span class="math notranslate nohighlight">\(\langle x| x^{\prime}\rangle\)</span>.
+From the amplitude we get the probability by:</p>
+<div class="math notranslate nohighlight">
+\[
+p(x)=\left|\left\langle x \mid x^{\prime}\right\rangle\right|^2
+\]</div>
+<p>We know that for two different eigenstates <span class="math notranslate nohighlight">\(|x\rangle\)</span> and<span class="math notranslate nohighlight">\(|x\rangle\)</span> the fallowing holds since
+they are both eigenstates of <span class="math notranslate nohighlight">\(\hat{x}\)</span>-Operator:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+&amp; \hat{x}|x\rangle=x\langle x\rangle \\\end{split}\\\begin{split}
+&amp; \downarrow \\\end{split}\\\begin{split}&amp; \left(x^{+}=x\right) \\\end{split}\\&amp; \left\langle x^{\prime}\right| \hat{x}=x^{\prime}\left\langle x^{\prime}\right|
+\end{aligned}\end{align} \]</div>
+<p>If we mow take the imper product we obtain</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \left\langle x^{\prime}\right| \hat{x}|x\rangle=x^{\prime}\left\langle x^{\prime} \mid x\right\rangle \</p>
+<p>&amp; x\left\langle x^{\prime} \mid x\right\rangle=x^{\prime}\left\langle x^{\prime} \mid x\right\rangle \</p>
+<p>&amp; \left(x-x^{\prime}\right)\left\langle x^{\prime} \mid x\right\rangle=0
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>From this expression wee conclude that:</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle x^{\prime} \mid x\right\rangle= 
+\]</div>
+<p>0 &amp; \text { if } x \neq x^{\prime} \
+? &amp; \text { if } x=x^{\prime}
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>That meows that <span class="math notranslate nohighlight">\(|x\rangle\)</span>and<span class="math notranslate nohighlight">\(\left|x^{\prime}\right\rangle\)</span>are mutually orthogonal for those cases when<span class="math notranslate nohighlight">\(x \neq x^{\prime}\)</span>. This is a general property of a hermition operator.
+What happens in the case <span class="math notranslate nohighlight">\(x^{\prime}=x\)</span>. In that case <span class="math notranslate nohighlight">\(\langle x \mid x\rangle\)</span> does not have to home the value 0 but is un fact infinite We require from the position eigenstates to be complete</p>
+<div class="math notranslate nohighlight">
+\[
+\int d x|x\rangle\langle x|=\hat{I}
+\]</div>
+<p>For any state vector <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> wire can wirtio</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; |\psi\rangle=\hat{I}|\psi\rangle=\int_{\text {to }} d x^{\prime}\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \</p>
+<p>&amp; \text { this leads }
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>(a) de define</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>\langle x \mid \psi\rangle &amp; =\int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \</p>
+<p>\langle x \mid \psi\rangle &amp; =\psi(x) \</p>
+<p>\left\langle x^{\prime} \mid \psi\right\rangle &amp; =\psi\left(x^{\prime}\right)
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>so that the relation reads</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \psi(x)=\int d x^{\prime} \underbrace{v^{\prime}|x\rangle} \psi(i) \
+&amp; \delta\left(x, x^{\prime}\right)=\left\langle x^{\prime} \mid x\right\rangle \
+&amp; \psi^{\prime}(x)=\int d x^{\prime} \delta \delta\left(x^{\prime}, x\right) \psi\left(x^{\prime}\right)
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>This should he valid for any <span class="math notranslate nohighlight">\(\psi\)</span>. In particular it should he valid for <span class="math notranslate nohighlight">\(\psi(x)=1\)</span>. This allows us to deduce another property of <span class="math notranslate nohighlight">\(\langle v \mid x\rangle
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+1=\int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle \cdot 1 \rightarrow \int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle=1
+\]</div>
+<p>So we deduce the fallowing:</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \left\langle x^{\prime}(x\rangle\right\rangle=\left{
+$$
+{lll}
+0 &amp; \text { for } &amp; x^{\prime} \neq x \</p>
+<p>\infty &amp; \text { for } &amp; x^{\prime}=x
+$$
+\right. \</p>
+<p>&amp; \int d x^{\prime}\left\langle x^{\prime} \mid x\right\rangle=1
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>The “function” with that properly is called Dirac’s <span class="math notranslate nohighlight">\(\delta\)</span>-funtr. Stridy spooling such function does nat crest in a mathematical ane, but function seguemen can he defined Artich in some limiting cases behave in such hay. One possibility is to define step functions</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_{\varepsilon}(x)= 
+\]</div>
+<p>0 &amp; |x-x|&gt;\varepsilon \
+\frac{1}{2 \varepsilon} &amp; \left|x-y^{\prime}\right| \leq \varepsilon
+$<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+So we have beamed that the eigenstates af a position operators are normalitiel to the Dirac's \)</span>\delta$ function</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle x^{\prime} \mid x\right\rangle=\delta\left(x-x^{\prime}\right)=\delta\left(x^{\prime}-x\right)
+\]</div>
+<p>This is a general properify of eigenfunction corresponding to the continues part of the spectrum.
+So we have beamed something ahand the position. In order to do physics with the system we med other dynamical variables. The mod important ane us the momentum.
+The momentum can be introduced in two ways. The first way exploits the analogy with dassical mechomies. This was historically the way harl the obsenables were introduced into quantum mechanics. The second way has mo recourse to dassical mechanics and exploits the fundamental principles of symmetry.
+A symmetry principle is a statement that, when we change a point of view in a certain way, the cans of nature do not change.
+In particular, this means in quantum mechanics that symmetry transformations must not change quantum mechanical probabilitio If a system is in a state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>than the measurement of an observable<span class="math notranslate nohighlight">\(\hat{A}\)</span>will give the result<span class="math notranslate nohighlight">\(a_i\)</span> with the probability
+where</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; P_i=\left|\left\langle\phi_i \mid \psi\right\rangle\right|^2 \</p>
+<p>&amp; \text { eigenstate of } \hat{A} \Rightarrow \hat{A}\left|\phi_i\right\rangle=a_i\left|\phi_i\right\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Thus, the symmetry transformation must leave <span class="math notranslate nohighlight">\(\left|\left\langle\phi_i \mid \psi\right\rangle\right|^2\)</span>inveranant for all choices of<span class="math notranslate nohighlight">\(\phi^{\prime} s\)</span>and<span class="math notranslate nohighlight">\(\psi^{\prime} s\)</span>.
+Now any transformation changes the quantum state. So we associate with a transformation some operator <span class="math notranslate nohighlight">\(\hat{U}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; |\psi\rangle \xrightarrow{\text { tranefal }} \</p>
+<p>&amp; \left|\phi_i\right\rangle \xrightarrow[U]{ }|\psi\rangle \</p>
+<p>&amp; \left\langle\phi_i\right| \xrightarrow{\downarrow}\left|\phi_i\right\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>So if a transformation is to be a symmetry we require that</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle\phi_i \mid \psi\right\rangle \Rightarrow\left\langle\phi_i\right| \cup^{+} u|\psi\rangle=\left\langle\phi_i \mid \psi\right\rangle
+\]</div>
+<p>From this it fallows that <span class="math notranslate nohighlight">\(U^{+} U=I\)</span>for symmetry transformations. Transformations that have this property are called unitary transformations!
+In the following ne consider special class of symmetries represented by linear unitary operators which are arbitrary dose to<span class="math notranslate nohighlight">\(\hat{I}\)</span>. Any such operator can le written un the form</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{U}_{\varepsilon}=I+i \varepsilon \hat{T}+\theta\left(\varepsilon^2\right)
+\]</div>
+<p>From the unitarity it fallers</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; U^{+} U=I \Rightarrow\left(\hat{I}-i \varepsilon \hat{T}^{+}\right)(I+i \varepsilon \hat{T}+\cdots)=I \</p>
+<p>&amp; I+i \varepsilon\left(T-T^{+}\right)+\cdots=\underline{I}
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>From this it follows that:</p>
+<div class="math notranslate nohighlight">
+\[
+T=T^{+}
+\]</div>
+<p>We see that the presence of infinitesimal symmetry naturally gives wise to Hermitian operators (generators of symmetries!.).
+Since hermitian operators are associated with observables we see that Symmetries are a natural source of physical abservdbls!</p>
+<p>In fact, most if not all of the operators representing observables in quantum mechanise are the generators of symmetries !
+translational symmetry
+Wi first consider the translational symmetry. The laws of nature should not change if we shift the engin of our coordinates. Ne define the fallowing operator.</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{T}(\Delta x)|x\rangle=|x+\Delta x\rangle
+\]</div>
+<p>continuous parameter</p>
+<p>How does the translational operator affect am arbitrary state?</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>\hat{T}(\Delta x)|\psi\rangle &amp; =\hat{T}(\Delta x) \hat{I}|\psi\rangle \</p>
+<p>&amp; =\int d x^{\prime} \hat{T}(\Delta x)\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \</p>
+<p>&amp; =\int d x^{\prime}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>By projecting onto <span class="math notranslate nohighlight">\(\langle x|
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \langle x| \hat{T}(\Delta x)|\psi\rangle=\int_{x^{\prime}+\Delta x=x}^{\int d x^{\prime}}\langle\underbrace{\left\langle x \mid x^{\prime}+\Delta x\right\rangle}\left\langle x^{\prime} \mid \psi\right\rangle \</p>
+<p>&amp;
+$<span class="math notranslate nohighlight">\(
+{c}
+x^{\prime}=x-\Delta x
+\)</span>$
+\</p>
+<p>&amp; \langle x| \hat{T}(\Delta x)|\psi\rangle=
+$<span class="math notranslate nohighlight">\(
+{l}
+\langle\mu-\Delta x \mid \psi\rangle
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Wee see that the application of the <span class="math notranslate nohighlight">\(\hat{T}(\Delta x)\)</span>to</p>
+<p>He replacement of<span class="math notranslate nohighlight">\(x\)</span>m<span class="math notranslate nohighlight">\(\langle x \mid y\rangle\)</span>by<span class="math notranslate nohighlight">\(x-\Delta x\)</span>, leading to <span class="math notranslate nohighlight">\(\langle x-\Delta x \mid \psi\rangle\)</span>sauce<span class="math notranslate nohighlight">\(\hat{T}(\Delta x)\)</span> is a unitan operator we cam write it as</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{T}(\Delta x)=\hat{I}-2 \Delta x \hat{K} \quad \text { where } \hat{K} \text { a hermitian }
+\]</div>
+<p>1.) Thou loss of generality we cam waste</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \hat{T}(\Delta x)=\hat{I}-\frac{i}{\hbar} \Delta x(\hat{K} \hbar) \</p>
+<p>&amp; \hat{T}(\Delta x)=\hat{I}-\frac{i}{\hbar} \Delta x \hat{P}
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>The operator <span class="math notranslate nohighlight">\(\hat{p}\)</span> is called MOMENTUM! The above operation thus defines the momentum en operator. It remains to be proven that this momentum reduces to the dassical momentum in the dossal limit..</p>
+<p>In the following we which to answer the question how does the momentum operator acts on an arbitrary state
+| 4<span class="math notranslate nohighlight">\()^{\prime}\)</span>?
+Specifically, are ask question: What is<span class="math notranslate nohighlight">\(\langle x| \hat{p}|\psi\rangle\)</span>?
+The quomitity<span class="math notranslate nohighlight">\(\langle x| \hat{P}|\psi\rangle\)</span>is a position space representation of<span class="math notranslate nohighlight">\(\hat{P}|\psi\rangle\)</span>.</p>
+<p>We start with.</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \langle x| \hat{f}(\Delta x)|\psi\rangle=\langle x-\Delta x \mid \psi\rangle \</p>
+<p>&amp; \langle x| \hat{I}-\frac{i}{\hbar} \Delta x \hat{P}|\psi\rangle=\langle x-\Delta x \mid \psi\rangle \</p>
+<p>&amp; \langle x \mid \psi\rangle-\frac{i}{\hbar} \Delta\langle\langle x| \hat{P} \mid \psi\rangle=\langle x-\Delta x \mid \psi\rangle \</p>
+<p>&amp; \frac{\hbar}{i} \quad \frac{\langle x \mid \psi\rangle-\langle x-\Delta x \mid \psi\rangle}{\Delta x}+\theta(\Delta x)=\langle x| \hat{p}|\psi\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>By toking the limit <span class="math notranslate nohighlight">\(\Delta x \rightarrow 0\)</span> we see that</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>\langle x| \hat{p}|\psi\rangle=\lim _{\Delta x \rightarrow 0} \frac{\psi(x)-\psi(x-a x)}{\Delta x}=\frac{\hbar}{\Delta x} \frac{\partial}{\partial x}\langle x \mid \psi\rangle \</p>
+<p>\psi \psi|\hat{p}| \psi\rangle=\frac{\hbar}{i} \frac{\partial}{\partial x}\langle x \mid \psi\rangle \</p>
+<p>\text { or } \</p>
+<p>\langle x| \hat{p}|\psi\rangle \Rightarrow \frac{\hbar}{i} \frac{\partial}{\partial x} \psi(x)
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Thus, we cam say that applying the mamentiun operator in the position representation corresponds to</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\hbar}{i} \frac{\partial}{\partial x}
+\]</div>
+<p>which should be familiar from a basic quantum mechomies cause.
+In the following are wish to answer the question if <span class="math notranslate nohighlight">\(\hat{x}\)</span>and<span class="math notranslate nohighlight">\(\hat{p}\)</span>can le simultaneously preciely fanon. For this purpose we need to calculate the commutator<span class="math notranslate nohighlight">\([\hat{x}, \hat{P}]\)</span>.
+We start by calculating <span class="math notranslate nohighlight">\([\hat{x}, \hat{T}(\Delta x)]\)</span>.
+Take any state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and apply the commutator:</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; {[\hat{x}, \hat{T}(\Delta x)]|\psi\rangle=\hat{x} \hat{T}(\Delta x)|\psi\rangle-\hat{T}(\Delta x) \hat{x}|\psi\rangle } \</p>
+<p>{\left[\hat{x_1} \hat{T}(\Delta x)\right]|\psi\rangle=} &amp; \left.\int d x^{\prime}\left|x^{\prime}\right\rangle\left\langle x^{\prime}\right| \hat{x} \hat{x}(\Delta x)\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle-\hat{T}(\Delta x) \hat{x}\left|x^{\prime}\right\rangle\left\langle x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle\right) \</p>
+<p>= &amp; \int d x^{\prime} \hat{x}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle-x^{\prime} \hat{T}(\Delta x)\left|x^{\prime}\right\rangle\left(x^{\prime}|\psi\rangle\right) \</p>
+<p>= &amp; \int d x^{\prime}\left(x^{\prime}+\Delta x\right)\left|x^{\prime}+\Delta x\right\rangle\langle x \mid \psi\rangle-x^{\prime}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \</p>
+<p>= &amp; \Delta x \int d x^{\prime}\left|x^{\prime}+\Delta x\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \</p>
+<p>= &amp; \Delta x \hat{T}(\Delta x) \int d x^{\prime}\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \</p>
+<p>&amp; =\Delta x \hat{T}(\Delta x)|\psi\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Since this expression will be valid for all <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>we infer.
+By dividing with<span class="math notranslate nohighlight">\(\quad[\hat{x}, \hat{T}(\Delta x)]=\hat{T}(\Delta x) \cdot \Delta x
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\Delta x}[\hat{x}, \hat{T}(\Delta x)]=T(\Delta x)
+\]</div>
+<p>Now we remember the relation: <span class="math notranslate nohighlight">\(\hat{T}(\Delta x)=\hat{I}-\hat{i} \Delta x \hat{P}\)</span> and insert in the abele expression</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \frac{1}{\Delta x}[\hat{x}, \hat{T}(\Delta x)]=\frac{1}{\Delta x}\left[\hat{x}, I-\frac{i}{\hbar} \Delta x \hat{P}\right]=I-\frac{i}{\hbar} \Delta x \hat{P} \</p>
+<p>&amp; \underbrace{\frac{1}{\Delta x}[\hat{x}, \hat{I}]-\frac{i}{\hbar}[\hat{x}, \hat{P}]=I-\frac{1}{\hbar} \Delta x \hat{P}+\cdots}_0 \</p>
+<p>&amp; \underbrace{\hbar \hat{x}}_0, \hat{P}]=-\frac{\hbar}{i}+\Delta x \hat{P}+\theta\left(\Delta x^2\right)+\cdots
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+\lim$ leads to
+\]</div>
+<p>\Delta x \rightarrow 0
+$$</p>
+<div class="math notranslate nohighlight">
+\[
+[\hat{x}, \hat{p}]=i \hbar
+\]</div>
+<p>We have shown that <span class="math notranslate nohighlight">\(\hat{x}\)</span>and<span class="math notranslate nohighlight">\(\hat{p}\)</span>are incompatible observalles! Historically, this relation has been found by Max Born right after Weer Heisenberg has introduced the matrix mechanics.
+The moncommutability of<span class="math notranslate nohighlight">\(\hat{X}\)</span>and<span class="math notranslate nohighlight">\(\hat{P}\)</span>means that there are no simultaneous eigenfunctions of<span class="math notranslate nohighlight">\(\hat{X}\)</span>and<span class="math notranslate nohighlight">\(\hat{P}\)</span>. There is no such thing as <span class="math notranslate nohighlight">\(|x, p\rangle\)</span> so that</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \hat{x}|x, p\rangle=x|x, p\rangle \</p>
+<p>&amp; \hat{p}|x, p\rangle=p|x, p\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>But if <span class="math notranslate nohighlight">\(\hat{P}\)</span>is an observable, what ane the eigenstates of<span class="math notranslate nohighlight">\(\hat{p}\)</span> ?</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{p}|p\rangle=p|p\rangle
+\]</div>
+<p>Such eigenstate represents a physical state with a precisely determined momentum.</p>
+<p>How does the momentum eigenstate representation?</p>
+<div class="math notranslate nohighlight">
+\[
+\langle\hat{x}| \hat{p}|p\rangle=\frac{\hbar}{i} \frac{\partial}{\partial x}\langle x \mid p\rangle=p\langle x \mid p\rangle
+\]</div>
+<p>This is a first order differential equation which can le easily solved</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x \mid p\rangle=\sqrt[N]{ } e^{\mid p x / \hbar}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{N}$is a normalization constant. The problem is that the momentum eigenstates comsat be moralized in a usual sense such that$\quad\langle p \mid p\rangle=1$.
+Instead in the analogy with position eigenstates we require the momention eigenstat's to be normalised such the\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+&amp; \left\langle p^{\prime} \mid p\right\rangle=\delta\left(p^{\prime}-p\right) \\\end{split}\\\begin{split}&amp; \left.|x|^2 \int d x e^{i\left(p-p^{\prime}\right) x / \hbar}=\delta\left(p^{\prime}-p\right) \int d p{ }^{\prime}\right) \\\end{split}\\&amp; |J|^2 \int d p^{\prime} d x c^{\prime}\left(p-p^{\prime}\right) x / \hbar=1
+\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+In order to calculate the abe integral we first quantize the momentum, This can be achived by imposing periodic boundary conditions. This is equirdent to replacing an infinite lime by a circle with some ciroungence.\\Imposing periodic boundary condition means that
+spirally $\quad \psi(x+L)=\psi(x)
+\end{aligned}\end{align} \]</div>
+<p>for a momentum w eigenstate this means that</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \langle x \mid p\rangle=\langle x+L / p\rangle \</p>
+<p>&amp; e^{i p x / h}=e^{i p(x+L) / \hbar} \Rightarrow e^{i p L / \hbar}=1
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>From this it follows</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{p L}{\hbar}=2 \pi n \Rightarrow p_n=\frac{2 \pi n}{L} \hbar
+\]</div>
+<p>Thus for a partide on a circle, the momentum n is quantized , and the momentum aigenstates read</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle x \mid p_n\right\rangle=N e^{i \frac{2 \pi n}{t} \hbar x}
+\]</div>
+<p>Such states are normalizable in a usual sense!</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^L d x\left\langle p_a \mid x\right\rangle\left\langle x \mid p_n\right\rangle=1 \Rightarrow N^2 L=1 \Rightarrow N=\frac{1}{\sqrt{L}}
+\]</div>
+<p>Thus the states:</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle x \mid p_n\right\rangle=\frac{1}{\sqrt{L}} e^{i \frac{2 \pi n \hbar}{L} x}
+\]</div>
+<p>are orthonormal</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle p_m \mid p_n\right\rangle=\int_{-\frac{L}{2}}^{\frac{L}{L}} d x\left\langle p_m \mid x\right\rangle\left\langle x \mid p_n\right\rangle=\delta_{m \omega}
+\]</div>
+<p>From
+$<span class="math notranslate nohighlight">\(
+\left\langle p_m \mid p_n\right\rangle=\delta_{m n}\)</span> it fallows</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \sum_m\left\langle p_m \mid p_n\right\rangle=\sum_m \delta_{m n}=1 \</p>
+<p>&amp; \sum_m \int_{-\frac{L}{2}}^{\frac{L}{2}} d x\left\langle p_m \mid x\right\rangle\left\langle x \mid p_n\right\rangle=1
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \sum_m \int_{-L}^{L / L} d x \frac{1}{L} e^{-\frac{i 2 \pi(m-n) \hbar x}{L}}=1 \</p>
+<p>&amp; \frac{1}{2 \pi \hbar} \sum_m^2 \frac{2 \pi \hbar}{L} \int_{-\frac{L}{2}}^{\frac{L}{2}} e^{-i} \frac{2 \pi \hbar}{L}(m-n) \times=1 \</p>
+<p>&amp; \text { Fur } \quad L \rightarrow \infty \quad \Delta p=\frac{2 \pi t}{L} \Rightarrow 0 \</p>
+<p>&amp; \frac{1}{2 \pi \hbar} \iint d p^{\prime} d x e^{i\left(p^{\prime}-p\right) x / \hbar}=1 \</p>
+<p>&amp; \int_{-\infty}^{+\infty} d p^{\prime}\left[\frac{1}{2 \pi \hbar} \int_{-\infty}^{+\infty} e^{i^{\prime}\left(p^{\prime}-p\right) / \hbar} d x\right]=1 \</p>
+<p>&amp; \delta\left(p^{\prime}-p\right)=\frac{1}{2 \pi \hbar} \int d x e^i(p-p) x / \hbar \</p>
+<p>&amp; \delta\left(p^{\prime}-p\right)=\int d x \frac{e^{i p^{\prime} x / \hbar}}{\sqrt{2 \pi \hbar}} \frac{e^{-i p x / \hbar}}{\sqrt{2 \pi \hbar}} \</p>
+<p>&amp; \left\langle x \mid p^{\prime}\right\rangle \quad\langle p \mid x\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>So we can identify:</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle\langle x \mid p\rangle=\frac{1}{\sqrt{2 \pi \hbar}} e^{i p x / \hbar}\right.
+\]</div>
+<p>This is a fundamental relation allowing us to switch between the position and the momentum representation for amy quantum state!</p>
+<p>Position and Momentum Representation
+We have now two operators <span class="math notranslate nohighlight">\(\hat{x}\)</span>and<span class="math notranslate nohighlight">\(\hat{p}\)</span> whose corresponding eigenfunction build a complete sets</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \hat{I}=\int d x|x\rangle\langle x| \</p>
+<p>&amp; \hat{I}=\int d p|p\rangle\langle p|
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>We can now represent any quantum state either in the position or on the momentum basis</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; |\psi\rangle=\int d x|x\rangle\langle x \mid \psi\rangle \</p>
+<p>&amp; |\psi\rangle=\int d p|p\rangle\langle p \mid \psi\rangle
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x \mid \psi\rangle$is defined as a position representation of the quanturn state$|\psi\rangle$and it is usually denoted by$\psi(x)$.
+\]</div>
+<p>\langle p \mid \psi\rangle<span class="math notranslate nohighlight">\(is defined as a momentum representation of the quantum/ state\)</span>|\psi\rangle<span class="math notranslate nohighlight">\(and is denoted by\)</span>\phi(p)<span class="math notranslate nohighlight">\(.
+We mow answer the following question. Given \)</span>\psi(x)<span class="math notranslate nohighlight">\(, how can we get \)</span>\phi(p)$ and vice vera?</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>\phi(p)=\langle p \mid \psi\rangle &amp; =\langle p| \hat{I}|\psi\rangle=\int d x\langle p \mid x\rangle\langle x \mid \psi\rangle \</p>
+<p>&amp; =\frac{1}{\sqrt{2 \pi h}} \int d x e^{-i p x / \hbar} \psi(x)
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+\phi(p)=\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} \psi(x) e^{-i p x / \hbar}
+\]</div>
+<p>The transformation works also in the oposite direction!</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>\psi(x)=\langle x \mid \psi\rangle &amp; =\langle x| \hat{I}|\psi\rangle=\int d p\langle x \mid p\rangle\langle p \mid \psi\rangle \</p>
+<p>&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} d p \phi(p) e^{i p^x / \hbar}
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>So we obtain the</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \phi(p)=\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} \psi(x) e^{-i p x / \hbar} d x \</p>
+<p>&amp; \psi(x)=\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} \phi(p) e^{i p^x / \hbar} d p
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Example:
+We consider a step function:</p>
+<div class="math notranslate nohighlight">
+\[
+\psi(x)= 
+\]</div>
+<p>0 &amp; |x|&gt;\frac{1}{2} a \
+c &amp; |x| \leqslant \frac{1}{2} a
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>We first normalise the function such that.</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \int_{-\infty}^{+\infty}|\psi(x)|^2 d x=1 \</p>
+<p>&amp; \int_{-\frac{1}{2} a}^{+\frac{1}{2} a}|c|^2 d x=1 \Rightarrow|a|^2 \cdot a=1 \Rightarrow|c|=\frac{1}{\sqrt{a}}
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Thus, moralized function reads</p>
+<div class="math notranslate nohighlight">
+\[
+\psi(x)= 
+\]</div>
+<p>0 &amp; |x|&gt;\frac{1}{2} a \
+\frac{1}{\sqrt{a}} &amp; |x| \leqslant \frac{1}{2} a
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>In the joucowing we calculate the momentum space representation of such quantum state</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \langle p \mid \psi\rangle=\int d x\langle p \mid x\rangle\langle x \mid \psi\rangle \</p>
+<p>&amp; \frac{1}{\sqrt{2 \pi \hbar}} e^{-i p x / \hbar} \</p>
+<p>&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} d x \psi(x) e^{-i p x / \hbar} \</p>
+<p>&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\infty}^{+\infty} d x \psi(x) e^{-i p x / \hbar} \</p>
+<p>&amp; =\frac{1}{\sqrt{2 \pi \hbar}} \int_{-\frac{a}{2}}^{\frac{a}{2}} d x \frac{1}{\sqrt{a}}-e^{i p x / t} \</p>
+<p>&amp; =\frac{1}{\sqrt{2 a \pi \hbar}}\left[\left.\frac{-\hbar}{i p} e^{-i p x / \hbar}\right|_{-a / 2} ^{a / 2}\right] \</p>
+<p>&amp; =\frac{2 \hbar}{\sqrt{2 a \pi \hbar}}\left[\frac{e^{i p a / 2 \hbar}-e^{-i p a / 2 \hbar}}{2 i p}\right] \</p>
+<p>&amp; =\frac{2 \hbar}{\sqrt{2 a \pi t}} \cdot \frac{1}{p} \cdot \sin \left(\frac{p a}{2 \hbar}\right) \</p>
+<p>&amp; =\sqrt{\frac{2 \hbar}{a \pi}} \cdot \frac{1}{p} \sin \left(\frac{p a}{2 \hbar}\right)
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Ne see that the state
+between <span class="math notranslate nohighlight">\(-\frac{a}{2}\)</span>and<span class="math notranslate nohighlight">\(\frac{a}{2}\)</span>. In the momentum space, the same state is mat perfectly localized. However, we can roughly define the width of the state on the momentum spare as a separation between the first two zero pants</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>&amp; \sin \left(\frac{p a}{2 \hbar}\right)=0 \</p>
+<p>&amp; \frac{p a}{2 \hbar}= \pm \frac{\pi}{2} \</p>
+<p>&amp; p= \pm \frac{\pi \hbar}{a}
+$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>So we see that <span class="math notranslate nohighlight">\(\Delta p \sim \frac{2 \pi \hbar}{a}
+\)</span>$
+From this we can derive a special form of the Heisenberg’s uncertainty relation:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta x \cdot \Delta p=\alpha \cdot \frac{2 \pi \hbar}{a}=2 \pi \hbar
+\]</div>
+<p>Which tells us that the product of uncerntannties in <span class="math notranslate nohighlight">\(x\)</span>and<span class="math notranslate nohighlight">\(p\)</span>is of the order of<span class="math notranslate nohighlight">\(\hbar\)</span> !</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta x \Delta p \sim t
+\]</div>
+<p>Example 2
+How does the ground state of a harmonic oscillator look like?</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Roland Mitric
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
