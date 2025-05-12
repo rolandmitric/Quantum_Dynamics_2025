@@ -201,6 +201,11 @@
 <li class="toctree-l1"><a class="reference internal" href="rotating_wave.html">🔸 Two level system driven by a harmonic field</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="heisenberg_picture.html">🔹 Heisenberg Picture</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="momentum_operator.html">Momentum operator</a></li>
 
 
@@ -404,7 +409,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-time-evolution-essence-and-physical-meaning">🔹 Unitary Time Evolution: Essence and Physical Meaning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equation-for-the-state-vector-schrodinger-equation">🔹 Differential equation for the state vector: Schrödinger equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-omega-t">🔹 Properties of <span class="math notranslate nohighlight">\(\Omega(t)\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-hamiltonian">🔹 Definition of the Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-hamiltonian">🔹 Definition of the Hamiltonian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-operators-and-norm-conservation">🔹 Unitary Operators and Norm Conservation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-unitary-operator">🔸 Definition (Unitary Operator):</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-conservation-implies-unitarity">🔹 Norm Conservation Implies Unitarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lemma-vanishing-quadratic-form-implies-zero-operator">🔹 Lemma: Vanishing Quadratic Form Implies Zero Operator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">🔸 Proof:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">🔹 Conclusion</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -554,6 +571,86 @@ Thus:</p>
 i\hbar \frac{d}{dt} |\psi(t)\rangle = \hat{H}(t) |\psi(t)\rangle
 \]</div>
 <p>We have now derived the <strong>time-dependent Schrödinger equation</strong> from the unitary evolution structure.</p>
+<section id="unitary-operators-and-norm-conservation">
+<h3>🔹 Unitary Operators and Norm Conservation<a class="headerlink" href="#unitary-operators-and-norm-conservation" title="Link to this heading">#</a></h3>
+<p>In quantum mechanics, the evolution of a closed system must conserve probabilities. This is mathematically guaranteed if the evolution is governed by a <strong>unitary operator</strong>.</p>
+<section id="definition-unitary-operator">
+<h4>🔸 Definition (Unitary Operator):<a class="headerlink" href="#definition-unitary-operator" title="Link to this heading">#</a></h4>
+<p>A linear operator <span class="math notranslate nohighlight">\(U\)</span> on a Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> is called <strong>unitary</strong> if it preserves the norm of every state vector:</p>
+<div class="math notranslate nohighlight">
+\[
+\|U|\psi\rangle\| = \||\psi\rangle\| \quad \text{for all } |\psi\rangle \in \mathcal{H}.
+\]</div>
+<p>Equivalently, <span class="math notranslate nohighlight">\(U\)</span> is unitary if it satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+U^\dagger U = U U^\dagger = \mathbb{I},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(U^\dagger\)</span> is the Hermitian adjoint of <span class="math notranslate nohighlight">\(U\)</span>, and <span class="math notranslate nohighlight">\(\mathbb{I}\)</span> is the identity operator.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="norm-conservation-implies-unitarity">
+<h3>🔹 Norm Conservation Implies Unitarity<a class="headerlink" href="#norm-conservation-implies-unitarity" title="Link to this heading">#</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(U\)</span> is a linear operator satisfying:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle U\psi | U\psi \rangle = \langle \psi | \psi \rangle \quad \text{for all } |\psi\rangle \in \mathcal{H}.
+\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \psi | U^\dagger U | \psi \rangle = \langle \psi | \psi \rangle.
+\]</div>
+<p>Subtracting both sides gives:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \psi | (U^\dagger U - \mathbb{I}) | \psi \rangle = 0 \quad \text{for all } |\psi\rangle.
+\]</div>
+<p>We now prove that this condition implies <span class="math notranslate nohighlight">\(U^\dagger U = \mathbb{I}\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="lemma-vanishing-quadratic-form-implies-zero-operator">
+<h3>🔹 Lemma: Vanishing Quadratic Form Implies Zero Operator<a class="headerlink" href="#lemma-vanishing-quadratic-form-implies-zero-operator" title="Link to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a Hermitian operator on a complex Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>. Suppose:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \psi | A | \psi \rangle = 0 \quad \text{for all } |\psi\rangle \in \mathcal{H}.
+\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[
+A = 0.
+\]</div>
+<section id="proof">
+<h4>🔸 Proof:<a class="headerlink" href="#proof" title="Link to this heading">#</a></h4>
+<p>We apply the <strong>polarization identity</strong> in a complex Hilbert space:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \phi | A | \psi \rangle = \frac{1}{4} \sum_{k=0}^{3} i^k \langle \phi + i^k \psi | A | \phi + i^k \psi \rangle.
+\]</div>
+<p>Since each quadratic term on the right-hand side vanishes by assumption, it follows that:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \phi | A | \psi \rangle = 0 \quad \text{for all } |\phi\rangle, |\psi\rangle.
+\]</div>
+<p>Hence, all matrix elements of <span class="math notranslate nohighlight">\(A\)</span> vanish and <span class="math notranslate nohighlight">\(A = 0\)</span>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h3>🔹 Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>Applying the lemma to <span class="math notranslate nohighlight">\(A = U^\dagger U - \mathbb{I}\)</span> (which is Hermitian), we conclude:</p>
+<div class="math notranslate nohighlight">
+\[
+U^\dagger U = \mathbb{I}.
+\]</div>
+<p>Similarly, norm preservation of <span class="math notranslate nohighlight">\(U^\dagger\)</span> implies <span class="math notranslate nohighlight">\(U U^\dagger = \mathbb{I}\)</span>. Therefore, <span class="math notranslate nohighlight">\(U\)</span> is <strong>unitary</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+U^\dagger = U^{-1}.
+\]</div>
+</section>
 </section>
 </section>
 
@@ -624,7 +721,19 @@ i\hbar \frac{d}{dt} |\psi(t)\rangle = \hat{H}(t) |\psi(t)\rangle
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-time-evolution-essence-and-physical-meaning">🔹 Unitary Time Evolution: Essence and Physical Meaning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equation-for-the-state-vector-schrodinger-equation">🔹 Differential equation for the state vector: Schrödinger equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-omega-t">🔹 Properties of <span class="math notranslate nohighlight">\(\Omega(t)\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-hamiltonian">🔹 Definition of the Hamiltonian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-hamiltonian">🔹 Definition of the Hamiltonian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-operators-and-norm-conservation">🔹 Unitary Operators and Norm Conservation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-unitary-operator">🔸 Definition (Unitary Operator):</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-conservation-implies-unitarity">🔹 Norm Conservation Implies Unitarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lemma-vanishing-quadratic-form-implies-zero-operator">🔹 Lemma: Vanishing Quadratic Form Implies Zero Operator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">🔸 Proof:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">🔹 Conclusion</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
