@@ -407,6 +407,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🔸 Two level system driven by a harmonic field</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-on-the-justification-of-the-rotating-wave-approximation-rwa">🔸 Remarks on the Justification of the Rotating Wave Approximation (RWA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-argument-riemannlebesgue-lemma">⚬ Mathematical Argument: Riemann–Lebesgue Lemma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-argument-energy-conservation-and-photon-processes">⚬ Physical Argument: Energy Conservation and Photon Processes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-time-evolution-operator-in-the-rwa-approximation">🔸 Derivation of the time-evolution operator in the RWA approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-of-pauli-matrices">Rotation of Pauli matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-to-the-time-dependent-rotation">Apply to the time-dependent rotation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-simplified-equation">Final simplified equation</a></li>
@@ -480,7 +486,79 @@ H_{\text{RWA}} = \frac{1}{2} \Delta \sigma_z + \frac{1}{2} V_0 e^{i \omega t} \s
 \end{aligned}
 \end{split}\]</div>
 <p>we express the Hamiltonian in terms of the raising and lowering operators.</p>
-<p>We may write:</p>
+<section id="remarks-on-the-justification-of-the-rotating-wave-approximation-rwa">
+<h2>🔸 Remarks on the Justification of the Rotating Wave Approximation (RWA)<a class="headerlink" href="#remarks-on-the-justification-of-the-rotating-wave-approximation-rwa" title="Link to this heading">#</a></h2>
+<p>We now provide two further, more or less heuristic, justifications for the rotating wave approximation (RWA). The first is based on a somewhat overstretched application of the <strong>Riemann–Lebesgue lemma</strong> from mathematical analysis.</p>
+<section id="mathematical-argument-riemannlebesgue-lemma">
+<h3>⚬ Mathematical Argument: Riemann–Lebesgue Lemma<a class="headerlink" href="#mathematical-argument-riemannlebesgue-lemma" title="Link to this heading">#</a></h3>
+<p><strong>Lemma (Riemann–Lebesgue):</strong>
+Let <span class="math notranslate nohighlight">\(f : \mathbb{R} \rightarrow \mathbb{C}\)</span> be a function such that <span class="math notranslate nohighlight">\(\int\_{-\infty}^{\infty} |f(t)| , dt &lt; \infty\)</span>. Then, for any fixed $a, b \in \mathbb{R}$, the following holds:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{\omega \to \infty} \int_a^b f(t) e^{i \omega t} \, dt = 0.
+\]</div>
+<p>Now, recall that the time evolution operator formally satisfies the differential equation</p>
+<div class="math notranslate nohighlight">
+\[
+i \hbar \frac{dU}{dt} = H(t) U(t),
+\]</div>
+<p>which can be written as an integral equation:</p>
+<div class="math notranslate nohighlight">
+\[
+U(t) = \mathbb{1} + \frac{1}{i \hbar} \int_0^t H(\tau) U(\tau) \, d\tau.
+\]</div>
+<p>In this form, the fast-oscillating terms in the Hamiltonian—such as those proportional to $e^{2i \omega t}$—will lead to integrals of the type:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^t e^{2i \omega \tau} U(\tau) \, d\tau,
+\]</div>
+<p>while slower-oscillating terms (like $e^{i \omega t}$) contribute as:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^t e^{i \omega \tau} U(\tau) \, d\tau.
+\]</div>
+<p>By invoking the Riemann–Lebesgue lemma, we expect that integrals involving rapidly oscillating factors (i.e., higher powers of <span class="math notranslate nohighlight">\(\omega\)</span>) will become small in the limit <span class="math notranslate nohighlight">\(\omega \to \infty\)</span>. Therefore, the RWA is based on the assumption that terms oscillating with <span class="math notranslate nohighlight">\(2\omega\)</span> can be neglected, as if <span class="math notranslate nohighlight">\(2\omega\)</span> were “effectively infinite.”</p>
+</section>
+<section id="physical-argument-energy-conservation-and-photon-processes">
+<h3>⚬ Physical Argument: Energy Conservation and Photon Processes<a class="headerlink" href="#physical-argument-energy-conservation-and-photon-processes" title="Link to this heading">#</a></h3>
+<p>A more physical and intuitive justification comes from analyzing the interaction term in the Hamiltonian. Suppose we couple a two-level system via a time-dependent term of the form:</p>
+<div class="math notranslate nohighlight">
+\[
+V(t) = V_0 \cos(\omega t) \cdot \sigma_x.
+\]</div>
+<p>Using the ladder operators defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_+ = \frac{1}{2}(\sigma_x + i \sigma_y), \quad \sigma_- = \frac{1}{2}(\sigma_x - i \sigma_y),
+\]</div>
+<p>we can rewrite the coupling term:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+V(t) &amp;= V_0 \cos(\omega t)(\sigma_+ + \sigma_-) \\
+&amp;= \frac{V_0}{2} \left(e^{i \omega t} + e^{-i \omega t} \right)(\sigma_+ + \sigma_-) \\
+&amp;= \frac{V_0}{2} \left( e^{i \omega t} \sigma_+ + e^{i \omega t} \sigma_- + e^{-i \omega t} \sigma_+ + e^{-i \omega t} \sigma_- \right).
+\end{aligned}
+\end{split}\]</div>
+<p>We can now interpret the exponential terms as follows:</p>
+<ul class="simple">
+<li><p>$e^{i \omega t} \sigma_+$: <strong>Photon absorption</strong> with system <strong>excitation</strong>.</p></li>
+<li><p>$e^{-i \omega t} \sigma_-$: <strong>Photon emission</strong> with system <strong>de-excitation</strong>.</p></li>
+</ul>
+<p>These are the <strong>energy-conserving terms</strong> and are retained in the RWA.</p>
+<p>However, the other two terms:</p>
+<ul class="simple">
+<li><p>$e^{i \omega t} \sigma_-$: System <strong>de-excites</strong> while <strong>absorbing</strong> a photon.</p></li>
+<li><p>$e^{-i \omega t} \sigma_+$: System <strong>excites</strong> while <strong>emitting</strong> a photon.</p></li>
+</ul>
+<p>These describe processes that <strong>violate energy conservation</strong> in the rotating frame and are typically referred to as <strong>non-resonant</strong> or <strong>virtual</strong> terms. Intuitively, we expect these to be negligible because they represent highly off-resonant processes. This provides a physically motivated basis for neglecting them in the RWA.</p>
+<p>Pictorially the processes can be represented by:
+<img src="rwa_figure.pdf" width="600"></p>
+</section>
+</section>
+<section id="derivation-of-the-time-evolution-operator-in-the-rwa-approximation">
+<h2>🔸 Derivation of the time-evolution operator in the RWA approximation<a class="headerlink" href="#derivation-of-the-time-evolution-operator-in-the-rwa-approximation" title="Link to this heading">#</a></h2>
+<p>The Hamiltonian of the system in the RWA approximation limit may be now written in the form:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -529,6 +607,7 @@ i \hbar e^{-\frac{i}{2} \omega t \sigma_z} \frac{d\tilde{U}}{dt}
 \frac{d\tilde{U}}{dt} = \left[ \frac{1}{2} \hbar(\omega_0 - \omega) \sigma_z + V_0 \, e^{\frac{i}{2} \omega t \sigma_z} \left( \cos(\omega t) \, \sigma_x - \sin(\omega t) \, \sigma_y \right) e^{-\frac{i}{2} \omega t \sigma_z} \right] \tilde{U}
 \]</div>
 <p>To simplify this, we need to compute the similarity transformations of the Pauli matrices under rotations generated by <span class="math notranslate nohighlight">\(\sigma_z\)</span>. Specifically:</p>
+</section>
 <section id="rotation-of-pauli-matrices">
 <h2>Rotation of Pauli matrices<a class="headerlink" href="#rotation-of-pauli-matrices" title="Link to this heading">#</a></h2>
 <p>We use the identity</p>
@@ -763,7 +842,7 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">coh</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Two-Level System Driven by Gaussian Coupling&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Two-Level System Driven by harmonic coupling&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -775,7 +854,7 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
   return np.asarray(x, float)
 </pre></div>
 </div>
-<img alt="_images/a15cbbf86bf3227dc773db98292a0a55e1e52a6a0a33b05e4d71c46fcb4c6d72.png" src="_images/a15cbbf86bf3227dc773db98292a0a55e1e52a6a0a33b05e4d71c46fcb4c6d72.png" />
+<img alt="_images/5bfcc6d0a58a518b908063acdfb91716a4ce7a784bf6b227c2d39acd4a01c9e0.png" src="_images/5bfcc6d0a58a518b908063acdfb91716a4ce7a784bf6b227c2d39acd4a01c9e0.png" />
 </div>
 </div>
 <section id="comparison-between-the-rwa-and-numerical-propagation-for-a-resonant-coupling">
@@ -895,6 +974,12 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🔸 Two level system driven by a harmonic field</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-on-the-justification-of-the-rotating-wave-approximation-rwa">🔸 Remarks on the Justification of the Rotating Wave Approximation (RWA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-argument-riemannlebesgue-lemma">⚬ Mathematical Argument: Riemann–Lebesgue Lemma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-argument-energy-conservation-and-photon-processes">⚬ Physical Argument: Energy Conservation and Photon Processes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-time-evolution-operator-in-the-rwa-approximation">🔸 Derivation of the time-evolution operator in the RWA approximation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-of-pauli-matrices">Rotation of Pauli matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-to-the-time-dependent-rotation">Apply to the time-dependent rotation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-simplified-equation">Final simplified equation</a></li>
