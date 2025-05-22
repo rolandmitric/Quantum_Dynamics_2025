@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'rotating_wave';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="🔹 Heisenberg Picture" href="heisenberg_picture.html" />
+    <link rel="next" title="🔹 Observables in Quantum Mechanics" href="heisenberg_picture.html" />
     <link rel="prev" title="🔸 Quantum Dynamics of a Two-Level System with Constant Coupling" href="qubit_dynamics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,7 +201,10 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🔸 Two level system driven by a harmonic field</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="heisenberg_picture.html">🔹 Heisenberg Picture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heisenberg_picture.html">🔹 Observables in Quantum Mechanics</a></li>
+
+
+
 
 
 
@@ -760,7 +763,7 @@ P_{\text{excited}}(t) =
         <span class="n">psi_t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">psi0</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nstep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="mi">2</span>
             <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getH</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
             <span class="n">U</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">H</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
             <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
@@ -798,8 +801,8 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Delta</span> <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1"># Energy difference</span>
-<span class="n">V0</span> <span class="o">=</span> <span class="mf">0.1</span>        <span class="c1"># Coupling strength</span>
-<span class="n">omega</span> <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1"># Frequency of a light-field</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mf">0.1</span>       <span class="c1"># Coupling strength</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># Frequency of a light-field</span>
 <span class="n">coupling</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="p">],</span>
                                <span class="p">[</span><span class="n">V0</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
 </pre></div>
@@ -854,7 +857,7 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
   return np.asarray(x, float)
 </pre></div>
 </div>
-<img alt="_images/5bfcc6d0a58a518b908063acdfb91716a4ce7a784bf6b227c2d39acd4a01c9e0.png" src="_images/5bfcc6d0a58a518b908063acdfb91716a4ce7a784bf6b227c2d39acd4a01c9e0.png" />
+<img alt="_images/2c2f7ba1e1a4aa2f28ecd5e5fb49775543baa6aad507bc0b89a473ae71ab641e.png" src="_images/2c2f7ba1e1a4aa2f28ecd5e5fb49775543baa6aad507bc0b89a473ae71ab641e.png" />
 </div>
 </div>
 <section id="comparison-between-the-rwa-and-numerical-propagation-for-a-resonant-coupling">
@@ -867,10 +870,10 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">expm</span>
 
 <span class="n">Δ</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># Energy splitting</span>
-<span class="n">V</span> <span class="o">=</span> <span class="mf">.3</span>    <span class="c1"># Driving strength</span>
-<span class="n">ω</span> <span class="o">=</span> <span class="mf">1.0</span>      <span class="c1"># Driving frequency (resonant)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mf">.3</span>      <span class="c1"># Driving strength</span>
+<span class="n">ω</span> <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1"># Driving frequency (resonant)</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">t_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">t_max</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
 
 <span class="c1"># Initial state: ground state |g&gt; = [1, 0]</span>
@@ -879,13 +882,11 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 
 <span class="c1"># Time evolution under full Hamiltonian</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">times</span><span class="p">:</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="n">Δ</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">+</span> <span class="n">V</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ω</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="n">Δ</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">+</span> <span class="n">V</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ω</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
     <span class="n">U</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">H</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
     <span class="n">ψ</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">ψ</span>
     <span class="n">ψs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Excited state population</span>
 
-<span class="c1"># RWA valid for resonance: ω ≈ Δ</span>
-<span class="c1"># Analytic RWA prediction: Rabi flopping with freq V/2</span>
 <span class="n">P_rwa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">V</span> <span class="o">*</span> <span class="n">times</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
 
@@ -897,13 +898,13 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Numerical vs RWA&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="c1">#plt.xlim(900,1000)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/41719f1ec14f662ceefd9f8076cf73218c87fa32aa0e6c5e6f5a8095098d4398.png" src="_images/41719f1ec14f662ceefd9f8076cf73218c87fa32aa0e6c5e6f5a8095098d4398.png" />
+<img alt="_images/763882e44971b79ff46704f8f58672b9aea6e7172238d35d435939d2ecaad284.png" src="_images/763882e44971b79ff46704f8f58672b9aea6e7172238d35d435939d2ecaad284.png" />
 </div>
 </div>
 </section>
@@ -953,7 +954,7 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🔹 Heisenberg Picture</p>
+        <p class="prev-next-title">🔹 Observables in Quantum Mechanics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
