@@ -461,27 +461,27 @@ document.write(`
 <p>In the following section we postulate how observables are mathematically represented and how the outcomes of measurements can be extracted given a quantum state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.</p>
 <section id="axiom-observable">
 <h2>Axiom (Observable):<a class="headerlink" href="#axiom-observable" title="Link to this heading">#</a></h2>
-<p>An <strong>observable</strong> is represented by a <strong>Hermitian operator</strong> $A$ on the Hilbert space $\mathcal{H}$:</p>
+<p>An <strong>observable</strong> is represented by a <strong>Hermitian operator</strong> <span class="math notranslate nohighlight">\(A\)</span> on the Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
  A = A^\dagger,
 \]</div>
-<p>where $A^\dagger$ is the adjoint of $A$.</p>
+<p>where <span class="math notranslate nohighlight">\(A^\dagger\)</span> is the adjoint of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>The motivation for this postulate lies in the mathematical properties of Hermitian operators: they always have real eigenvalues (ensuring real-valued measurement results) and a complete set of orthogonal eigenvectors (allowing decomposition of any state). These features are mathematically guaranteed by the <strong>spectral theorem</strong>, which we now state and prove in the finite-dimensional case.</p>
 </section>
 <section id="theorem-spectral-theorem">
 <h2>Theorem (Spectral Theorem):<a class="headerlink" href="#theorem-spectral-theorem" title="Link to this heading">#</a></h2>
-<p>Let $V$ be a finite-dimensional complex Hilbert space, and let $A: V \to V$ be a Hermitian operator. Then:</p>
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a finite-dimensional complex Hilbert space, and let <span class="math notranslate nohighlight">\(A: V \to V\)</span> be a Hermitian operator. Then:</p>
 <ol class="arabic simple">
-<li><p>All eigenvalues of $A$ are real.</p></li>
-<li><p>There exists an <strong>orthonormal basis</strong> of $V$ consisting of eigenvectors of $A$.</p></li>
-<li><p>In this basis, $A$ is represented by a diagonal matrix with real entries.</p></li>
+<li><p>All eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are real.</p></li>
+<li><p>There exists an <strong>orthonormal basis</strong> of <span class="math notranslate nohighlight">\(V\)</span> consisting of eigenvectors of <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p>In this basis, <span class="math notranslate nohighlight">\(A\)</span> is represented by a diagonal matrix with real entries.</p></li>
 </ol>
 </section>
 <hr class="docutils" />
 <section id="proof">
 <h2>🔸 Proof:<a class="headerlink" href="#proof" title="Link to this heading">#</a></h2>
-<p>We first prove, that if an eigevector exists the corresponding eigenvalue is real. Let $\lambda \in \mathbb{C}$ be an eigenvalue of $A$, and let $|v\rangle \neq 0$ be the corresponding eigenvector:</p>
+<p>We first prove, that if an eigevector exists the corresponding eigenvalue is real. Let <span class="math notranslate nohighlight">\(\lambda \in \mathbb{C}\)</span> be an eigenvalue of <span class="math notranslate nohighlight">\(A\)</span>, and let <span class="math notranslate nohighlight">\(|v\rangle \neq 0\)</span> be the corresponding eigenvector:</p>
 <div class="math notranslate nohighlight">
 \[
 A|v\rangle = \lambda |v\rangle.
