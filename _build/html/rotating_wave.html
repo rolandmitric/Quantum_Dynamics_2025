@@ -542,14 +542,14 @@ V(t) &amp;= V_0 \cos(\omega t)(\sigma_+ + \sigma_-) \\
 \end{split}\]</div>
 <p>We can now interpret the exponential terms as follows:</p>
 <ul class="simple">
-<li><p>$e^{i \omega t} \sigma_+$: <strong>Photon absorption</strong> with system <strong>excitation</strong>.</p></li>
-<li><p>$e^{-i \omega t} \sigma_-$: <strong>Photon emission</strong> with system <strong>de-excitation</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{i \omega t} \sigma _{+}\)</span>: <strong>Photon absorption</strong> with system <strong>excitation</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{-i \omega t} \sigma _{-}\)</span>: <strong>Photon emission</strong> with system <strong>de-excitation</strong>.</p></li>
 </ul>
 <p>These are the <strong>energy-conserving terms</strong> and are retained in the RWA.</p>
 <p>However, the other two terms:</p>
 <ul class="simple">
-<li><p>$e^{i \omega t} \sigma_-$: System <strong>de-excites</strong> while <strong>absorbing</strong> a photon.</p></li>
-<li><p>$e^{-i \omega t} \sigma_+$: System <strong>excites</strong> while <strong>emitting</strong> a photon.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{i \omega t} \sigma _-\)</span>: System <strong>de-excites</strong> while <strong>absorbing</strong> a photon.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{-i \omega t} \sigma _+\)</span>: System <strong>excites</strong> while <strong>emitting</strong> a photon.</p></li>
 </ul>
 <p>These describe processes that <strong>violate energy conservation</strong> in the rotating frame and are typically referred to as <strong>non-resonant</strong> or <strong>virtual</strong> terms. Intuitively, we expect these to be negligible because they represent highly off-resonant processes. This provides a physically motivated basis for neglecting them in the RWA.</p>
 <p>Pictorially the processes can be represented by:
@@ -731,7 +731,7 @@ P_{\text{excited}}(t) =
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="the-multilevel-class-implementation">
 <h1>The <code class="docutils literal notranslate"><span class="pre">MultiLevel</span></code> Class Implementation<a class="headerlink" href="#the-multilevel-class-implementation" title="Link to this heading">#</a></h1>
-<p>We implement a simple Python class to define and propagate quantum states in an N-level system.</p>
+<p>We implement a simple Python class to define and numerically propagate quantum states in an N-level system. This will be applied to numerically simulate the dynamics of the harmonically driven two-level system <strong>without</strong> the rotating wave approximation first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -763,6 +763,65 @@ P_{\text{excited}}(t) =
             <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
             <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getH</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
             <span class="n">U</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">H</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+            <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">psi_t</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">expm</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MultiLevel</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">hbar</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">=</span> <span class="n">ndim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ndim</span><span class="p">,</span> <span class="n">ndim</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ndim</span><span class="p">,</span> <span class="n">ndim</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">hbar</span> <span class="o">=</span> <span class="n">hbar</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_hamiltonian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diagonal</span><span class="p">):</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">diagonal</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_coupling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">V_func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">V_func</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">getH</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">propagate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psi0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nstep</span><span class="p">):</span>
+        <span class="c1"># First-order (piecewise constant) propagator</span>
+        <span class="n">psi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">psi0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+        <span class="n">psi_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nstep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+        <span class="n">psi_t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">psi0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nstep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getH</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="n">U</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">H</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">hbar</span><span class="p">)</span>
+            <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">psi_t</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">propagate_magnus2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psi0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nstep</span><span class="p">):</span>
+        <span class="c1"># Second-order Magnus propagator</span>
+        <span class="n">psi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">psi0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+        <span class="n">psi_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nstep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+        <span class="n">psi_t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">psi0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nstep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+            <span class="n">H1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getH</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="n">H2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getH</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="p">)</span>
+
+            <span class="n">H_avg</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">H1</span> <span class="o">+</span> <span class="n">H2</span><span class="p">)</span>
+            <span class="n">comm</span> <span class="o">=</span> <span class="n">H2</span> <span class="o">@</span> <span class="n">H1</span> <span class="o">-</span> <span class="n">H1</span> <span class="o">@</span> <span class="n">H2</span>  <span class="c1"># [H2, H1]</span>
+
+            <span class="n">Omega</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">H_avg</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">hbar</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">dt</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">hbar</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">comm</span>
+            <span class="n">U</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="n">Omega</span><span class="p">)</span>
+
             <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">psi_t</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="n">psi_t</span>
@@ -820,7 +879,7 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nstep</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">psi_t</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">propagate</span><span class="p">(</span><span class="n">psi0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nstep</span><span class="p">)</span>
+<span class="n">psi_t</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">propagate_magnus2</span><span class="p">(</span><span class="n">psi0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nstep</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -848,13 +907,13 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/rolandmitric/anaconda3/lib/python3.11/site-packages/matplotlib/cbook.py:1699: ComplexWarning: Casting complex values to real discards the imaginary part
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/rolandmitric/anaconda3/lib/python3.10/site-packages/matplotlib/cbook.py:1762: ComplexWarning: Casting complex values to real discards the imaginary part
   return math.isfinite(val)
-/Users/rolandmitric/anaconda3/lib/python3.11/site-packages/matplotlib/cbook.py:1345: ComplexWarning: Casting complex values to real discards the imaginary part
+/Users/rolandmitric/anaconda3/lib/python3.10/site-packages/matplotlib/cbook.py:1398: ComplexWarning: Casting complex values to real discards the imaginary part
   return np.asarray(x, float)
 </pre></div>
 </div>
-<img alt="_images/622280464e0a2e3e22634d7c21d04ed4739db427f73173a539be0d4c34c68186.png" src="_images/622280464e0a2e3e22634d7c21d04ed4739db427f73173a539be0d4c34c68186.png" />
+<img alt="_images/93b66cb201e24b3b1eb207d4c1f350e56a1b3dc31f4e39cb3cb960f0c7153973.png" src="_images/93b66cb201e24b3b1eb207d4c1f350e56a1b3dc31f4e39cb3cb960f0c7153973.png" />
 </div>
 </div>
 <section id="comparison-between-the-rwa-and-numerical-propagation-for-a-resonant-coupling">
@@ -903,7 +962,7 @@ P_{\text{exc}}^{\text{RWA}}(t) = \frac{4 V_0^2}{\hbar^2 \Omega_R^2} \sin^2\left(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0777778e59df62cac88caa185cffc403de95ec8fb63b6318260f96056bda3af1.png" src="_images/0777778e59df62cac88caa185cffc403de95ec8fb63b6318260f96056bda3af1.png" />
+<img alt="_images/41719f1ec14f662ceefd9f8076cf73218c87fa32aa0e6c5e6f5a8095098d4398.png" src="_images/41719f1ec14f662ceefd9f8076cf73218c87fa32aa0e6c5e6f5a8095098d4398.png" />
 </div>
 </div>
 </section>
