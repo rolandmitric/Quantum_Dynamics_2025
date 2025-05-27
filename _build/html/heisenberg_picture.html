@@ -622,12 +622,12 @@ p(k) = \langle \psi | P_k | \psi \rangle = \| P_k |\psi\rangle \|^2.
 </section>
 <section id="heisenberg-picture">
 <h1>🔹 Heisenberg Picture<a class="headerlink" href="#heisenberg-picture" title="Link to this heading">#</a></h1>
-<p>We have seen that the quantum evolution of a system is described by a mapping from the real time axis into the Hilbert space $\mathcal{H}$, such that each instant of time is associated with a state vector $|\psi(t)\rangle \in \mathcal{H}$. It is important to emphasize that the state vectors themselves do not <em>contain</em> time; instead, time appears as a parameter that labels a continuous family of states visited during the evolution:</p>
+<p>We have seen that the quantum evolution of a system is described by a mapping from the real time axis into the Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>, such that each instant of time is associated with a state vector <span class="math notranslate nohighlight">\(|\psi(t)\rangle \in \mathcal{H}\)</span>. It is important to emphasize that the state vectors themselves do not <em>contain</em> time; instead, time appears as a parameter that labels a continuous family of states visited during the evolution:</p>
 <div class="math notranslate nohighlight">
 \[
 t \mapsto |\psi(t)\rangle \in \mathcal{H}
 \]</div>
-<p>This mapping defines a trajectory through Hilbert space, and the unitary time-evolution postulate guarantees that this trajectory is uniquely determined by the initial state $|\psi(t_0)\rangle$. Each state along the trajectory can be generated from the initial state by applying a unitary time-evolution operator:</p>
+<p>This mapping defines a trajectory through Hilbert space, and the unitary time-evolution postulate guarantees that this trajectory is uniquely determined by the initial state <span class="math notranslate nohighlight">\(|\psi(t\_0)\rangle\)</span>. Each state along the trajectory can be generated from the initial state by applying a unitary time-evolution operator:</p>
 <div class="math notranslate nohighlight">
 \[
 |\psi(t)\rangle = U(t, t_0)\,|\psi(t_0)\rangle
@@ -639,13 +639,13 @@ t \mapsto |\psi(t)\rangle \in \mathcal{H}
 \]</div>
 <p>is fully determined by the unitary dynamics.</p>
 <p>Now we ask: <strong>How do expectation values of quantum observables depend on time?</strong></p>
-<p>Given a time-evolved state $|\psi(t)\rangle$, the expectation value of an observable $A$ at time $t$ is given by:</p>
+<p>Given a time-evolved state <span class="math notranslate nohighlight">\(|\psi(t)\rangle\)</span>, the expectation value of an observable <span class="math notranslate nohighlight">\(A\$ at time \$t\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
 \langle A(t)\rangle = \langle \psi(t) | A | \psi(t) \rangle
 \]</div>
-<p>Assuming the initial state $|\psi(t_0)\rangle$ is normalized, unitarity ensures that $|\psi(t)\rangle$ remains normalized for all times.</p>
-<p>Using the expression $|\psi(t)\rangle = U(t, t_0) |\psi(t_0)\rangle$, we can write the dual vector as:</p>
+<p>Assuming the initial state <span class="math notranslate nohighlight">\(|\psi(t\_0)\rangle\)</span> is normalized, unitarity ensures that <span class="math notranslate nohighlight">\(|\psi(t)\rangle\)</span> remains normalized for all times.</p>
+<p>Using the expression <span class="math notranslate nohighlight">\(|\psi(t)\rangle = U(t, t\_0) |\psi(t\_0)\rangle\)</span>, we can write the dual vector as:</p>
 <div class="math notranslate nohighlight">
 \[
 \langle \psi(t)| = \langle \psi(t_0) | U^\dagger(t, t_0)
@@ -655,7 +655,7 @@ t \mapsto |\psi(t)\rangle \in \mathcal{H}
 \[
 \langle A(t)\rangle = \langle \psi(t_0) | U^\dagger(t, t_0)\, A\, U(t, t_0) | \psi(t_0) \rangle
 \]</div>
-<p>So far, we have described quantum dynamics in the <strong>Schrödinger picture</strong>, where the <em>state vectors</em> evolve in time while the <em>observables</em> (operators like $A$) remain time-independent elements of the operator algebra $\mathscr{L}(\mathcal{H})$.</p>
+<p>So far, we have described quantum dynamics in the <strong>Schrödinger picture</strong>, where the <em>state vectors</em> evolve in time while the <em>observables</em> (operators like <span class="math notranslate nohighlight">\(A\)</span>) remain time-independent elements of the operator algebra <span class="math notranslate nohighlight">\(\mathscr{L}(\mathcal{H})\)</span>.</p>
 <p>The form of the expectation value above motivates a change in perspective. Instead of viewing the states as evolving, we can <strong>transfer the time dependence to the operators</strong> themselves.</p>
 <p>Since the state of the system at any time $t$ is uniquely determined by the initial state $|\psi(t_0)\rangle$, this initial state provides a complete description of the system’s dynamics. The expression for the expectation value $\langle A(t) \rangle$ allows us to “shift” the time dependence from the state vectors to the operators themselves:</p>
 <div class="math notranslate nohighlight">
