@@ -210,6 +210,8 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">A Historic View on the Heisenberg Formulation of Quantum Mechanics</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="momentum_operator.html">Momentum operator</a></li>
 
 
@@ -410,8 +412,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-heisenberg-recipe-for-solving-quantum-problems">The Heisenberg Recipe for Solving Quantum Problems</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Historic View on the Heisenberg Formulation of Quantum Mechanics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heisenbergs-quantum-condition">Heisenberg’s Quantum Condition</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-harmonic-oscillator-ala-heisenberg-helgoland-method">Solving the harmonic oscillator ala Heisenberg (“Helgoland” method)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remark">Concluding remark</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -424,132 +432,300 @@ document.write(`
                   
   <section id="a-historic-view-on-the-heisenberg-formulation-of-quantum-mechanics">
 <h1>A Historic View on the Heisenberg Formulation of Quantum Mechanics<a class="headerlink" href="#a-historic-view-on-the-heisenberg-formulation-of-quantum-mechanics" title="Link to this heading">#</a></h1>
-<p>When we teach quantum mechanics today, we usually begin with Schrödinger’s formulation, which is built on the wavefunction and the corresponding “wave equation.” Because we are intuitively familiar with the concept of waves, we tend to accept Schrödinger’s “wave mechanics” as a natural starting point. This is one reason why physicists and chemists quickly embraced Schrödinger’s approach to quantum theory.</p>
-<p>It is often overlooked, however, that the <strong>first</strong> formulation of quantum mechanics was not Schrödinger’s, but rather <strong>Heisenberg’s</strong>, and it emerged from a very different—and from today’s point of view, much more abstract—starting point. Historically, Heisenberg’s approach was the culmination of efforts by many principally led by Niels Bohr and his school to explain atomic phenomena, particularly atomic spectra.</p>
-<p>Bohr introduced the concept of <strong>stationary states</strong> and postulated without a good physical reason that systems in such states do not radiate. Radiation occurs only during <strong>transitions</strong> between these states, labeled by quantum numbers <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, and the frequency of the emitted or absorbed radiation is given by the <strong>Bohr frequency condition</strong>:</p>
+<p>When we teach quantum mechanics today, we usually begin with Schrödinger’s formulation, which is built on the wavefunction and the corresponding “wave equation.” Because we are intuitively familiar with the concept of waves, we tend to accept Schrödinger’s <em>wave mechanics</em> as a natural starting point. This is one reason why physicists and chemists quickly embraced Schrödinger’s approach to quantum theory.</p>
+<p>It is often overlooked, however, that the <strong>first</strong> formulation of quantum mechanics was not Schrödinger’s but rather <strong>Heisenberg’s</strong>, and it emerged from a very different—and from today’s point of view, much more abstract—starting point.
+Now, since in the year 2025 quantum mechanics celebrates its <strong>100th</strong> anniversary, I find it appropriate to revisit the ideas and chain of thought that led Heisenberg to the formulation of his matrix mechanics in the epoch breaking paper entitled “Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen” that was submitted for publication in the <em>“Zeitschrift für Physik”</em> am 29.07.2025.</p>
+<p>Historically, Heisenberg’s approach was the culmination of efforts by many, principally led by Niels Bohr and his school, to explain atomic phenomena, particularly atomic spectra. Heisenberg’s own account of the development of quantum mechanics is given in his beautiful book <em>Das Teil und das Ganze</em>. Apparently, he had a key idea during a vacation on Helgoland Island in <strong>June 1925</strong>.</p>
+<p>Heisenberg followed a path initiated by Niels Bohr and his academic adviser Arnold Sommerfeld that led to the formulation of what is nowadays called the <strong>old quantum theory</strong>.</p>
+<p>Bohr introduced the concept of <strong>stationary states</strong> and postulated—without a proper physical reason—that systems in such states do not radiate light (as they should according to Maxwell’s electrodynamics). He postulated that radiation occurs only during <strong>transitions</strong> between these states, labeled by <strong>two</strong> quantum numbers, <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, and that the frequency of the emitted or absorbed radiation is given by the <strong>Bohr frequency condition</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-\omega_{mn} = \frac{E_m - E_n}{\hbar}.
+\omega_{mn} \;=\; \frac{E_m - E_n}{\hbar}.
 \]</div>
-<p>Following Bohr’s proposal, experimentalists around the world began to study atomic spectra in great detail. The results of these efforts were tables of transition frequencies <span class="math notranslate nohighlight">\(\omega_{mn}\)</span> and corresponding intensities, which we can denote by <span class="math notranslate nohighlight">\(P_{mn}\)</span>.</p>
-<p>At the time, theoreticians attempted to explain these findings by combining classical mechanics with quantization rules (such as the Sommerfeld-Wilson conditions), which selected certain classical orbits as “allowed.” While this approach successfully reproduced energy levels of some simple systems, it ultimately failed to explain the <strong>structure</strong> of atomic spectra and in particular the intensities of various spectral lines. Here is where young Werner Heisenberg comes into play…</p>
-<p>Heisenberg, a deep thinker with a philosophical inclination, arrived at a radical conclusion: on the atomic scale, a classical trajectory (for example, of an electron in a hydrogen atom) is <strong>not observable</strong>, since any attempt to measure it would disturb the system. Therefore, a theory of atomic phenomena should be built <strong>only on observable quantities</strong>.</p>
-<p>And what were the observables? By the 1920s, the scientific community was already immersed in vast tables of transition frequencies <span class="math notranslate nohighlight">\(\omega_{mn}\)</span> and their intensities <span class="math notranslate nohighlight">\(P_{mn}\)</span>. Inspired by this, Heisenberg proposed to <strong>replace classical quantities</strong> like the trajectory <span class="math notranslate nohighlight">\(x(t)\)</span> by a <strong>table of numbers</strong>, each entry being associated with a pair of Bohr’s stationary states and describing a transition between two stationary states:</p>
+<p>These ideas were introduced in Bohr’s landmark paper <em>“On the Constitution of Atoms and Molecules,”</em> published in <em>Phil. Mag.</em> Ser. 6, Vol. 26, No. 151 (July 1913), and are now considered to be one of the cornerstones in the development of quantum physics.</p>
+<p>Following Bohr’s proposal, experimentalists around the world began to study atomic spectra in great detail. The results of these efforts were essentially tables of transition frequencies <span class="math notranslate nohighlight">\(\omega_{mn}\)</span> and corresponding intensities, which we can denote by <span class="math notranslate nohighlight">\(P_{mn}\)</span>. Heisenberg’s academic teacher Arnold Sommerfeld published his monumental book <em>Atombau und Spektrallinien</em> around 1919; it became a bible of modern physics, popularizing new ideas and theories, and the young Heisenberg—one of its proofreaders—was surely influenced by it.</p>
+<p>Motivated by Bohr’s work, theoreticians attempted to explain these findings by combining classical mechanics with quantization rules (such as the Sommerfeld–Wilson conditions), which selected certain classical orbits as “allowed.”
+These quantization rules chose a countable (discrete) set of classical orbits from the continuum of uncountably many possible ones. Thus, in such a theory the system is represented by a set <span class="math notranslate nohighlight">\(\{x_n \mid n = 0,1,2,\dots\}\)</span> of stationary orbits.</p>
+<p>While this approach successfully reproduced energy levels of some simple systems, it ultimately failed to fully explain the <strong>structure</strong> of atomic spectra and, in particular, could not account for the intensities of the various spectral lines.</p>
+<p>Here is where young Werner Heisenberg comes into play. Heisenberg, a deep thinker with a philosophical inclination, arrived at a radical conclusion by considering various <em>Gedanken</em> experiments devised to measure the stationary orbits. He concluded that on the atomic scale a classical trajectory (for example, of an electron in a hydrogen atom) is fundamentally <strong>not observable</strong>, since any attempt to measure it would disturb the system so much that no continuous trajectory could be reconstructed.</p>
+<p>This led him to the philosophically radical move of abandoning the concept of stationary orbits and postulating that a theory of atomic phenomena should be built <strong>only on observable quantities</strong>.</p>
+<p>And what were the observables at that time? By the 1920s, the scientific community was already immersed in vast tables of transition frequencies <span class="math notranslate nohighlight">\(\omega_{mn}\)</span> and their intensities <span class="math notranslate nohighlight">\(P_{mn}\)</span>. All these quantities were labeled by <strong>two</strong> numbers representing an initial and final state. Inspired by this, Heisenberg proposed to <strong>replace the set of discrete classical orbits</strong> <span class="math notranslate nohighlight">\(x_n(t)\)</span> (labeled by a single index) with functions that depend on time and are labeled by <strong>two</strong> indices associated with a pair of Bohr stationary states:</p>
 <div class="math notranslate nohighlight">
 \[
-x(t) \longrightarrow x_{mn} e^{-i\omega_{mn} t}.
+x_n(t) \;\longrightarrow\; x_{mn}(t) \;=\; x_{mn}\, e^{-i\omega_{mn} t}.
 \]</div>
-<p>Each entry <span class="math notranslate nohighlight">\(x_{mn}\)</span> was assumed to oscillate with the frequency of the corresponding transition. Since absorption and stimulated emission rates were known to be symmetric, Heisenberg further postulated:</p>
+<p>Effectively, he proposes to replace discrete orbits by tables of numbers which we now of course all know as matrices !
+Each entry <span class="math notranslate nohighlight">\(x_{mn}\)</span> was assumed to oscillate with the frequency of the corresponding observable transition <span class="math notranslate nohighlight">\(\omega_{mn}\)</span>. Heisenberg further postulated that the tables should have a specific symmetry that we nowadays recognize as hermiticity:</p>
 <div class="math notranslate nohighlight">
 \[
-x_{nm} = x_{mn}^* e^{i \omega_{mn} t},
+x_{nm} \;=\; x_{mn}^{*}.
 \]</div>
-<p>implying a particular symmetry between elements.</p>
-<p>He reasoned that the same should hold for the momentum:</p>
+<p>In the original paper there is no explicit motivation given for this assumption. It was probably inspired by the reality of the Fourier coefficients in the expansion of a classical orbit and by the empirical fact—known from Einstein’s work on the <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> coefficients—that the rates of light absorption and stimulated emission are identical. Since the rates (intensities) are related to <span class="math notranslate nohighlight">\(|x_{mn}|^{2}\)</span>, hermiticity is natural. He further reasoned that the same type of assignment of a two-index set of quantities should hold for the momentum or any other physical quantity. A further key assumption was that <strong>all</strong> matrix elements should oscillate with precisely the <strong>same</strong> set of observable frequencies:</p>
 <div class="math notranslate nohighlight">
 \[
-p(t) \longrightarrow p_{mn} e^{-i\omega_{mn} t}.
+p_{mn}(t) \;\longrightarrow\; p_{mn}\, e^{-i\omega_{mn} t}.
 \]</div>
-<p>At this point, Heisenberg asked how to define derived quantities like <span class="math notranslate nohighlight">\(x^2\)</span>, <span class="math notranslate nohighlight">\(p^2\)</span> that are needed to construct the energy (the Hamiltonian) of the system. The first naive element-wise squaring, such as</p>
+<p>At this point, Heisenberg asked another fundamental question related to how one should calculate derived quantities like <span class="math notranslate nohighlight">\(x^{2}\)</span> or <span class="math notranslate nohighlight">\(p^{2}\)</span>, needed to construct the energy (the Hamiltonian) of the system. A naïve element-wise squaring, such as</p>
 <div class="math notranslate nohighlight">
 \[
-(x^2)_{mn} = x_{mn}^2 e^{-2i\omega_{mn} t},
+(x^{2})_{mn} \;=\; x_{mn}^{2}\, e^{-2i\omega_{mn} t},
 \]</div>
-<p>fails in this respect, since it would result in transition frequencies that do not match observations. Instead, Heisenberg noted that the <strong>Ritz combination principle</strong>, known from very early days of the atomic spectroscopy, dictates that transition frequencies combine as:</p>
+<p>would generate new frequencies not present in the observed spectra. To fix this, Heisenberg relied on the <strong>Ritz combination principle</strong>,</p>
 <div class="math notranslate nohighlight">
 \[
-\omega_{mn} = \omega_{ml} + \omega_{ln}.
+\omega_{mn} \;=\; \omega_{ml} + \omega_{ln},
 \]</div>
-<p>This motivated the definition of the multiplication for <span class="math notranslate nohighlight">\(x\)</span> as:</p>
+<p>and proposed the following rule, which automatically preserves a single set of transition frequencies:</p>
 <div class="math notranslate nohighlight">
 \[
-(x^2)_{mn} e^{-i\omega_{mn} t} = \sum_l x_{ml} e^{-i\omega_{ml} t} \cdot x_{ln} e^{-i\omega_{ln} t},
+(x^{2})_{mn}\, e^{-i\omega_{mn} t} \;=\; \sum_{l} x_{ml}\, e^{-i\omega_{ml} t}\; x_{ln}\, e^{-i\omega_{ln} t},
 \]</div>
-<p>or simply:</p>
+<p>or simply,</p>
 <div class="math notranslate nohighlight">
 \[
-(x^2)_{mn} = \sum_l x_{ml} x_{ln}.
+(x^{2})_{mn} \;=\; \sum_{l} x_{ml}\, x_{ln}.
 \]</div>
-<p>We now immediately recognize this as the rule for <strong>matrix multiplication</strong> since we are trained to do so. However, in Heisenberg’s times this was an exotic mathematics now well known to all physicists so Heisenberg did not immediately recognize the structure behind his multiplication rules.</p>
-<p>The same holds for momentum, where one starts from the classical identity:</p>
+<p>Interestingly, at the time he was developing quantum mechanics, Heisenberg did not know about matrices and matrix algebra—he discovered all of it by himself because the physics naturally led him to matrix rules!</p>
+<p>The same structure holds for momentum, with</p>
 <div class="math notranslate nohighlight">
 \[
-p = m\dot{x} \quad \Rightarrow \quad p_{mn} = m\dot{x}_{mn} = -im\omega_{mn} x_{mn}.
+p = m\dot{x}\quad\Rightarrow\quad p_{mn} = -i m \omega_{mn}\, x_{mn}.
 \]</div>
-<p>From here, the Hamiltonian of the <strong>harmonic oscillator</strong> is introduced in its classical form:</p>
+<p>Since energy in classical mechanics is a conserved quantity, a time-independent representation for energy requires that the Hamiltonian matrix</p>
 <div class="math notranslate nohighlight">
 \[
-H = \frac{p^2}{2m} + \frac{1}{2} m \omega^2 x^2,
+H_{mn}(t) \;=\; H_{mn}\, e^{-i\omega_{mn} t}
 \]</div>
-<p>and a corresponding “matrix” Hamiltonian is defined:</p>
-<div class="math notranslate nohighlight">
-\[
-H_{mn} e^{-i\omega_{mn} t},
-\]</div>
-<p>Since the Hamiltonian in the classical mechanics is a constant of motion, Heisenberg went on to postulate that his “table” extension should also be time-independent. However, this will be only the case if the <span class="math notranslate nohighlight">\(H\)</span> is diagonal:</p>
+<p>be time-<strong>independent</strong>. This is obviously achieved by requiring that all off-diagonal elements vanish (the diagonal ones oscillate with <span class="math notranslate nohighlight">\(\omega_{nn} = 0\)</span>). Hence,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-H_{mn} = 
+H_{mn} \;=\;
 \begin{cases}
-0 &amp; m \neq n, \\
-E_n &amp; m = n,
+0 &amp; m \neq n,\\[6pt]
+E_{n} &amp; m = n.
 \end{cases}
 \end{split}\]</div>
-<p>Using the above one can can now construct the Hamiltonian for the harmonic oscillator, which will have the general form as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-H_{mn} &amp;= \frac{1}{2m} \sum_l p_{ml} p_{ln} + \frac{1}{2} m \omega^2 \sum_l x_{ml} x_{ln} \\
-&amp;= \frac{1}{2} m \sum_l x_{ml} x_{ln} \left( \omega^2 - \omega_{ml} \omega_{ln} \right).
-\end{aligned}
-\end{split}\]</div>
-<p>To find a set of <span class="math notranslate nohighlight">\(x_{mn}\)</span> such that this Hamiltonian is diagonal, Heisenberg was let to the following structure for <span class="math notranslate nohighlight">\(x\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-x_{n,n+1} &amp;= \sqrt{\frac{(n+1)\hbar}{2m\omega}}, \\
-x_{n+1,n} &amp;= \sqrt{\frac{(n+1)\hbar}{2m\omega}},
-\end{aligned}
-\end{split}\]</div>
-<p>with all other elements vanishing. Inserting these into the expression for <span class="math notranslate nohighlight">\(H\)</span>, one readily obtains the <strong>quantized energy levels</strong> of the harmonic oscillator:</p>
+<p>With these assumptions, Heisenberg redefined the kinematic quantities to be used in the new quantum theory. Other than that, his goal was to keep as much of the structure of classical mechanics as possible. Thus the new quantities were required to obey equations of motion analogous to the classical ones:</p>
 <div class="math notranslate nohighlight">
 \[
-H_{nn} = \left(n + \frac{1}{2}\right)\hbar \omega.
+m\,\ddot{X}_{mn} \;=\; F(X_{mn}),
 \]</div>
-<p>From the same matrix <span class="math notranslate nohighlight">\(X\)</span>, one can now construct <span class="math notranslate nohighlight">\(P\)</span> using:</p>
+<p>and classical relations such as</p>
 <div class="math notranslate nohighlight">
 \[
-p_{n,n+1} = -i m \omega x_{n,n+1} = -i \sqrt{\frac{(n+1)\hbar m \omega}{2}}.
+P_{mn} \;=\; m\,\dot{X}_{mn}.
 \]</div>
-<p>After Heisenberg published these results in paper entitled</p>
-<p><em>Zeitschrift für Physik</em>, 33, 879 (1925), his mentor Max Born recognized that Heisenberg’s “tables” were in fact <strong>matrices</strong>, and that the multiplication rule was matrix multiplication. From the explicit forms of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(P\)</span>, Born calculated their commutator and obtained:</p>
-<div class="math notranslate nohighlight">
-\[
-[X, P] = i\hbar,
-\]</div>
-<p>which became the canonical commutation relation of quantum mechanics.</p>
 <hr class="docutils" />
-<section id="the-heisenberg-recipe-for-solving-quantum-problems">
-<h2>The Heisenberg Recipe for Solving Quantum Problems<a class="headerlink" href="#the-heisenberg-recipe-for-solving-quantum-problems" title="Link to this heading">#</a></h2>
-<p>In the original matrix formulation of quantum mechanics, solving a problem proceeds as follows:</p>
-<ol class="arabic">
-<li><p><strong>Construct matrices <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(P\)</span></strong> such that</p>
+<section id="heisenbergs-quantum-condition">
+<h2>Heisenberg’s Quantum Condition<a class="headerlink" href="#heisenbergs-quantum-condition" title="Link to this heading">#</a></h2>
+<p>Redefining the kinematic quantities as above still does not introduce a genuine quantization (no Planck constant appears yet). To “quantize” his theory, Heisenberg needed an additional relation involving <span class="math notranslate nohighlight">\(\hbar\)</span> that would fix the form of the matrix elements as much as possible. The only available guide was the Wilson–Sommerfeld quantization rule, which quantized the phase-space volume enclosed by a bound orbit:</p>
 <div class="math notranslate nohighlight">
 \[
-   [X, P] = i\hbar.
-   \]</div>
-<p>This relation defines the fundamental structure of the quantum phase space and encodes the uncertainty principle at the operator level.</p>
-</li>
-<li><p><strong>Construct the Hamiltonian <span class="math notranslate nohighlight">\(H(X, P)\)</span></strong> and diagonalize it. The diagonal elements of <span class="math notranslate nohighlight">\(H\)</span> yield the <strong>energy levels</strong> <span class="math notranslate nohighlight">\(E_n\)</span> of the system. That is, find a unitary transformation <span class="math notranslate nohighlight">\(U\)</span> such that:</p>
+\oint p\,dx \;=\; n h + \alpha.
+\]</div>
+<p>Heisenberg generalized this rule. First, he differentiated with respect to the integer <span class="math notranslate nohighlight">\(n\)</span> (formally) to eliminate the arbitrary constant <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-   U^\dagger H U = \text{diag}(E_0, E_1, \dots),
-   \]</div>
-<p>and the columns of <span class="math notranslate nohighlight">\(U\)</span> are the eigenstates of the system.</p>
-</li>
+\frac{\partial}{\partial n}\oint p\,dx \;=\; h.
+\]</div>
+<p>For a classically periodic system, the trajectory can be exactly represented by a Fourier series,</p>
+<div class="math notranslate nohighlight">
+\[
+x_n(t) \;=\; \sum_{k=-\infty}^{+\infty} x_n(k)\, e^{ik\omega(n) t},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_n(k)\)</span> are Fourier coefficients and <span class="math notranslate nohighlight">\(\omega(n)\)</span> may depend on <span class="math notranslate nohighlight">\(n\)</span>. Inserting this into the quantization rule, and using <span class="math notranslate nohighlight">\(dx = \dot{x}\,dt,\; p = m \dot{x}\)</span>, one finds</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial n}\!\int_{0}^{T}\! m\,(\dot{x})^{2}\,dt \;=\; h,
+\qquad
+\omega(n)\,T = 2\pi.
+\]</div>
+<p>Carrying out the Fourier algebra yields</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{0}^{T} m\,\dot{x}^{2}\,dt
+\;=\;
+-4\pi m \sum_{k=0}^{\infty} k^{2}\,\omega(n)\,\bigl|x_n(k)\bigr|^{2},
+\]</div>
+<p>and hence</p>
+<div class="math notranslate nohighlight">
+\[
+-4\pi m \sum_{k=0}^{\infty}
+k\,\frac{\partial}{\partial n}\!\Bigl[k\,\omega(n)\,\bigl|x_n(k)\bigr|^{2}\Bigr]
+\;=\;
+h,
+\]</div>
+<p>or, using <span class="math notranslate nohighlight">\(\hbar = h/2\pi\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+-\sum_{k=0}^{\infty}
+k\,\frac{\partial}{\partial n}\!\Bigl[k\,\omega(n)\,\bigl|x_n(k)\bigr|^{2}\Bigr]
+\;=\;
+\frac{\hbar}{2m}.
+\]</div>
+<p>Heisenberg replaced the derivative by a finite-difference expression,</p>
+<div class="math notranslate nohighlight">
+\[
+k\,\frac{\partial f}{\partial n} \;\longrightarrow\; f(n+k) - f(n),
+\]</div>
+<p>and applied the Bohr correspondence principle to replace classical frequencies by transition frequencies:</p>
+<div class="math notranslate nohighlight">
+\[
+\omega(n) \;\longrightarrow\; \omega_{n,n-1}, 
+\quad
+k\,\omega(n) \;\longrightarrow\; \omega_{n,n-k},
+\quad
+x_n(k) \;\longrightarrow\; x_{n,n-k}.
+\]</div>
+<p>This led to</p>
+<div class="math notranslate nohighlight">
+\[
+-\sum_{k=0}^{\infty}
+\Bigl[\omega_{n+k,n}\,\bigl|x_{n+k,n}\bigr|^{2}
+      -\omega_{n,n-k}\,\bigl|x_{n,n-k}\bigr|^{2}\Bigr]
+\;=\;
+\frac{\hbar}{2m},
+\]</div>
+<p>which can be written symmetrically as</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{e=-\infty}^{+\infty}
+\omega_{ne}\,\bigl|x_{en}\bigr|^{2}
+\;=\;
+\frac{\hbar}{2m}.
+\]</div>
+<p>Apart from notation, this is precisely the quantization condition Heisenberg postulated in his pioneering paper, where he applied it to the harmonic oscillator, the anharmonic oscillator, and the rotator.</p>
+<p>If you wonder why you have rarely seen this rule, it is because Max Born and Pascual Jordan—after Heisenberg revealed his method to Born—soon found a much more elegant formulation. Consider the commutator</p>
+<div class="math notranslate nohighlight">
+\[
+[X,P] \;:=\; XP - PX
+\]</div>
+<p>and take its diagonal element:</p>
+<div class="math notranslate nohighlight">
+\[
+(XP - PX)_{nn}
+\;=\;
+\sum_{e}\!\bigl[X_{ne}P_{en} - P_{ne}X_{en}\bigr].
+\]</div>
+<p>Using <span class="math notranslate nohighlight">\(P_{mn} = m\dot{X}_{mn} = -i m \omega_{mn} X_{mn}\)</span>, one finds</p>
+<div class="math notranslate nohighlight">
+\[
+(XP - PX)_{nn}
+\;=\;
+-2i\,\sum_{e}\omega_{ne}\,\bigl|x_{ne}\bigr|^{2},
+\]</div>
+<p>so Heisenberg’s quantization condition becomes</p>
+<div class="math notranslate nohighlight">
+\[
+[x,p]_{nn} \;=\; i\hbar,
+\]</div>
+<p>which is just the diagonal part of the canonical commutation relation!</p>
+<p>At this stage, Heisenberg had all he needed to determine the energy levels of an arbitrary system (at least in principle). Summarized, Heisenberg’s prescription for finding energy levels can be stated as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>Construct</strong> the quantities <span class="math notranslate nohighlight">\(X_{mn},\,P_{mn}\)</span> that satisfy the quantum condition and the equations of motion, retaining the classical form.</p></li>
+<li><p><strong>Construct</strong> the Hamiltonian matrix <span class="math notranslate nohighlight">\(H_{mn}\)</span> and <strong>diagonalize</strong> it. The diagonal elements are the quantum energy levels of the system!</p></li>
 </ol>
-<p>This is the essence of <strong>matrix mechanics</strong>—a formulation that does not rely on wavefunctions, but rather on algebraic relations between observables and their transition properties.</p>
+<hr class="docutils" />
 </section>
+</section>
+<section id="solving-the-harmonic-oscillator-ala-heisenberg-helgoland-method">
+<h1>Solving the harmonic oscillator ala Heisenberg (“Helgoland” method)<a class="headerlink" href="#solving-the-harmonic-oscillator-ala-heisenberg-helgoland-method" title="Link to this heading">#</a></h1>
+<p>The system Heisenberg first solved as an application of his new mechanics was the harmonic oscillator. Assuming the Newtonian equation holds for the new quantities  (matrix elements) leads to the following equations of motion:</p>
+<div class="math notranslate nohighlight">
+\[
+m \ddot{x} + x = 0 \quad \Rightarrow \quad (\omega_{mn}^2 - \omega^2) x_{mn} = 0,
+\]</div>
+<p>From this it is derived that only transitions with $\omega_{mn} = \pm \omega$ survive, so each row has maximally two non-zero elements. Assuming a lowest-energy state (ground state) exists for which no transition to a lower state is possible and assigning to it an index of <span class="math notranslate nohighlight">\(n=0\)</span>, one deduces:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{01} = \sqrt{\frac{\hbar}{2m\omega}}, \quad X_{10} = X_{01}.
+\]</div>
+<p>The same procedure can now recursively be applied to the second row where one element is already fixed by hermiticity:</p>
+<div class="math notranslate nohighlight">
+\[
+-\omega |X_{10}|^2 + \omega |X_{12}|^2 = \frac{\hbar}{2m} \quad \Rightarrow \quad X_{12} = \sqrt{\frac{2\hbar}{2m\omega}}.
+\]</div>
+<p>This can be easily generalized for any <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{n,n+1} = X_{n+1,n} = \sqrt{\frac{(n+1)\hbar}{2m\omega}}.
+\]</div>
+<p>The matrix $X$ thus takes the tridiagonal form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+X = \begin{bmatrix}
+0 &amp; \sqrt{\frac{\hbar}{2m\omega}} &amp; 0 &amp; 0 &amp; \cdots \\
+\sqrt{\frac{\hbar}{2m\omega}} &amp; 0 &amp; \sqrt{\frac{2\hbar}{2m\omega}} &amp; 0 &amp; \cdots \\
+0 &amp; \sqrt{\frac{2\hbar}{2m\omega}} &amp; 0 &amp; \sqrt{\frac{3\hbar}{2m\omega}} &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \ddots
+\end{bmatrix}
+\end{split}\]</div>
+<p>Then $P = -im\omega X$, and the Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[
+H = \frac{P^2}{2m} + \frac{1}{2} m \omega^2 X^2
+\]</div>
+<p>yields diagonal elements computed as follows:</p>
+<p><strong>For $n=0$:</strong></p>
+<p>Only $X_{01}$ and $P_{01}$ are nonzero in the first row. We have:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{01} = -im\omega X_{01} = -i\sqrt{\frac{\hbar m\omega}{2}}.
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+H_{00} = \frac{1}{2m} |P_{01}|^2 + \frac{1}{2} m \omega^2 |X_{01}|^2 = \frac{1}{2m} \cdot \frac{\hbar m\omega}{2} + \frac{1}{2} m \omega^2 \cdot \frac{\hbar}{2m\omega} = \frac{\hbar\omega}{4} + \frac{\hbar\omega}{4} = \frac{\hbar\omega}{2}.
+\]</div>
+<p><strong>For $n=1$:</strong></p>
+<p>Contributions come from $X_{10}$ and $X_{12}$. We compute:</p>
+<div class="math notranslate nohighlight">
+\[
+|X_{10}|^2 = \frac{\hbar}{2m\omega}, \quad |X_{12}|^2 = \frac{2\hbar}{2m\omega} = \frac{\hbar}{m\omega},
+\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[
+H_{11} = \frac{1}{2m} \left( |P_{10}|^2 + |P_{12}|^2 \right) + \frac{1}{2} m \omega^2 (|X_{10}|^2 + |X_{12}|^2).
+\]</div>
+<p>Each kinetic term:</p>
+<div class="math notranslate nohighlight">
+\[
+|P_{10}|^2 = m^2 \omega^2 |X_{10}|^2 = m^2 \omega^2 \cdot \frac{\hbar}{2m\omega} = \frac{\hbar m \omega}{2},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|P_{12}|^2 = m^2 \omega^2 |X_{12}|^2 = m^2 \omega^2 \cdot \frac{\hbar}{m\omega} = \hbar m \omega.
+\]</div>
+<p>So total:</p>
+<div class="math notranslate nohighlight">
+\[
+H_{11} = \frac{1}{2m} \left( \frac{\hbar m \omega}{2} + \hbar m \omega \right) + \frac{1}{2} m \omega^2 \left( \frac{\hbar}{2m\omega} + \frac{\hbar}{m\omega} \right) = \frac{3\hbar\omega}{4} + \frac{3\hbar\omega}{4} = \frac{3\hbar\omega}{2}.
+\]</div>
+<p><strong>General case:</strong></p>
+<p>Following the same pattern, each state $n$ has contributions from $X_{n,n-1}$ and $X_{n,n+1}$:</p>
+<div class="math notranslate nohighlight">
+\[
+|X_{n,n-1}|^2 = \frac{n\hbar}{2m\omega}, \quad |X_{n,n+1}|^2 = \frac{(n+1)\hbar}{2m\omega},
+\]</div>
+<p>The energy is:</p>
+<div class="math notranslate nohighlight">
+\[
+H_{nn} = \frac{1}{2m} m^2 \omega^2 (|X_{n,n-1}|^2 + |X_{n,n+1}|^2) + \frac{1}{2} m \omega^2 (|X_{n,n-1}|^2 + |X_{n,n+1}|^2)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+= m\omega^2 (|X_{n,n-1}|^2 + |X_{n,n+1}|^2) = m\omega^2 \cdot \frac{(2n+1)\hbar}{2m\omega} = \hbar \omega \left(n + \frac{1}{2}\right).
+\]</div>
+<p>Thus, we recover the well-known energy levels of the quantum harmonic oscillator:</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = \hbar \omega \left(n + \frac{1}{2}\right).
+\]</div>
+</section>
+<section id="concluding-remark">
+<h1>Concluding remark<a class="headerlink" href="#concluding-remark" title="Link to this heading">#</a></h1>
+<p>The work by Heisenberg was the first and most important step in the development of modern quantum mechanics. Soon after he published his paper, his mentor at the time Max Born together with Pascual Jordan submitted a paper for publication in the “<em>Zeitschrift für Physik</em>” with the title “Zur Quantenmechanik” in which the full formalism of the matrix mechanics has been developed almost in the present modern form and the non-commutative algebraic structure behind the quantum mechanics has been for the first time clearly identified. The rest is the history (of quantum mechanics)…</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -616,8 +792,14 @@ p_{n,n+1} = -i m \omega x_{n,n+1} = -i \sqrt{\frac{(n+1)\hbar m \omega}{2}}.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-heisenberg-recipe-for-solving-quantum-problems">The Heisenberg Recipe for Solving Quantum Problems</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Historic View on the Heisenberg Formulation of Quantum Mechanics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heisenbergs-quantum-condition">Heisenberg’s Quantum Condition</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-harmonic-oscillator-ala-heisenberg-helgoland-method">Solving the harmonic oscillator ala Heisenberg (“Helgoland” method)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remark">Concluding remark</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
