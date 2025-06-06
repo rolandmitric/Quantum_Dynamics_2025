@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quantum Dynamics — Summer Semester 2025 &#8212; Quantum Dynamics</title>
+    <title>🧮 Goal &#8212; Quantum Dynamics</title>
   
   
   
@@ -59,10 +59,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'spontaneous_emission';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="🔸 Formalism of Quantum Mechanics: Hilbert Spaces" href="formalism_hilbert_spaces.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +144,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -176,8 +175,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Quantum Dynamics — Summer Semester 2025
                 </a>
             </li>
@@ -289,7 +288,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fspontaneous_emission.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +318,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/spontaneous_emission.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -329,7 +328,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -403,7 +402,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Quantum Dynamics — Summer Semester 2025</h1>
+    <h1>🧮 Goal</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,9 +412,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prof-dr-roland-mitric">Prof. Dr. Roland Mitric</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-overview">📘 Course Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">🎓 Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-hamiltonian-and-initial-state">1. Total Hamiltonian and Initial State</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-the-interaction-picture">2. Schrödinger Equation in the Interaction Picture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-equation-for-the-photon-modes">3. First-Order Equation for the Photon Modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integro-differential-equation-for-c-e-t">4. Integro-Differential Equation for <span class="math notranslate nohighlight">\(c_e(t)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuum-limit-and-density-of-states">5. Continuum Limit and Density of States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-approximation-and-exponential-decay">6. Markov Approximation and Exponential Decay</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-result">✅ Final Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks">✔️ Remarks</a></li>
 </ul>
             </nav>
         </div>
@@ -427,50 +431,189 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="quantum-dynamics-summer-semester-2025">
-<h1>Quantum Dynamics — Summer Semester 2025<a class="headerlink" href="#quantum-dynamics-summer-semester-2025" title="Link to this heading">#</a></h1>
-<section id="prof-dr-roland-mitric">
-<h2>Prof. Dr. Roland Mitric<a class="headerlink" href="#prof-dr-roland-mitric" title="Link to this heading">#</a></h2>
-<p><strong>Lehrstuhl für Theoretische Chemie</strong></p>
-<p><strong>University of Würzburg</strong></p>
-<p>📧 <a class="reference external" href="mailto:roland&#46;mitric&#37;&#52;&#48;uni-wuerzburg&#46;de">roland<span>&#46;</span>mitric<span>&#64;</span>uni-wuerzburg<span>&#46;</span>de</a></p>
+  <hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="goal">
+<h1>🧮 Goal<a class="headerlink" href="#goal" title="Link to this heading">#</a></h1>
+<p>Derive the <strong>spontaneous decay rate</strong> <span class="math notranslate nohighlight">\(\Gamma\)</span> of an excited atomic state <span class="math notranslate nohighlight">\(|e\rangle\)</span>, coupled to the vacuum electromagnetic field, <strong>without invoking Fermi’s golden rule directly</strong>, but using <strong>time-dependent perturbation theory</strong> and a <strong>rigorous integral analysis</strong>.</p>
 <hr class="docutils" />
-<p>Welcome to the <em>Quantum Dynamics</em> course,
-part of the <strong>Master’s Program in Chemistry</strong> at the <strong>University of Würzburg</strong>.</p>
-<p>This course is primarily designed for Master’s students in Chemistry,
-but students from other disciplines (Physics, Mathematics, etc. )
-are equally welcome to participate.</p>
-</section>
-<hr class="docutils" />
-<section id="course-overview">
-<h2>📘 Course Overview<a class="headerlink" href="#course-overview" title="Link to this heading">#</a></h2>
-<p>In this course, we will explore the fundamental concepts and methods used to describe and analyze the quantum dynamics of molecular systems. The topics covered include:</p>
+<section id="total-hamiltonian-and-initial-state">
+<h2>1. Total Hamiltonian and Initial State<a class="headerlink" href="#total-hamiltonian-and-initial-state" title="Link to this heading">#</a></h2>
+<p>The Hilbert space is <span class="math notranslate nohighlight">\(\mathcal{H}_{\text{atom}} \otimes \mathcal{H}_{\text{field}}\)</span>. The total Hamiltonian is:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{H} = \hat{H}_0 + \hat{V}
+\]</div>
+<p>with</p>
 <ul class="simple">
-<li><p>Review of the mathematical formalism of Quantum Mechanics</p></li>
-<li><p>Heisenberg, Schrödinger and Dirac pictures of Quantum Dynamics</p></li>
-<li><p>Time-dependent perturbation theory</p></li>
-<li><p>Quantum wave packet dynamics</p></li>
-<li><p>Mixed states and density operators</p></li>
-<li><p>Nonadiabatic effects</p></li>
-<li><p>Applications in photochemistry, photophysics and spectroscopy</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{H}_0 = \hat{H}_\text{atom} + \hat{H}_\text{field}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{V} = -\hat{\mathbf{d}} \cdot \hat{\mathbf{E}}(\mathbf{r})\)</span></p></li>
 </ul>
-<p>The course will combine theoretical foundations with practical examples and computational methods.</p>
+<p>We expand the total wavefunction in the following ansatz:</p>
+<div class="math notranslate nohighlight">
+\[
+|\Psi(t)\rangle = c_e(t) |e\rangle \otimes |0\rangle + \sum_{\mathbf{k},\lambda} c_{g,\mathbf{k},\lambda}(t) |g\rangle \otimes |\mathbf{k},\lambda\rangle
+\]</div>
+<p>We assume the atom starts in the excited state with no photons:</p>
+<div class="math notranslate nohighlight">
+\[
+|\Psi(0)\rangle = |e\rangle \otimes |0\rangle \quad \Rightarrow \quad c_e(0) = 1, \quad c_{g,\mathbf{k},\lambda}(0) = 0
+\]</div>
 </section>
 <hr class="docutils" />
-<section id="prerequisites">
-<h2>🎓 Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<p>To follow the course effectively, students should have:</p>
+<section id="schrodinger-equation-in-the-interaction-picture">
+<h2>2. Schrödinger Equation in the Interaction Picture<a class="headerlink" href="#schrodinger-equation-in-the-interaction-picture" title="Link to this heading">#</a></h2>
+<p>We work in the <strong>interaction picture</strong>, where operators evolve under <span class="math notranslate nohighlight">\(\hat{H}_0\)</span>, and the state evolves under:</p>
+<div class="math notranslate nohighlight">
+\[
+i\hbar \frac{d}{dt} |\Psi_I(t)\rangle = \hat{V}_I(t) |\Psi_I(t)\rangle
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{V}_I(t) = e^{i\hat{H}_0 t/\hbar} \hat{V} e^{-i\hat{H}_0 t/\hbar}
+\]</div>
+<p>Inserting the ansatz, we get the following system of equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\frac{d}{dt} c_e(t) &amp;= -\frac{i}{\hbar} \sum_{\mathbf{k},\lambda} \langle e, 0 | \hat{V}_I(t) | g, \mathbf{k},\lambda \rangle c_{g,\mathbf{k},\lambda}(t) \\
+\frac{d}{dt} c_{g,\mathbf{k},\lambda}(t) &amp;= -\frac{i}{\hbar} \langle g, \mathbf{k},\lambda | \hat{V}_I(t) | e, 0 \rangle c_e(t)
+\end{aligned}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="first-order-equation-for-the-photon-modes">
+<h2>3. First-Order Equation for the Photon Modes<a class="headerlink" href="#first-order-equation-for-the-photon-modes" title="Link to this heading">#</a></h2>
+<p>From the second equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt} c_{g,\mathbf{k},\lambda}(t) = -\frac{i}{\hbar} \langle g | \hat{\mathbf{d}} | e \rangle \cdot \langle \mathbf{k},\lambda | \hat{\mathbf{E}}_I(\mathbf{r},t) | 0 \rangle c_e(t)
+\]</div>
+<p>The quantized electric field in the interaction picture:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mathbf{E}}_I(\mathbf{r},t) = i \sum_{\mathbf{k},\lambda} \sqrt{\frac{\hbar \omega_k}{2\varepsilon_0 V}} \mathbf{e}_{\mathbf{k},\lambda} \hat{a}_{\mathbf{k},\lambda} e^{i(\mathbf{k}\cdot\mathbf{r} - \omega_k t)} + \text{H.c.}
+\]</div>
+<p>Only the annihilation operator <span class="math notranslate nohighlight">\(\hat{a}_{\mathbf{k},\lambda}\)</span> contributes:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \mathbf{k},\lambda | \hat{\mathbf{E}}_I(\mathbf{r},t) | 0 \rangle = i \sqrt{\frac{\hbar \omega_k}{2\varepsilon_0 V}} \mathbf{e}_{\mathbf{k},\lambda} e^{i(\mathbf{k}\cdot\mathbf{r} - \omega_k t)}
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt} c_{g,\mathbf{k},\lambda}(t) = -i g_{\mathbf{k},\lambda} e^{-i\omega_k t} c_e(t)
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+g_{\mathbf{k},\lambda} := \frac{1}{\hbar} \sqrt{\frac{\hbar \omega_k}{2\varepsilon_0 V}} \left( \mathbf{e}_{\mathbf{k},\lambda} \cdot \mathbf{d}_{eg} \right) e^{i\mathbf{k}\cdot\mathbf{r}}
+\]</div>
+<p>Integrate:</p>
+<div class="math notranslate nohighlight">
+\[
+c_{g,\mathbf{k},\lambda}(t) = -i g_{\mathbf{k},\lambda} \int_0^t e^{-i\omega_k t'} c_e(t') dt'
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="integro-differential-equation-for-c-e-t">
+<h2>4. Integro-Differential Equation for <span class="math notranslate nohighlight">\(c_e(t)\)</span><a class="headerlink" href="#integro-differential-equation-for-c-e-t" title="Link to this heading">#</a></h2>
+<p>Insert this into the first equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt} c_e(t) = -\sum_{\mathbf{k},\lambda} |g_{\mathbf{k},\lambda}|^2 \int_0^t e^{i\omega_k (t - t')} c_e(t') dt'
+\]</div>
+<p>We now define the <strong>memory kernel</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+K(t - t') = \sum_{\mathbf{k},\lambda} |g_{\mathbf{k},\lambda}|^2 e^{i\omega_k (t - t')}
+\]</div>
+<p>So the equation becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt} c_e(t) = -\int_0^t K(t - t') c_e(t') dt'
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="continuum-limit-and-density-of-states">
+<h2>5. Continuum Limit and Density of States<a class="headerlink" href="#continuum-limit-and-density-of-states" title="Link to this heading">#</a></h2>
+<p>We now let the mode sum become an integral:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{\mathbf{k},\lambda} \rightarrow \sum_{\lambda=1,2} \int \frac{V d^3 \mathbf{k}}{(2\pi)^3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|g_{\mathbf{k},\lambda}|^2 = \frac{\omega_k}{2\hbar\varepsilon_0 V} |\mathbf{e}_{\mathbf{k},\lambda} \cdot \mathbf{d}_{eg}|^2
+\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[
+K(t - t') = \int_0^\infty d\omega \, J(\omega) e^{i\omega (t - t')}
+\]</div>
+<p>with the <strong>spectral density</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+J(\omega) = \frac{\omega^3}{3\pi^2 \hbar \varepsilon_0 c^3} |\mathbf{d}_{eg}|^2
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="markov-approximation-and-exponential-decay">
+<h2>6. Markov Approximation and Exponential Decay<a class="headerlink" href="#markov-approximation-and-exponential-decay" title="Link to this heading">#</a></h2>
+<p>The integral equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt} c_e(t) = -\int_0^t K(t - t') c_e(t') dt'
+\]</div>
+<p>is a <strong>Volterra equation of the second kind</strong>. In the <strong>Markovian limit</strong> (long times <span class="math notranslate nohighlight">\(t \gg 1/\omega\)</span>), we approximate:</p>
+<div class="math notranslate nohighlight">
+\[
+c_e(t') \approx c_e(t)
+\]</div>
+<p>and extend the upper limit to infinity (since the kernel is rapidly oscillating):</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt} c_e(t) \approx -c_e(t) \int_0^\infty K(\tau) d\tau
+\]</div>
+<p>This gives:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dt} c_e(t) = -\Gamma c_e(t)
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma = \int_0^\infty K(\tau) d\tau = \int_0^\infty d\omega \, J(\omega) \int_0^\infty e^{i\omega \tau} d\tau
+\]</div>
+<p>The last integral is evaluated using the <strong>Plemelj formula</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\infty e^{i\omega \tau} d\tau = \pi \delta(\omega) + i \mathcal{P} \left( \frac{1}{\omega} \right)
+\]</div>
+<p>Only the <span class="math notranslate nohighlight">\(\delta(\omega - \omega_0)\)</span> contributes at the transition frequency <span class="math notranslate nohighlight">\(\omega_0\)</span>. So:</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma = 2\pi J(\omega_0) = \frac{\omega_0^3}{3\pi \varepsilon_0 \hbar c^3} |\mathbf{d}_{eg}|^2
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="final-result">
+<h2>✅ Final Result<a class="headerlink" href="#final-result" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\Gamma = \frac{\omega_0^3}{3\pi \varepsilon_0 \hbar c^3} |\mathbf{d}_{eg}|^2}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="remarks">
+<h2>✔️ Remarks<a class="headerlink" href="#remarks" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>A solid understanding of <strong>quantum mechanics at the Bachelor level</strong></p></li>
-<li><p>A good grasp of <strong>mathematics</strong>, especially <strong>linear algebra</strong></p></li>
-<li><p><strong>Programming skills</strong> (preferably in Python) are helpful but <em>not strictly required</em></p></li>
+<li><p>This derivation <strong>does not invoke Fermi’s Golden Rule</strong> but instead treats the system <strong>as a Volterra integral equation</strong> derived from the Schrödinger equation.</p></li>
+<li><p>The <strong>Markov approximation</strong> and <strong>Plemelj identity</strong> play key roles in extracting the exponential decay.</p></li>
+<li><p>The derivation is <strong>nonperturbative</strong> in form but uses a <strong>weak coupling limit</strong> (Born-Markov) to obtain exponential decay.</p></li>
 </ul>
-<hr class="docutils" />
-<p>Let’s dive into the fascinating world of quantum dynamics and learn how to describe the evolution of
-atomic and molecular system!</p>
+<p>Let me know if you’d like to go further into non-Markovian corrections or use Laplace transform techniques for a more general spectral density.</p>
 </section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -503,15 +646,6 @@ atomic and molecular system!</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="formalism_hilbert_spaces.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🔸 Formalism of Quantum Mechanics: Hilbert Spaces</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -528,9 +662,14 @@ atomic and molecular system!</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prof-dr-roland-mitric">Prof. Dr. Roland Mitric</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-overview">📘 Course Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">🎓 Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-hamiltonian-and-initial-state">1. Total Hamiltonian and Initial State</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schrodinger-equation-in-the-interaction-picture">2. Schrödinger Equation in the Interaction Picture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-equation-for-the-photon-modes">3. First-Order Equation for the Photon Modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integro-differential-equation-for-c-e-t">4. Integro-Differential Equation for <span class="math notranslate nohighlight">\(c_e(t)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuum-limit-and-density-of-states">5. Continuum Limit and Density of States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-approximation-and-exponential-decay">6. Markov Approximation and Exponential Decay</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-result">✅ Final Result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks">✔️ Remarks</a></li>
 </ul>
   </nav></div>
 

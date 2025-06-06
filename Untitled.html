@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Time-Dependent Perturbation Theory &#8212; Quantum Dynamics</title>
+    <title>&lt;no title&gt; &#8212; Quantum Dynamics</title>
   
   
   
@@ -57,8 +57,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Untitled';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -201,9 +199,15 @@
 <li class="toctree-l1"><a class="reference internal" href="rotating_wave.html">🔸 Two level system driven by a harmonic field</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="heisenberg_picture.html">🔹 Heisenberg Picture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heisenberg_picture.html">🔹 Observables in Quantum Mechanics</a></li>
 
 
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="history_heisenberg.html">A Historic View on the Heisenberg Formulation of Quantum Mechanics</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="momentum_operator.html">Momentum operator</a></li>
@@ -396,7 +400,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Time-Dependent Perturbation Theory</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -405,18 +409,9 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-framework">General Framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction-picture">Interaction Picture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics-in-interaction-picture">Dynamics in Interaction Picture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-perturbation-theory">First-Order Perturbation Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-probability">Transition Probability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-perturbation">Constant Perturbation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiationless-transitions">Radiationless Transitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-time-limit-and-fermiaos-golden-rule">Long-Time Limit and Fermi‚Äôs Golden Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-states-in-a-continuum">Final States in a Continuum</a></li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
+
             </nav>
         </div>
     </div>
@@ -427,180 +422,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="time-dependent-perturbation-theory">
-<h1>Time-Dependent Perturbation Theory<a class="headerlink" href="#time-dependent-perturbation-theory" title="Link to this heading">#</a></h1>
-<section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<p>After we have learned what wavepackets are, we now want to answer the questions:</p>
-<ul class="simple">
-<li><p><strong>How can quantum wavepackets be created?</strong></p></li>
-</ul>
-<p>Broadly speaking, you can create a quantum wavepacket in the same way you create classical waves ‚Äî <strong>by perturbing the system</strong>!</p>
-<p>Thus, we will examine the influence of different kinds of perturbations on the time-evolution of quantum systems.</p>
-</section>
-<hr class="docutils" />
-<section id="general-framework">
-<h2>General Framework<a class="headerlink" href="#general-framework" title="Link to this heading">#</a></h2>
-<p>We consider the time evolution of a quantum system under the influence of a <strong>time-dependent perturbation</strong>.</p>
-<p>Let:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(H_0\)</span> be the time-independent Hamiltonian,</p></li>
-<li><p><span class="math notranslate nohighlight">\(V(t)\)</span> be the time-dependent perturbation.</p></li>
-</ul>
-<p>Then the <strong>time-dependent Schr√∂dinger equation</strong> (TDSE) reads:</p>
-<div class="math notranslate nohighlight">
-\[
-i\hbar rac{\partial}{\partial t} |\psi(t)
-angle = \left( H_0 + V(t) 
-ight) |\psi(t)
-angle
-\]</div>
-</section>
-<hr class="docutils" />
-<section id="interaction-picture">
-<h2>Interaction Picture<a class="headerlink" href="#interaction-picture" title="Link to this heading">#</a></h2>
-<p>We recall the solution of the TDSE without perturbation:</p>
-<div class="math notranslate nohighlight">
-\[
-|\psi(t)
-angle = U_0(t, t_0) |\psi(t_0)
-angle
-\]</div>
-<p>To treat perturbations efficiently, we define the <strong>interaction (Dirac) picture</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-|\psi(t)
-angle = U_0(t, t_0) |\psi_I(t)
-angle \
-|\psi_I(t)
-angle = U_0^\dagger(t, t_0) |\psi(t)
-angle
-\]</div>
-<p>This transformation simplifies dynamics when <span class="math notranslate nohighlight">\(V(t)\)</span> is weak or slowly varying.</p>
-</section>
-<hr class="docutils" />
-<section id="dynamics-in-interaction-picture">
-<h2>Dynamics in Interaction Picture<a class="headerlink" href="#dynamics-in-interaction-picture" title="Link to this heading">#</a></h2>
-<p>The derivative becomes:</p>
-<div class="math notranslate nohighlight">
-\[
-rac{d}{dt} |\psi_I(t)
-angle = -rac{i}{\hbar} V_I(t) |\psi_I(t)
-angle
-\]</div>
-<p>Where <span class="math notranslate nohighlight">\(V_I(t)\)</span> is the interaction representation of the perturbation:</p>
-<div class="math notranslate nohighlight">
-\[
-V_I(t) = U_0^\dagger(t, t_0) V(t) U_0(t, t_0)
-\]</div>
-</section>
-<hr class="docutils" />
-<section id="first-order-perturbation-theory">
-<h2>First-Order Perturbation Theory<a class="headerlink" href="#first-order-perturbation-theory" title="Link to this heading">#</a></h2>
-<p>Formally integrating the TDSE gives:</p>
-<div class="math notranslate nohighlight">
-\[
-|\psi_I(t)
-angle = |\psi(t_0)
-angle - rac{i}{\hbar} \int_{t_0}^t V_I(t') |\psi_I(t')
-angle dt'
-\]</div>
-<p>Approximating the integrand at zeroth order:</p>
-<div class="math notranslate nohighlight">
-\[
-|\psi_I(t')
-angle pprox |\psi(t_0)
-angle
-\]</div>
-<p>yields the <strong>first-order correction</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-|\psi_I^{(1)}(t)
-angle = -rac{i}{\hbar} \int_{t_0}^t V_I(t') |\psi(t_0)
-angle dt'
-\]</div>
-</section>
-<hr class="docutils" />
-<section id="transition-probability">
-<h2>Transition Probability<a class="headerlink" href="#transition-probability" title="Link to this heading">#</a></h2>
-<p>Suppose the system starts in eigenstate <span class="math notranslate nohighlight">\(|i
-angle\)</span> at <span class="math notranslate nohighlight">\(t = 0\)</span>. We ask:<br />
-What is the probability to find it in <span class="math notranslate nohighlight">\(|f
-angle\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>?</p>
-<p>The <strong>transition amplitude</strong> is:</p>
-<div class="math notranslate nohighlight">
-\[
-A_{i 	o f}(t) = \langle f|\psi(t)
-angle = -rac{i}{\hbar} \int_0^t \langle f| V_I(t') |i
-angle dt'
-\]</div>
-<p>Transition probability:</p>
-<div class="math notranslate nohighlight">
-\[
-P_{i 	o f}(t) = |A_{i 	o f}(t)|^2
-\]</div>
-</section>
-<hr class="docutils" />
-<section id="constant-perturbation">
-<h2>Constant Perturbation<a class="headerlink" href="#constant-perturbation" title="Link to this heading">#</a></h2>
-<p>Assume <span class="math notranslate nohighlight">\(\langle f|V|i
-angle\)</span> is constant:</p>
-<div class="math notranslate nohighlight">
-\[
-A_{i 	o f}(t) = -rac{i}{\hbar} \langle f|V|i
-angle \int_0^t e^{i\omega_{fi} t'} dt' = \langle f|V|i
-angle \cdot rac{\sin(\omega_{fi} t/2)}{\omega_{fi}/2}
-\]</div>
-<p>Thus,</p>
-<div class="math notranslate nohighlight">
-\[
-P_{i 	o f}(t) = rac{|\langle f|V|i
-angle|^2}{\hbar^2} \cdot rac{\sin^2(\omega_{fi} t/2)}{(\omega_{fi}/2)^2}
-\]</div>
-</section>
-<hr class="docutils" />
-<section id="radiationless-transitions">
-<h2>Radiationless Transitions<a class="headerlink" href="#radiationless-transitions" title="Link to this heading">#</a></h2>
-<p>Consider a molecule excited to an electronic state:</p>
-<ul class="simple">
-<li><p>Relaxation occurs via nonadiabatic or spin-orbit coupling.</p></li>
-<li><p>The transition populates vibrational levels of the ground state.</p></li>
-<li><p>This leads to a distribution dependent on coupling and time.</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="long-time-limit-and-fermiaos-golden-rule">
-<h2>Long-Time Limit and Fermi‚Äôs Golden Rule<a class="headerlink" href="#long-time-limit-and-fermiaos-golden-rule" title="Link to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(t 	o \infty\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\lim_{t 	o \infty} rac{\sin^2(\omega t/2)}{(\omega/2)^2} 	o 2\pi t \cdot \delta(\omega)
-\]</div>
-<p>Define the <strong>transition rate</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-w_{i 	o f} = rac{2\pi}{\hbar} |\langle f|V|i
-angle|^2 \delta(E_f - E_i)
-\]</div>
-<p>This is <strong>Fermi‚Äôs Golden Rule</strong>.</p>
-</section>
-<hr class="docutils" />
-<section id="final-states-in-a-continuum">
-<h2>Final States in a Continuum<a class="headerlink" href="#final-states-in-a-continuum" title="Link to this heading">#</a></h2>
-<p>If final states form a continuum with density of states <span class="math notranslate nohighlight">\(
-ho(E_f)\)</span>, we integrate:</p>
-<div class="math notranslate nohighlight">
-\[
-w_{i 	o 	ext{cont.}} = rac{2\pi}{\hbar} |\langle f|V|i
-angle|^2 
-ho(E_f)
-\]</div>
-<p>This formulation applies in spectroscopy, electronic relaxation, and scattering theory.</p>
-<hr class="docutils" />
-<p><em>End of Lecture.</em></p>
-</section>
-</section>
-
+  
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -646,18 +468,9 @@ ho(E_f)
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-framework">General Framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction-picture">Interaction Picture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics-in-interaction-picture">Dynamics in Interaction Picture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-perturbation-theory">First-Order Perturbation Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-probability">Transition Probability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-perturbation">Constant Perturbation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiationless-transitions">Radiationless Transitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-time-limit-and-fermiaos-golden-rule">Long-Time Limit and Fermi‚Äôs Golden Rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-states-in-a-continuum">Final States in a Continuum</a></li>
+    <ul class="simple visible nav section-nav flex-column">
 </ul>
+
   </nav></div>
 
 </div></div>
