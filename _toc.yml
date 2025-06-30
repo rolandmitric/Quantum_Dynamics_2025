@@ -11,5 +11,5 @@ chapters:
 - file: rotating_wave.ipynb
 - file: heisenberg_picture.ipynb
 - file: history_heisenberg.ipynb
-- file: momentum_operator.ipynb
+- file: interaction_picture.ipynb
 
