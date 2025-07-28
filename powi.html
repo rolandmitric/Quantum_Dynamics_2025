@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Quantum Dynamics</title>
+    <title>Construction of Position and Momentum Observables via Translation Symmetry &#8212; Quantum Dynamics</title>
   
   
   
@@ -57,7 +57,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Untitled2';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'powi';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -290,7 +292,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FUntitled2.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpowi.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -320,7 +322,7 @@
       
       
       
-      <li><a href="_sources/Untitled2.ipynb" target="_blank"
+      <li><a href="_sources/powi.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -404,7 +406,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Construction of Position and Momentum Observables via Translation Symmetry</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,9 +415,14 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postulating-the-position-operator">1. Postulating the Position Operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-translation-operator">2. Defining the Translation Operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-as-the-generator-of-translations">3. Momentum as the Generator of Translations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-canonical-commutation-relation">4. Deriving the Canonical Commutation Relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-in-position-space">5. Representation in Position Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -426,7 +433,87 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section id="construction-of-position-and-momentum-observables-via-translation-symmetry">
+<h1>Construction of Position and Momentum Observables via Translation Symmetry<a class="headerlink" href="#construction-of-position-and-momentum-observables-via-translation-symmetry" title="Link to this heading">#</a></h1>
+<p>In this section, we introduce the observables corresponding to position and momentum in a semi-rigorous manner, using physical assumptions and basic operator theory. We avoid referring to “position eigenstates,” which do not exist in the Hilbert space of normalisable wavefunctions.</p>
+<section id="postulating-the-position-operator">
+<h2>1. Postulating the Position Operator<a class="headerlink" href="#postulating-the-position-operator" title="Link to this heading">#</a></h2>
+<p>We assume that there exists a self-adjoint operator <span class="math notranslate nohighlight">\(\hat{x}\)</span>, called the <strong>position operator</strong>, with continuous spectrum, defined on a dense domain in the Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H} = L^2(\mathbb{R})\)</span>. We consider a normalisable state <span class="math notranslate nohighlight">\(|\psi\rangle \in \mathcal{H}\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \psi | \hat{x} | \psi \rangle = x_0
+\]</div>
+<p>This expectation value corresponds to the mean position of a particle in the state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="defining-the-translation-operator">
+<h2>2. Defining the Translation Operator<a class="headerlink" href="#defining-the-translation-operator" title="Link to this heading">#</a></h2>
+<p>We now postulate the existence of a <strong>unitary translation operator</strong> <span class="math notranslate nohighlight">\(T(a)\)</span> which translates the expectation value of position by a real displacement <span class="math notranslate nohighlight">\(a\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \psi | T(a)^\dagger \hat{x} T(a) | \psi \rangle = x_0 + a
+\]</div>
+<p>This implies that <span class="math notranslate nohighlight">\(T(a)\)</span> implements a spatial shift. The action of <span class="math notranslate nohighlight">\(T(a)\)</span> on the position operator satisfies the operator identity:</p>
+<div class="math notranslate nohighlight">
+\[
+T(a)^\dagger \hat{x} T(a) = \hat{x} + a I
+\]</div>
+<p>This identity can be verified for all states in a dense subset of the Hilbert space and is consistent with translation symmetry in quantum mechanics.</p>
+</section>
+<hr class="docutils" />
+<section id="momentum-as-the-generator-of-translations">
+<h2>3. Momentum as the Generator of Translations<a class="headerlink" href="#momentum-as-the-generator-of-translations" title="Link to this heading">#</a></h2>
+<p>By <strong>Stone’s theorem</strong>, a strongly continuous one-parameter group of unitary operators <span class="math notranslate nohighlight">\(T(a)\)</span> must be generated by a self-adjoint operator. Therefore, there exists a self-adjoint operator <span class="math notranslate nohighlight">\(\hat{p}\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+T(a) = e^{-i a \hat{p} / \hbar}
+\]</div>
+<p>This defines the <strong>momentum operator</strong> <span class="math notranslate nohighlight">\(\hat{p}\)</span> as the generator of translations.</p>
+</section>
+<hr class="docutils" />
+<section id="deriving-the-canonical-commutation-relation">
+<h2>4. Deriving the Canonical Commutation Relation<a class="headerlink" href="#deriving-the-canonical-commutation-relation" title="Link to this heading">#</a></h2>
+<p>We now derive the fundamental commutation relation between position and momentum.</p>
+<p>Differentiate the identity</p>
+<div class="math notranslate nohighlight">
+\[
+T(a)^\dagger \hat{x} T(a) = \hat{x} + a I
+\]</div>
+<p>with respect to <span class="math notranslate nohighlight">\(a\)</span> and evaluate at <span class="math notranslate nohighlight">\(a = 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{da} \left( e^{i a \hat{p}/\hbar} \hat{x} e^{-i a \hat{p}/\hbar} \right)\Big|_{a=0}
+= \frac{i}{\hbar} [\hat{p}, \hat{x}] = I
+\]</div>
+<p>This yields the <strong>canonical commutation relation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+[\hat{x}, \hat{p}] = i \hbar
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="representation-in-position-space">
+<h2>5. Representation in Position Space<a class="headerlink" href="#representation-in-position-space" title="Link to this heading">#</a></h2>
+<p>Once the commutation relation is established, one can realize the operators concretely in the Hilbert space <span class="math notranslate nohighlight">\(\mathcal{H} = L^2(\mathbb{R})\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{x} \psi(x) = x \psi(x), \quad
+\hat{p} \psi(x) = -i \hbar \frac{d}{dx} \psi(x)
+\]</div>
+<p>These forms are consistent with the commutation relation and with the interpretation of <span class="math notranslate nohighlight">\(\hat{p}\)</span> as the generator of spatial translations.</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The position operator <span class="math notranslate nohighlight">\(\hat{x}\)</span> is postulated as a self-adjoint operator with continuous spectrum.</p></li>
+<li><p>A unitary translation operator <span class="math notranslate nohighlight">\(T(a)\)</span> is introduced such that it shifts the expectation value of position.</p></li>
+<li><p>The momentum operator <span class="math notranslate nohighlight">\(\hat{p}\)</span> is defined via Stone’s theorem as the generator of <span class="math notranslate nohighlight">\(T(a)\)</span>.</p></li>
+<li><p>The canonical commutation relation <span class="math notranslate nohighlight">\([\hat{x}, \hat{p}] = i \hbar\)</span> is derived without invoking ill-defined position eigenstates.</p></li>
+</ul>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -472,9 +559,14 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postulating-the-position-operator">1. Postulating the Position Operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-translation-operator">2. Defining the Translation Operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-as-the-generator-of-translations">3. Momentum as the Generator of Translations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-canonical-commutation-relation">4. Deriving the Canonical Commutation Relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-in-position-space">5. Representation in Position Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
