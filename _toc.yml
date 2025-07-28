@@ -13,4 +13,4 @@ chapters:
 - file: history_heisenberg.ipynb
 - file: interaction_picture.ipynb
 - file: position_momentum_representation.ipynb
-
+- file: path_integrals.ipynb
