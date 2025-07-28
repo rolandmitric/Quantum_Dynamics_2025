@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Quantum Dynamics</title>
+    <title>Coupled electron-nuclear dynamics in H\(_2\) using s-type gaussian orbitals for electrons and nuclei &#8212; Quantum Dynamics</title>
   
   
   
@@ -57,7 +57,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Untitled2';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'floating_hydrogen';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -290,7 +292,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FUntitled2.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ffloating_hydrogen.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -320,7 +322,7 @@
       
       
       
-      <li><a href="_sources/Untitled2.ipynb" target="_blank"
+      <li><a href="_sources/floating_hydrogen.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,9 +393,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -404,19 +404,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Coupled electron-nuclear dynamics in H_2 using s-type gaussian orbitals for electrons and nuclei</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -426,7 +418,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="coupled-electron-nuclear-dynamics-in-h-2-using-s-type-gaussian-orbitals-for-electrons-and-nuclei">
+<h1>Coupled electron-nuclear dynamics in H<span class="math notranslate nohighlight">\(_2\)</span> using s-type gaussian orbitals for electrons and nuclei<a class="headerlink" href="#coupled-electron-nuclear-dynamics-in-h-2-using-s-type-gaussian-orbitals-for-electrons-and-nuclei" title="Link to this heading">#</a></h1>
+<p>We describe the coupled electron-nuclear dynamics in H₂ using a fully quantum mechanical time-dependent wavefunction composed of s-type Gaussian orbitals with time-dependent centers and widths for both nuclei and electrons. Each nuclear orbital is given by <span class="math notranslate nohighlight">\(\chi_A(\vec{R}, t) = N_A(t) \exp\left[-\alpha_A(t)(\vec{R} - \vec{R}_A(t))^2\right]\)</span>, with normalization <span class="math notranslate nohighlight">\(N_A(t) = \left(2\alpha_A(t)/\pi\right)^{3/4}\)</span>, center <span class="math notranslate nohighlight">\(\vec{R}_A(t)\)</span>, and width parameter <span class="math notranslate nohighlight">\(\alpha_A(t)\)</span>. The two-nucleus system is described by a Hartree product <span class="math notranslate nohighlight">\(\chi_A(\vec{R}_A, t)\chi_B(\vec{R}_B, t)\)</span>. Each electronic orbital is similarly modeled as <span class="math notranslate nohighlight">\(\phi_\mu(\vec{r}, t) = N_\mu(t) \exp\left[-\beta_\mu(t)(\vec{r} - \vec{C}_\mu(t))^2\right]\)</span>, and the electronic wavefunction is a Slater determinant of two such orbitals. The total wavefunction <span class="math notranslate nohighlight">\(\Psi(\vec{R}_A, \vec{R}_B, \vec{r}_1, \vec{r}_2, t)\)</span> is constructed as the product of the nuclear orbitals and a normalized antisymmetric determinant of the electronic orbitals. To derive equations of motion for the variational parameters <span class="math notranslate nohighlight">\(\{\vec{R}_A, \alpha_A, \vec{R}_B, \alpha_B, \vec{C}_\mu, \beta_\mu\}\)</span>, we apply the Dirac-Frenkel time-dependent variational principle (TDVP), which imposes stationarity of the action <span class="math notranslate nohighlight">\(S = \int dt \langle \Psi(t) | i\partial_t - \hat{H} | \Psi(t) \rangle\)</span>. This yields Euler–Lagrange equations for each parameter <span class="math notranslate nohighlight">\(q_i(t)\)</span>, namely <span class="math notranslate nohighlight">\(\frac{d}{dt} \left(\partial L / \partial \dot{q}_i\right) - \partial L / \partial q_i = 0\)</span>, where the Lagrangian <span class="math notranslate nohighlight">\(L(t) = i \langle \Psi | \dot{\Psi} \rangle - \langle \Psi | \hat{H} | \Psi \rangle\)</span>. The kinetic (Berry-phase) term <span class="math notranslate nohighlight">\(i \langle \Psi | \dot{\Psi} \rangle\)</span> gives rise to a symplectic form <span class="math notranslate nohighlight">\(\mathcal{A}_{jk} = \Im \langle \partial_{q_j} \Psi | \partial_{q_k} \Psi \rangle\)</span>, and the dynamics take the form <span class="math notranslate nohighlight">\(\sum_k \mathcal{A}_{jk} \dot{q}_k = \partial E / \partial q_j\)</span>. The energy expectation value <span class="math notranslate nohighlight">\(E[\vec{q}(t)]\)</span> contains all relevant contributions—nuclear and electronic kinetic energies, electron-nuclear attraction, electron-electron repulsion, and nuclear-nuclear repulsion—and can be evaluated analytically using standard Gaussian integral techniques. The resulting first-order ODE system governs the coupled evolution of Gaussian centers and widths, allowing for a nonadiabatic description of vibrational and electronic dynamics in a compact, variationally controlled form.</p>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -463,21 +459,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

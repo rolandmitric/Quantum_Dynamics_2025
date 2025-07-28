@@ -12,4 +12,5 @@ chapters:
 - file: heisenberg_picture.ipynb
 - file: history_heisenberg.ipynb
 - file: interaction_picture.ipynb
+- file: position_momentum_representation.ipynb
 
