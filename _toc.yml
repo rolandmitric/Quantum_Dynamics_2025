@@ -13,4 +13,6 @@ chapters:
 - file: history_heisenberg.ipynb
 - file: interaction_picture.ipynb
 - file: position_momentum_representation.ipynb
+- file: particle_linear_potential.ipynb
+- file: stationary_phase_method.ipynb
 - file: path_integrals.ipynb
