@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Path integral representation &#8212; Quantum Dynamics</title>
+    <title>🔸 Stationary Phase Method applied to Airy function &#8212; Quantum Dynamics</title>
   
   
   
@@ -59,10 +59,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'path_integrals';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'airy_stationary_phase';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Stationary Phase Method applied to Airy function" href="stationary_phase_method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="formalism_hilbert_spaces.html">🔸 Formalism of Quantum Mechanics: Hilbert Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formalism_linear_operators.html">🔸 Linear maps, operators and functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formalism_unitary_time_evolution.html">🔸 Formalism of Quantum Mechanics: Unitary time evolution</a></li>
@@ -208,22 +209,22 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="history_heisenberg.html">A Historic View on the Heisenberg Formulation of Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history_heisenberg.html">🔸 A Historic View on the Heisenberg Formulation of Quantum Mechanics</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="interaction_picture.html">Interaction Picture of Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interaction_picture.html">🔸 Interaction Picture of Quantum Mechanics</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="position_momentum_representation.html">Position and Momentum Representation</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="position_momentum_representation.html">🔸 Position and Momentum Representation</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="particle_linear_potential.html">Particle in a Linear Potential</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="particle_linear_potential.html">🔸 Particle in a Linear Potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stationary_phase_method.html">Stationary Phase Method applied to Airy function</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Path integral representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="path_integrals.html">Path integral representation</a></li>
 </ul>
 
     </div>
@@ -295,7 +296,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpath_integrals.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fairy_stationary_phase.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +326,7 @@
       
       
       
-      <li><a href="_sources/path_integrals.ipynb" target="_blank"
+      <li><a href="_sources/airy_stationary_phase.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +410,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Path integral representation</h1>
+    <h1>🔸 Stationary Phase Method applied to Airy function</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,12 +420,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#free-particle-propagator">Free Particle Propagator</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-the-propagator-k-x-x-t">Evaluation of the Propagator <span class="math notranslate nohighlight">\(K(x, x'; t)\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🔸 Stationary Phase Method applied to Airy function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-function-and-stationary-points">Phase Function and Stationary Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-stationary-phase-approximation">Application of the Stationary Phase Approximation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-integral-representation-of-the-propagator">Path Integral Representation of the Propagator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-and-error-estimates-for-the-stationary-phase-approximation">🔹  Justification and Error Estimates for the Stationary Phase Approximation</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -435,139 +438,138 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="path-integral-representation">
-<h1>Path integral representation<a class="headerlink" href="#path-integral-representation" title="Link to this heading">#</a></h1>
-<section id="free-particle-propagator">
-<h2>Free Particle Propagator<a class="headerlink" href="#free-particle-propagator" title="Link to this heading">#</a></h2>
-<p>We now consider the <strong>time evolution operator</strong> in the position representation. As a starting point, we focus on the <strong>free particle</strong>, whose Hamiltonian is given by</p>
+  <section id="stationary-phase-method-applied-to-airy-function">
+<h1>🔸 Stationary Phase Method applied to Airy function<a class="headerlink" href="#stationary-phase-method-applied-to-airy-function" title="Link to this heading">#</a></h1>
+<p>We consider the integral representation of the solution of the Schrödinger equation in a linear potential (assuming <span class="math notranslate nohighlight">\(m=1, \hbar =1, E=0\)</span>. In this case the wavefunction is given by a following Fourier integral:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{H} = \frac{\hat{p}^2}{2m}.
+\psi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} e^{i\left(px + \frac{p^3}{6F}\right)} \, dp,
 \]</div>
-<p>Since the Hamiltonian is time-independent, the time evolution operator for a time interval <span class="math notranslate nohighlight">\(t\)</span> is obtained by exponentiation:</p>
+<p>In the following, we investigate its asymptotic behavior for large negative values of <span class="math notranslate nohighlight">\( x \)</span>, i.e., <span class="math notranslate nohighlight">\( x \to -\infty \)</span>. This type of integral is typical in semiclassical analysis and appears in the context of the semiclassical WKB method, Airy functions and wavepacket propagation.</p>
+<section id="phase-function-and-stationary-points">
+<h2>Phase Function and Stationary Points<a class="headerlink" href="#phase-function-and-stationary-points" title="Link to this heading">#</a></h2>
+<p>We define the phase function</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{U}(t) = e^{-\frac{i}{\hbar} \hat{H} t}.
+g(p) = px + \frac{p^3}{6F},
 \]</div>
-<p>The quantum state at time <span class="math notranslate nohighlight">\(t\)</span> evolves from the initial state <span class="math notranslate nohighlight">\(|\psi_0\rangle\)</span> via</p>
+<p>so that the integrand becomes <span class="math notranslate nohighlight">\( e^{i g(p)} \)</span>. The method of stationary phase is based on the idea that the largest contribution to the integral comes from the points at which the phase is stationary since away from such points fast oscillations develop that integrate to zero in the asymptotic limit. Thus in order to evaluate the itnegral using the method of stationary phase we need to locate the stationary points of <span class="math notranslate nohighlight">\( g(p) \)</span>, i.e., the points where <span class="math notranslate nohighlight">\( g'(p) = 0 \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-|\psi(t)\rangle = \hat{U}(t) |\psi_0\rangle.
+g'(p) = x + \frac{p^2}{2F} = 0.
 \]</div>
-<p>To express this in the position representation, we project onto a position eigenstate <span class="math notranslate nohighlight">\(|x\rangle\)</span>, yielding the wave function:</p>
+<p>Solving this equation for <span class="math notranslate nohighlight">\( x &lt; 0 \)</span>, we find two real stationary points:</p>
 <div class="math notranslate nohighlight">
 \[
-\psi(x, t) := \langle x | \psi(t) \rangle = \langle x | \hat{U}(t) | \psi_0 \rangle.
+p_\pm = \pm \sqrt{-2F x} = \pm \sqrt{2F |x|}.
 \]</div>
-<p>We now insert the identity operator in the form of a completeness relation over the position eigenstates:</p>
-<div class="math notranslate nohighlight">
-\[
-\psi(x, t) = \int_{-\infty}^{+\infty} dx' \, \langle x | \hat{U}(t) | x' \rangle \langle x' | \psi_0 \rangle.
-\]</div>
-<p>This motivates the definition of the <strong>propagator kernel</strong> (or Green’s function):</p>
-<div class="math notranslate nohighlight">
-\[
-K(x, x'; t) := \langle x | \hat{U}(t) | x' \rangle,
-\]</div>
-<p>so that the time-evolved wave function can be written as</p>
-<div class="math notranslate nohighlight">
-\[
-\psi(x, t) = \int_{-\infty}^{+\infty} dx' \, K(x, x'; t) \, \psi(x', 0).
-\]</div>
-<hr class="docutils" />
-<section id="evaluation-of-the-propagator-k-x-x-t">
-<h3>Evaluation of the Propagator <span class="math notranslate nohighlight">\(K(x, x'; t)\)</span><a class="headerlink" href="#evaluation-of-the-propagator-k-x-x-t" title="Link to this heading">#</a></h3>
-<p>To evaluate <span class="math notranslate nohighlight">\(K(x, x'; t)\)</span> for the free particle, it is convenient to use the <strong>momentum eigenbasis</strong>, which diagonalizes the Hamiltonian. We insert a resolution of identity in terms of momentum eigenstates:</p>
+<p>We now evaluate the phase function at the stationary points. For <span class="math notranslate nohighlight">\( p_+ = \sqrt{2F |x|} \)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-K(x, x'; t) &amp;= \langle x | e^{-\frac{i}{\hbar} \frac{\hat{p}^2}{2m} t} | x' \rangle \\
-&amp;= \int_{-\infty}^{+\infty} \frac{dp}{2\pi\hbar} \, \langle x | e^{-\frac{i}{\hbar} \frac{\hat{p}^2}{2m} t} | p \rangle \langle p | x' \rangle.
+g(p_+) &amp;= p_+ x + \frac{p_+^3}{6F} \\
+&amp;= -\sqrt{2F} |x|^{3/2} + \frac{(2F)^{3/2}}{6F} |x|^{3/2} \\
+&amp;= \left( -1 + \frac{\sqrt{2F}}{3F} \right) \sqrt{2F} |x|^{3/2} = \frac{4}{3} \sqrt{2F} |x|^{3/2}.
 \end{aligned}
 \end{split}\]</div>
-<p>Using the fact that momentum eigenstates are eigenfunctions of <span class="math notranslate nohighlight">\(\hat{p}\)</span> and that</p>
+<p>By symmetry, we also have
+$<span class="math notranslate nohighlight">\(
+g(p_-) = -\frac{4}{3} \sqrt{2F} |x|^{3/2}.
+\)</span>$</p>
+<p>The second derivative at the stationary points is</p>
 <div class="math notranslate nohighlight">
 \[
-\langle x | p \rangle = \frac{1}{\sqrt{2\pi\hbar}} e^{\frac{i}{\hbar} p x}, \qquad \langle p | x' \rangle = \frac{1}{\sqrt{2\pi\hbar}} e^{-\frac{i}{\hbar} p x'},
+g''(p) = \frac{p}{F}, \quad \Rightarrow \quad g''(p_\pm) = \pm \sqrt{\frac{2}{F}} |x|^{1/2}.
 \]</div>
-<p>we obtain:</p>
+<p>Hence, the magnitude of the second derivative is the same at both saddle points:</p>
+<div class="math notranslate nohighlight">
+\[
+|g''(p_\pm)| = \sqrt{\frac{2}{F}} |x|^{1/2}.
+\]</div>
+</section>
+<section id="application-of-the-stationary-phase-approximation">
+<h2>Application of the Stationary Phase Approximation<a class="headerlink" href="#application-of-the-stationary-phase-approximation" title="Link to this heading">#</a></h2>
+<p>According to the stationary phase approximation for non-degenerate critical points, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\int e^{i g(p)} \, dp \approx \sum_{\text{stationary } p_0} e^{i g(p_0)} \sqrt{\frac{2\pi}{|g''(p_0)|}} \, e^{i \sigma_{p_0} \frac{\pi}{4}},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \sigma_{p_0} = \operatorname{sign}(g''(p_0)) \)</span>.</p>
+<p>In our case, this gives:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-K(x, x'; t) &amp;= \int_{-\infty}^{+\infty} \frac{dp}{2\pi\hbar} \, e^{-\frac{i}{\hbar} \frac{p^2}{2m} t} \cdot e^{\frac{i}{\hbar} p(x - x')} \\
-&amp;= \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} dp \, \exp\left[\frac{i}{\hbar} \left( p(x - x') - \frac{p^2}{2m} t \right) \right].
+\psi(x) &amp;\approx \frac{1}{\sqrt{2\pi}} \left[
+\sqrt{\frac{2\pi}{|g''(p_+)|}} e^{i g(p_+) - i\pi/4} +
+\sqrt{\frac{2\pi}{|g''(p_-)|}} e^{i g(p_-) + i\pi/4}
+\right] \\
+&amp;= \sqrt{\frac{1}{|g''(p_+)|}} \left[
+e^{i g(p_+) - i\pi/4} +
+e^{-i g(p_+) + i\pi/4}
+\right] \\
+&amp;= 2 \sqrt{\frac{1}{|g''(p_+)|}} \cos\left( g(p_+) - \frac{\pi}{4} \right).
 \end{aligned}
 \end{split}\]</div>
-<p>This is a <strong>Gaussian integral</strong> in <span class="math notranslate nohighlight">\(p\)</span>, and can be evaluated explicitly. The result is</p>
+<p>We finally substitute the expressions for ( g(p_+) ) and ( |g’’(p_+)| ):
+$<span class="math notranslate nohighlight">\(
+g(p_+) = \frac{4}{3} \sqrt{2F} |x|^{3/2}, \qquad
+|g''(p_+)| = \sqrt{\frac{2}{F}} |x|^{1/2}.
+\)</span>$</p>
+<p>Thus, the asymptotic form of the wavefunction becomes
+$<span class="math notranslate nohighlight">\(
+\psi(x) \approx 2 \left( \frac{F}{2} \right)^{1/4} \cdot \frac{1}{|x|^{1/4}} \cdot
+\cos\left( \frac{4}{3} \sqrt{2F} |x|^{3/2} - \frac{\pi}{4} \right).
+\)</span>$</p>
 <div class="math notranslate nohighlight">
 \[
-K(x, x'; t) = \sqrt{\frac{m}{2\pi i \hbar t}} \, \exp\left[ \frac{i m (x - x')^2}{2\hbar t} \right],
+\boxed{
+\psi(x) \approx 2 \left( \frac{F}{2} \right)^{1/4} \frac{1}{|x|^{1/4}}
+\cos\left( \frac{4}{3} \sqrt{2F} |x|^{3/2} - \frac{\pi}{4} \right)
+\quad \text{for } x \to -\infty
+}
 \]</div>
-<p>which is the <strong>free particle propagator</strong> in one dimension. It expresses the amplitude for a particle initially localized at <span class="math notranslate nohighlight">\(x'\)</span> to be found at position <span class="math notranslate nohighlight">\(x\)</span> after time <span class="math notranslate nohighlight">\(t\)</span>, under free evolution.</p>
-<hr class="docutils" />
-<p>Would you like to continue this by showing how the spreading of a Gaussian wave packet arises from this propagator, or derive the same result using path integrals?</p>
 </section>
 </section>
-<section id="path-integral-representation-of-the-propagator">
-<h2>Path Integral Representation of the Propagator<a class="headerlink" href="#path-integral-representation-of-the-propagator" title="Link to this heading">#</a></h2>
-<p>We now derive the path integral form of the propagator for a quantum particle. The time evolution operator is</p>
+<section id="justification-and-error-estimates-for-the-stationary-phase-approximation">
+<h1>🔹  Justification and Error Estimates for the Stationary Phase Approximation<a class="headerlink" href="#justification-and-error-estimates-for-the-stationary-phase-approximation" title="Link to this heading">#</a></h1>
+<p>In order to justify our approach a bit further, we consider a general oscillatory integral of the form
+$<span class="math notranslate nohighlight">\(
+I(x) = \int_{-\infty}^{+\infty} \, e^{i x g(p)} \, dp,
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> x \gg 1 <span class="math notranslate nohighlight">\( is a large parameter. We assume for simplicity that \)</span> g(p) <span class="math notranslate nohighlight">\( is a smooth real-valued function whose stationary points (where \)</span> g’(p) = 0 $) determine the dominant contributions to the integral.</p>
+<p>When <span class="math notranslate nohighlight">\(x\)</span>  is large, the integrand oscillates rapidly except near points where the phase is stationary. Further away from these points, the contributions to the integral largely cancel out due to a highly oscillatory behaviour. The leading contribution to the integral thus comes from small neighborhoods around the stationary points, where the phase varies rather slowly.</p>
+<p>Suppose <span class="math notranslate nohighlight">\( p_0 \)</span> is a non-degenerate stationary point, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{U}(t) = e^{-\frac{i}{\hbar} \hat{H} t}, \quad \text{so that} \quad K(x, x'; t) = \langle x | \hat{U}(t) | x' \rangle.
+g'(p_0) = 0, \quad g''(p_0) \neq 0.
 \]</div>
-<p>To evaluate this, we divide the time interval <span class="math notranslate nohighlight">\([0, t]\)</span> into <span class="math notranslate nohighlight">\(N\)</span> small steps of length <span class="math notranslate nohighlight">\(\Delta t = t / N\)</span>. Using the composition property of the time-evolution operator:</p>
+<p>Expanding <span class="math notranslate nohighlight">\( g(p) \)</span> in a Taylor series around <span class="math notranslate nohighlight">\( p_0 \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{U}(t) = \hat{U}(t_N, t_{N-1}) \cdots \hat{U}(t_2, t_1) \hat{U}(t_1, t_0),
+g(p) = g(p_0) + \frac{1}{2} g''(p_0)(p - p_0)^2 + \cdots.
 \]</div>
-<p>we write the propagator as a product of infinitesimal propagators:</p>
+<p>Using this expansion the integral becomes locally</p>
 <div class="math notranslate nohighlight">
 \[
-K(x, x'; t) = \langle x | \hat{U}(t_N, t_{N-1}) \cdots \hat{U}(t_1, t_0) | x' \rangle.
+\int e^{i x \left(g(p_0) + \frac{1}{2} g''(p_0)(p - p_0)^2\right)} \, dp.
 \]</div>
-<p>We now insert resolutions of the identity in the position basis between each time slice:</p>
+<p>This is a standart Gaussian integral, and its leading-order contribution is</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{I} = \int dx_i \, |x_i\rangle \langle x_i|, \quad \text{for } i = 1, \dots, N-1.
+I(x) \approx  e^{i \lambda g(p_0)} \sqrt{\frac{2\pi}{x |g''(p_0)|}} e^{i \sigma \frac{\pi}{4}},
 \]</div>
-<p>This yields:</p>
+<p>where <span class="math notranslate nohighlight">\( \sigma = \operatorname{sign}(g''(p_0)) \)</span>. If there are multiple isolated stationary points, their contributions add up.</p>
+<p>The error term in the stationary phase approximation depends on how rapidly the phase varies away from the stationary point. In the case of a single non-degenerate stationary point,</p>
 <div class="math notranslate nohighlight">
 \[
-K(x, x'; t) = \int dx_1 \cdots dx_{N-1} \prod_{j=1}^{N} \langle x_j | \hat{U}(\Delta t) | x_{j-1} \rangle,
+\int f(p) e^{i \lambda g(p)} \, dp = f(p_0) e^{i \lambda g(p_0)} \sqrt{\frac{2\pi}{\lambda |g''(p_0)|}} e^{i \sigma \frac{\pi}{4}} + \mathcal{O}(\lambda^{-3/2}).
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(x_N = x\)</span> and <span class="math notranslate nohighlight">\(x_0 = x'\)</span>.</p>
-<p>For small <span class="math notranslate nohighlight">\(\Delta t\)</span>, and assuming a Hamiltonian of the form</p>
+<p>The higher-order terms involve higher derivatives <span class="math notranslate nohighlight">\( g \)</span>. One can show that the integral has an asymptotic expansion of the form</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{H} = \frac{\hat{p}^2}{2m} + V(\hat{x}),
+I(\lambda) \sim \sum_{k=0}^{n} \frac{A_k}{\lambda^{k + 1/2}} + \mathcal{O}(\lambda^{-n - 3/2}),
 \]</div>
-<p>we approximate the short-time propagator using Trotter splitting:</p>
-<div class="math notranslate nohighlight">
-\[
-\hat{U}(\Delta t) \approx e^{-\frac{i}{\hbar} \hat{H} \Delta t} \approx e^{-\frac{i}{\hbar} \frac{\hat{p}^2}{2m} \Delta t} e^{-\frac{i}{\hbar} V(\hat{x}) \Delta t} + \mathcal{O}(\Delta t^2).
-\]</div>
-<p>The matrix elements of the kinetic term in the position basis are known:</p>
-<div class="math notranslate nohighlight">
-\[
-\langle x_j | e^{-\frac{i}{\hbar} \frac{\hat{p}^2}{2m} \Delta t} | x_{j-1} \rangle = \sqrt{\frac{m}{2\pi i \hbar \Delta t}} \exp\left[ \frac{i m}{2 \hbar \Delta t} (x_j - x_{j-1})^2 \right].
-\]</div>
-<p>Multiplying by the potential term (which is diagonal in position space):</p>
-<div class="math notranslate nohighlight">
-\[
-\langle x_j | \hat{U}(\Delta t) | x_{j-1} \rangle \approx \sqrt{\frac{m}{2\pi i \hbar \Delta t}} \exp\left[ \frac{i}{\hbar} \left( \frac{m}{2} \left( \frac{x_j - x_{j-1}}{\Delta t} \right)^2 - V(x_{j-1}) \right) \Delta t \right].
-\]</div>
-<p>Putting it all together:</p>
-<div class="math notranslate nohighlight">
-\[
-K(x, x'; t) = \lim_{N \to \infty} \left( \frac{m}{2\pi i \hbar \Delta t} \right)^{N/2} \int dx_1 \cdots dx_{N-1} \exp\left[ \frac{i}{\hbar} \sum_{j=1}^{N} \left( \frac{m}{2} \left( \frac{x_j - x_{j-1}}{\Delta t} \right)^2 - V(x_{j-1}) \right) \Delta t \right].
-\]</div>
-<p>In the continuum limit, this becomes a functional integral over all possible paths <span class="math notranslate nohighlight">\(x(t)\)</span> from <span class="math notranslate nohighlight">\(x(0) = x'\)</span> to <span class="math notranslate nohighlight">\(x(t) = x\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-K(x, x'; t) = \int \mathcal{D}[x(t)] \, e^{\frac{i}{\hbar} \int_0^t dt \, L(x, \dot{x})},
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(L(x, \dot{x}) = \frac{1}{2} m \dot{x}^2 - V(x)\)</span> is the classical Lagrangian. This is the <strong>Feynman path integral formulation</strong> of quantum mechanics.</p>
-</section>
+<p>with some coefficients <span class="math notranslate nohighlight">\( A_k \)</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -600,15 +602,6 @@ K(x, x'; t) = \int \mathcal{D}[x(t)] \, e^{\frac{i}{\hbar} \int_0^t dt \, L(x, \
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="stationary_phase_method.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Stationary Phase Method applied to Airy function</p>
-      </div>
-    </a>
 </div>
                 </footer>
               
@@ -625,12 +618,14 @@ K(x, x'; t) = \int \mathcal{D}[x(t)] \, e^{\frac{i}{\hbar} \int_0^t dt \, L(x, \
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#free-particle-propagator">Free Particle Propagator</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-the-propagator-k-x-x-t">Evaluation of the Propagator <span class="math notranslate nohighlight">\(K(x, x'; t)\)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🔸 Stationary Phase Method applied to Airy function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-function-and-stationary-points">Phase Function and Stationary Points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-stationary-phase-approximation">Application of the Stationary Phase Approximation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path-integral-representation-of-the-propagator">Path Integral Representation of the Propagator</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-and-error-estimates-for-the-stationary-phase-approximation">🔹  Justification and Error Estimates for the Stationary Phase Approximation</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
